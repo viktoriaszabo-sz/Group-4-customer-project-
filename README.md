@@ -9,3 +9,5 @@ The feedback would work accoridng to the following:
                 if "good" sum is low and "bad" sum is high, the student will belong to a lower category, advise to focus on their mental health, etc
 
   Goal is to have a functional website to display the pre-written scripts for the categories and have a working database connection for the backend
+
+Write any ideas freely to our Teams chat :)
