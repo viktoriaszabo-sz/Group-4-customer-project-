@@ -1,8 +1,21 @@
 body{
+    font-family: "Helvetica", Sans-Serif;
+    background-image: url('https://cdn.forms.office.net/forms/images/theme/intelligence/colorful-pencil.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     margin: auto;
     width: 50%;
+    min-height: 100vh;
 }
 
+.form{
+    background-color: white;
+    opacity: 0.9;
+    padding: 10px;
+    padding-left:100px;
+    padding-right:100px;
+}
 
 .formbold-radio-flex div {
     display: inline-block;
