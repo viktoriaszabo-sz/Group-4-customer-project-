@@ -1,0 +1,3225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!--Start-->
+  <form action="addaction" method="POST">
+
+    <!--Year of birth-->
+    <div class="formbold-mb-5">
+      <label for="year" class="formbold-form-label">
+        Year of birth
+      </label>
+      <select id="year" name="year" required>
+        <option value="" disabled selected>Select year</option>
+        <option value="">2010 or earlier</option>
+        <option value="2010">2010</option>
+        <option value="2009">2009</option>
+        <option value="2008">2008</option>
+        <option value="2007">2007</option>
+        <option value="2006">2006</option>
+        <option value="2005">2005</option>
+        <option value="2004">2004</option>
+        <option value="2003">2003</option>
+        <option value="2002">2002</option>
+        <option value="2001">2001</option>
+        <option value="2000">2000</option>
+        <option value="1999">1999</option>
+        <option value="1998">1998</option>
+        <option value="1997">1997</option>
+        <option value="1996">1996</option>
+        <option value="1995">1995</option>
+        <option value="1994">1994</option>
+        <option value="1993">1993</option>
+        <option value="1992">1992</option>
+        <option value="1991">1991</option>
+        <option value="1990">1990</option>
+        <option value="1989">1989</option>
+        <option value="1988">1988</option>
+        <option value="1987">1987</option>
+        <option value="1986">1986</option>
+        <option value="1985">1985</option>
+        <option value="1984">1984</option>
+        <option value="1983">1983</option>
+        <option value="1982">1982</option>
+        <option value="1981">1981</option>
+        <option value="1980">1980</option>
+        <option value="1979">1979</option>
+        <option value="1978">1978</option>
+        <option value="1977">1977</option>
+        <option value="1976">1976</option>
+        <option value="1975">1975</option>
+        <option value="1974">1974</option>
+        <option value="1973">1973</option>
+        <option value="1972">1972</option>
+        <option value="1971">1971</option>
+        <option value="1970">1970</option>
+        <option value="1969">1969</option>
+        <option value="1968">1968</option>
+        <option value="1967">1967</option>
+        <option value="1966">1966</option>
+        <option value="1965">1965</option>
+        <option value="1964">1964</option>
+        <option value="1963">1963</option>
+        <option value="1962">1962</option>
+        <option value="1961">1961</option>
+        <option value="1960">1960</option>
+        <option value="1959">1959</option>
+        <option value="1958">1958</option>
+        <option value="1958 or earlier">1958 or earlier</option>
+      </select>
+
+      <!--Gender-->
+      <div class="formbold-mb-5"></div>
+      <label for="gender" class="formbold-form-label">
+        Gender
+      </label>
+      <select id="gender" name="gender" required>
+        <option value="" disabled selected>Select gender</option>
+        <option value="1">Woman</option>
+        <option value="2">Man</option>
+        <option value="3">Non-binary</option>
+        <option value="4">Prefer not to say</option>
+      </select>
+
+      <!--School-->
+      <div class="formbold-mb-5">
+        <label for="school" class="formbold-form-label">
+          In which school do you study at HAMK?
+        </label>
+        <select id="school" name="school" required>
+          <option value="" disabled selected>Select school</option>
+          <option value="1">School of Bioeconomy</option>
+          <option value="2">School of Wellbeing</option>
+          <option value="3">School of Entrepreneurship, Business and Technology</option>
+          <option value="4">School of Professional Teacher Education</option>
+        </select>
+      </div>
+    </div>
+
+    <!--Learning process start-->
+    <h2>Learning process</h2>
+
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="LP101" class="formbold-form-label">
+        I often have trouble making sense of the things I have to learn.
+      </label>
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label for="LP101_1" class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101_1" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label for="LP101_2" class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101_2" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label for="LP101_3" class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101_3" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label for="LP101_4" class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101_4" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label for="LP101_5" class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101_5" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--2nd question-->
+    <div class="formbold-mb-5">
+      <label for="LP102" class="formbold-form-label">
+        I put a lot of effort into my studying. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP102" id="LP102" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP102" id="LP102" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP102" id="LP102" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP102" id="LP102" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP102" id="LP102" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+    <!--3rd question-->
+    <div class="formbold-mb-5">
+      <label for="LP103" class="formbold-form-label">
+        Much of what I’ve learned seems no more than unrelated bits and pieces. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--4th question-->
+    <div class="formbold-mb-5">
+      <label for="LP104" class="formbold-form-label">
+        On the whole, I’ve been systematic and organised in my studying. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--5th question-->
+    <div class="formbold-mb-5">
+      <label for="LP105" class="formbold-form-label">
+        Ideas and perspectives, I’ve come across while I’m studying make me contemplate them from all sides.
+      </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--6th question-->
+    <div class="formbold-mb-5">
+      <label for="LP106" class="formbold-form-label">
+        I look at evidence carefully to reach my own conclusion about what I’m studying. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--7th question-->
+    <div class="formbold-mb-5">
+      <label for="LP107" class="formbold-form-label">
+        I am unable to understand the topics I need to learn because they are so complicated. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--8th question-->
+    <div class="formbold-mb-5">
+      <label for="LP108" class="formbold-form-label">
+        I organise my study time carefully to make the best use of it. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--9th question-->
+    <div class="formbold-mb-5">
+      <label for="LP109" class="formbold-form-label">
+        Often, I have to repeat things in order to learn them. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--10th question-->
+    <div class="formbold-mb-5">
+      <label for="LP110" class="formbold-form-label">
+        I carefully prioritise my time to make sure I can fit everything in. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--11th question-->
+    <div class="formbold-mb-5">
+      <label for="LP11" class="formbold-form-label">
+        I try to relate new material to my previous knowledge. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--12th question-->
+    <div class="formbold-mb-5">
+      <label for="LP12" class="formbold-form-label">
+        I try to relate what I have learned in one module to what I learn in other modules. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!--Learning environment 1 start-->
+    <h2>Learning environment I</h2>
+
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="LP101" class="formbold-form-label">
+        The feedback given on my set work helps to clarify things I hadn’t fully understood.
+      </label>
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP101" id="LP101" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--2nd question-->
+    <div class="formbold-mb-5">
+      <label for="LP102" class="formbold-form-label">
+        The teaching practices support me to achieve the modules' learning goals. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP102" id="LP102" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--3rd question-->
+    <div class="formbold-mb-5">
+      <label for="LP103" class="formbold-form-label">
+        I find most of what I have learned in the modules really interesting.
+      </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP103" id="LP103" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--4th question-->
+    <div class="formbold-mb-5">
+      <label for="LP104" class="formbold-form-label">
+        I receive enough feedback about my learning. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP104" id="LP104" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--5th question-->
+    <div class="formbold-mb-5">
+      <label for="LP105" class="formbold-form-label">
+        I can see the relevance of what we are taught.
+      </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP105" id="LP105" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--6th question-->
+    <div class="formbold-mb-5">
+      <label for="LP106" class="formbold-form-label">
+        I enjoy participating in modules. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP106" id="LP106" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--7th question-->
+    <div class="formbold-mb-5">
+      <label for="LP107" class="formbold-form-label">
+        I can see how the set work fit in with what we are supposed to learn. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP107" id="LP107" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--8th question-->
+    <div class="formbold-mb-5">
+      <label for="LP108" class="formbold-form-label">
+        The set work helps me to make connections to my existing knowledge. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP108" id="LP108" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--9th question-->
+    <div class="formbold-mb-5">
+      <label for="LP109" class="formbold-form-label">
+        What we are taught seems to match what we are supposed to learn. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP109" id="LP109" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--10th question-->
+    <div class="formbold-mb-5">
+      <label for="LP110" class="formbold-form-label">
+        It is clear to me what is expected in the assessed work (i.e., final exam, exercises). </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP110" id="LP110" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--11th question-->
+    <div class="formbold-mb-5">
+      <label for="LP11" class="formbold-form-label">
+        Learning goals have been clearly stated. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--12th question-->
+    <div class="formbold-mb-5">
+      <label for="LP12" class="formbold-form-label">
+        It is clear to me what I am expected to learn in the modules. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP12" id="LP12" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--13th question-->
+    <div class="formbold-mb-5">
+      <label for="LP11" class="formbold-form-label">
+        Assessment in the modules seem to focus on competences which are based on the learning goals. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--14th question-->
+    <div class="formbold-mb-5">
+      <label for="LP11" class="formbold-form-label">
+        The feedback given on my set work helps me to improve my ways of learning and studying. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--15th question-->
+    <div class="formbold-mb-5">
+      <label for="LP11" class="formbold-form-label">
+        I feel that the study workload is evenly distributed. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--16th question-->
+    <div class="formbold-mb-5">
+      <label for="LP11" class="formbold-form-label">
+        The modules' workload matches the received study credits. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="LP11" id="LP11" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!--Learning environment II start-->
+    <h2>Learning environment II</h2>
+    <!--samppa-->
+
+    <!-- Competence development I -->
+    <h2>Competence development I</h2>
+
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="WB101" class="formbold-form-label">
+        I have learned to apply theoretical knowledge to practice..
+      </label>
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--2nd question-->
+    <div class="formbold-mb-5">
+      <label for="WB102" class="formbold-form-label">
+        My studies have developed my collaboration skills. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--3rd question-->
+    <div class="formbold-mb-5">
+      <label for="WB103" class="formbold-form-label">
+        I have learned to analyse and categorise information. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB103" id="WB103" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB103" id="WB103" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB103" id="WB103" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB103" id="WB103" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB103" id="WB103" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--4th question-->
+    <div class="formbold-mb-5">
+      <label for="WB104" class="formbold-form-label">
+        I have learned to see things from different ponts of view. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB104" id="WB104" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB104" id="WB104" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB104" id="WB104" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB104" id="WB104" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB104" id="WB104" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--5th question-->
+    <div class="formbold-mb-5">
+      <label for="WB105" class="formbold-form-label">
+        I have learned to make arguments for my thoughts.
+      </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB105" id="WB105" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB105" id="WB105" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB105" id="WB105" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB105" id="WB105" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB105" id="WB105" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--6th question-->
+    <div class="formbold-mb-5">
+      <label for="WB106" class="formbold-form-label">
+        Studying at the university of applied sciences has developed my skills in acting as a group member.
+      </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB106" id="WB106" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB106" id="WB106" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB106" id="WB106" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB106" id="WB106" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB106" id="WB106" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--7th question-->
+    <div class="formbold-mb-5">
+      <label for="WB107" class="formbold-form-label">
+        Through my studies at the university of applied sciences I have learned how to get my points across
+        in
+        different ineraction situations. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB107" id="WB107" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB107" id="WB107" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB107" id="WB107" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB107" id="WB107" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB107" id="WB107" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--8th question-->
+    <div class="formbold-mb-5">
+      <label for="WB108" class="formbold-form-label">
+        Through my studies I have learned to solve problems in practical situations. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB108" id="WB108" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB108" id="WB108" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB108" id="WB108" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB108" id="WB108" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB108" id="WB108" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!-- Competence development II -->
+    <h2>Competence development II</h2>
+
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="WB109" class="formbold-form-label">
+        During my studies I have learned how useful it is to learn the working practices of other fields and
+        organisations. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB109" id="WB109" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB109" id="WB109" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB109" id="WB109" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB109" id="WB109" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB109" id="WB109" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--2nd question-->
+    <div class="formbold-mb-5">
+      <label for="WB201" class="formbold-form-label">
+        During my studies I have learned new aspects about the practices of different organisations </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB201" id="WB201" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB201" id="WB201" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB201" id="WB201" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB201" id="WB201" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB201" id="WB201" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--3rd question-->
+    <div class="formbold-mb-5">
+      <label for="WB202" class="formbold-form-label">
+        During my studies I have learned to present my expertise to representatives of another field. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB202" id="WB202" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB202" id="WB202" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB202" id="WB202" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB202" id="WB202" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB202" id="WB202" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--4th question-->
+    <div class="formbold-mb-5">
+      <label for="WB203" class="formbold-form-label">
+        During my studies I have learned to ask questions relating to the practices of another field. </label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB203" id="WB203" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB203" id="WB203" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB203" id="WB203" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB203" id="WB203" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB203" id="WB203" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--5th question-->
+    <div class="formbold-mb-5">
+      <label for="WB204" class="formbold-form-label">
+        During my studies I have learned the practices of people with different kinds of expertise.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB204" id="WB204" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB204" id="WB204" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB204" id="WB204" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB204" id="WB204" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB204" id="WB204" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--6th question-->
+    <div class="formbold-mb-5">
+      <label for="WB205" class="formbold-form-label">
+        During my studies I have learned to collaborate with representatives of other fields.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB205" id="WB205" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB205" id="WB205" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB205" id="WB205" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB205" id="WB205" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB205" id="WB205" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--7th question-->
+    <div class="formbold-mb-5">
+      <label for="WB206" class="formbold-form-label">
+        During my studies I have learned about the practices of work-life experts.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB206" id="WB206" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB206" id="WB206" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB206" id="WB206" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB206" id="WB206" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB206" id="WB206" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!-- Career planning -->
+    <h2>Career planning</h2>
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="WB207" class="formbold-form-label">
+        I can list jobs that suit my area of expertise.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB207" id="WB207" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB207" id="WB207" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB207" id="WB207" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB207" id="WB207" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB207" id="WB207" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--2nd question-->
+    <div class="formbold-mb-5">
+      <label for="WB301" class="formbold-form-label">
+        I know how to describe the skills and competences I have acquired in my studies.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB301" id="WB301" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB301" id="WB301" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB301" id="WB301" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB301" id="WB301" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB301" id="WB301" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--3rd question-->
+    <div class="formbold-mb-5">
+      <label for="WB302" class="formbold-form-label">
+        I have learned to create imortant networkds for my career.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB302" id="WB302" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB302" id="WB302" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB302" id="WB302" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB302" id="WB302" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB302" id="WB302" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--4th question-->
+    <div class="formbold-mb-5">
+      <label for="WB303" class="formbold-form-label">
+        I am optimistic about finding a suitable job.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB303" id="WB303" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB303" id="WB303" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB303" id="WB303" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB303" id="WB303" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB303" id="WB303" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!-- Enterpreneurship -->
+    <h2>Enterpreneurship</h2>
+
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="WB304" class="formbold-form-label">
+        My studies have encouraged me to consider a career as an entrepreneur.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB304" id="WB304" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB304" id="WB304" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB304" id="WB304" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB304" id="WB304" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB304" id="WB304" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!-- Sustainable development -->
+    <h2>Sustainable development</h2>
+
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="WB305" class="formbold-form-label">
+        Through my studies I have learned about principles and practices promoting sustainable
+        development.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB305" id="WB305" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB305" id="WB305" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB305" id="WB305" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB305" id="WB305" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB305" id="WB305" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--2nd question-->
+    <div class="formbold-mb-5">
+      <label for="WB401" class="formbold-form-label">
+        Studying at the university of applied sciences has helped me to understand themes related to climate
+        change and energy issues.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB401" id="WB401" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB401" id="WB401" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB401" id="WB401" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB401" id="WB401" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB401" id="WB401" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!-- Customer orientation -->
+    <h2>Customer orientation</h2>
+
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="WB402" class="formbold-form-label">
+        Studying at the university of applied sciences has developed my skills to interact with
+        customers.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB402" id="WB402" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB402" id="WB402" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB402" id="WB402" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB402" id="WB402" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB402" id="WB402" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--2nd question-->
+    <div class="formbold-mb-5">
+      <label for="WB403" class="formbold-form-label">
+        My studies have developed my skills to take into consideration the customers' perspective.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB403" id="WB403" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB403" id="WB403" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB403" id="WB403" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB403" id="WB403" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB403" id="WB403" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!-- Digital skills -->
+    <h2>Digital skills</h2>
+
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="WB404" class="formbold-form-label">
+        I have learned to understand how digitalisation can be utilised in future working life.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <!--2nd question-->
+    <div class="formbold-mb-5">
+      <label for="WB405" class="formbold-form-label">
+        I have gained skills for using different digital tools in working life.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--3rd question-->
+    <div class="formbold-mb-5">
+      <label for="WB406" class="formbold-form-label">
+        During my studies I have learned to use various digital applications and use them together whenever
+        needed.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB406" id="WB406" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB406" id="WB406" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB406" id="WB406" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB406" id="WB406" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB406" id="WB406" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!-- Internationality -->
+    <h2>Internationality</h2>
+
+    <!--1st question-->
+    <div class="formbold-mb-5">
+      <label for="WB404" class="formbold-form-label">
+        My studies have developed my skills to understand people from different backgrounds and
+        cultures.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB404" id="WB404" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!--2nd question-->
+    <div class="formbold-mb-5">
+      <label for="WB405" class="formbold-form-label">
+        During my studies I have been able to develop my interaction skills reqired in international
+        collaboration.</label>
+
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="1">
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="2">
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="3">
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="4">
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB405" id="WB405" value="5">
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="formbold-btn">Next</button>
+
+    <!--Wellbeing start-->
+    <!--Quang-->
+    <h2>Wellbeing</h2>
+    <!-- LE301 -->
+    <label for="WB101" class="formbold-form-label">
+      I have been able to apply the competences I have acquired in the working life projects and work placements into my
+      studies.
+    </label>
+    <div class="formbold-radio-flex">
+      <div class="formbold-radio-group">
+        <label class="formbold-radio-label">
+          <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="1" />
+          1
+          <span class="formbold-radio-checkmark"></span>
+        </label>
+      </div>
+
+      <div class="formbold-radio-group">
+        <label class="formbold-radio-label">
+          <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="2" />
+          2
+          <span class="formbold-radio-checkmark"></span>
+        </label>
+      </div>
+
+      <div class="formbold-radio-group">
+        <label class="formbold-radio-label">
+          <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="3" />
+          3
+          <span class="formbold-radio-checkmark"></span>
+        </label>
+      </div>
+
+      <div class="formbold-radio-group">
+        <label class="formbold-radio-label">
+          <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="4" />
+          4
+          <span class="formbold-radio-checkmark"></span>
+        </label>
+      </div>
+
+      <div class="formbold-radio-group">
+        <label class="formbold-radio-label">
+          <input class="formbold-input-radio" type="radio" name="WB101" id="WB101" value="5" />
+          5
+          <span class="formbold-radio-checkmark"></span>
+        </label>
+      </div>
+    </div>
+    </div>
+
+    <!-- LE302 -->
+    <div class="formbold-mb-5">
+      <label for="WB102" class="formbold-form-label">
+        What I have learned in the university of applied sciences has been useful in the working life projects and work
+        placements.
+      </label>
+      <div class="formbold-radio-flex">
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="1" />
+            1
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="2" />
+            2
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="3" />
+            3
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="4" />
+            4
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+        <div class="formbold-radio-group">
+          <label class="formbold-radio-label">
+            <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="5" />
+            5
+            <span class="formbold-radio-checkmark"></span>
+          </label>
+        </div>
+      </div>
+
+
+      <!-- LE303 -->
+      <div class="formbold-mb-5">
+        <label for="WB103" class="formbold-form-label">
+          I have received enough guidance from the module teachers.
+        </label>
+        <div class="formbold-radio-flex">
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="1" />
+              1
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="2" />
+              2
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="3" />
+              3
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="4" />
+              4
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="5" />
+              5
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- LE304 -->
+      <div class="formbold-mb-5">
+        <label for="WB104" class="formbold-form-label">
+          I have received enough guidance from the student counselors.
+        </label>
+        <div class="formbold-radio-flex">
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="1" />
+              1
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="2" />
+              2
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="3" />
+              3
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="4" />
+              4
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="5" />
+              5
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- LE305 -->
+      <div class="formbold-mb-5">
+        <label for="WB105" class="formbold-form-label">
+          I have received support and guidance for planning my career.
+        </label>
+        <div class="formbold-radio-flex">
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="1" />
+              1
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="2" />
+              2
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="3" />
+              3
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="4" />
+              4
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="5" />
+              5
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- LE306 -->
+      <div class="formbold-mb-5">
+        <label for="WB106" class="formbold-form-label">
+          I have received support from my workplace supervisor in my work placements.
+        </label>
+        <div class="formbold-radio-flex">
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="1" />
+              1
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="2" />
+              2
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="3" />
+              3
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="4" />
+              4
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="5" />
+              5
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- LE307 -->
+      <div class="formbold-mb-5">
+        <label for="WB107" class="formbold-form-label">
+          I have received support from my supervising teacher in my work placements.
+        </label>
+        <div class="formbold-radio-flex">
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="1" />
+              1
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="2" />
+              2
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="3" />
+              3
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="4" />
+              4
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="5" />
+              5
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- LE308 -->
+      <div class="formbold-mb-5">
+        <label for="WB108" class="formbold-form-label">
+          The cooperation between the university of applied sciences and the place of the work placement has supported
+          my learning during the work placement period.
+        </label>
+        <div class="formbold-radio-flex">
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="1" />
+              1
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="2" />
+              2
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="3" />
+              3
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="4" />
+              4
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+          <div class="formbold-radio-group">
+            <label class="formbold-radio-label">
+              <input class="formbold-input-radio" type="radio" name="WB102" id="WB102" value="5" />
+              5
+              <span class="formbold-radio-checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- The Next button -->
+      <button class="formbold-btn">Next</button>
+  </div>
+</form>
+  <!--Wellbeing end-->
+
+  <button id="quitButton">Submit Survey</button>
+  <script>
+    document.getElementById("quitButton").addEventListener("click", function () {
+      // Display a confirmation dialog
+      var confirmQuit = confirm("Do you want to finish the survey?");
+
+      // Check the user's choice
+
+      if (confirmQuit) {
+
+        // If "OK" redirect to survey result page. "cancel" to return to survey.
+      }
+
+    });
+  </script>
+</body>
+
+</html>
