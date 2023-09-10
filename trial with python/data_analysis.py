@@ -29,14 +29,11 @@ new_columns_data = {
     "Sum of good": good_sum, 
     "Sum of bad": bad_sum
 }
-df = df.assign(**new_columns_data)
-
-# df.head() # testing 
-
-
+df = df.assign(**new_columns_data) # puts the new columns to the end of the dataset 
 
 
 # BASIC FUNCTIONALITY OF BACK-END: FOR CATEGORIES AND IF / SWITCH STATEMENTS 
+# these are just examples for demonstration
 
 for index, row in df.iterrows():
     sum_of_good = row['Sum of good']
