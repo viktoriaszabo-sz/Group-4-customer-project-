@@ -1,0 +1,88 @@
+body{
+    font-family: "Helvetica", Sans-Serif;
+    background-image: url('https://cdn.forms.office.net/forms/images/theme/colorful-pencils.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: auto;
+    width: 50%;
+    min-height: 100vh;
+    padding-top: 2%;
+}
+
+
+.learnWellLogo{
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+h1{
+    font-size: 30px;
+    text-align: center;
+    font-weight: normal;
+}
+
+h2{
+    font-size: 20px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.text{
+    background-color: white;
+    opacity: 0.95;
+    padding: 10px;
+    padding-left:50px;
+    padding-right:50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.overview{
+    border: 3px solid #ffcc80;
+    border-radius: 4px;
+}
+
+.statistics{
+    display: flex;
+    justify-content: center;  
+    /* flex-flow: row wrap; */ 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    align-content: center;
+
+    height: 100%;
+    padding: 15px;
+    gap: 5px;
+}
+
+.statistics > div{
+    border: 3px solid #ffcc80;
+    border-radius: 4px;
+    padding: 55px;
+    width: 26%;
+    margin: 10px;
+  }
+
+
+  /* @media only screen and (min-width: 600px) {
+    For tablets:
+    body{
+      width: 100%;
+      min-height: 50vh;
+    }
+  } */
+
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    body{
+      width: 90%;
+      /* to remove the bars from the sides and make everything white, width should be 100% */
+      background-attachment: scroll;
+      
+    }
+  }
