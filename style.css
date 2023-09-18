@@ -1,0 +1,16 @@
+.formbold-radio-flex div {
+    display: inline-block;
+  }
+  body{
+  margin: auto;
+  width: 50%;
+}
+
+
+.formbold-radio-flex div {
+  display: inline-block;
+}
+
+.formbold-radio-flex{
+  padding-bottom: 20px;
+}
