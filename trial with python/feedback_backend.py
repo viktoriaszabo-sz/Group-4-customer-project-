@@ -61,13 +61,13 @@ elif sum_of_competence <= 25:
 
 
 #check FILLER category sum 
-if sum_of_filler <= 85 and sum_of_filler > 42:
+if sum_of_filler <= 85 and sum_of_filler > 57:
     #subcategory 1
     print("Good in career, good objectives: ")
-elif sum_of_filler <= 42 and sum_of_filler > 0: 
+elif sum_of_filler <= 57 and sum_of_filler > 29: 
     #subcategory 2
     print("Somewhat good objectives: ")
-elif sum_of_filler == 0:
+elif sum_of_filler <= 29 or sum_of_filler == 0:
     #subcategory 3
     print("Bad objectives, need more improvement: ")
 
