@@ -27,6 +27,7 @@ sum_of_sr = latest_response['Sum of self-reflection']
 # Check LEARNING category sum
 if sum_of_learning <= 60 and sum_of_learning > 40:
     #subcategory 1
+    #category_message = "Deep approach"  <-- this is for the connection 
     print("Deep approach: ")
 elif sum_of_learning <= 40 and sum_of_learning > 20: 
     #subcategory 2
@@ -107,13 +108,13 @@ elif sum_of_burnout <= 15:
     #subcategory 3
     print("no burnout")
 
-#check for SELF-REFLECTION
+#check for SELF-REFLECTION / SELF-COMPASSION
 if sum_of_sr <= 5 and sum_of_sr > 0:
     #subcategory 1
     print("good self-reflection")
 elif sum_of_sr == 0: 
     #subcategory 2
     print("Somewhat okay self-reflection")
-elif sum_of_sr < 0: 
+elif sum_of_sr == None:     # bc of NaN values 
     #subcategory 3
     print("bad self-reflection")
