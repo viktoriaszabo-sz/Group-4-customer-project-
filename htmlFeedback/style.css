@@ -1,6 +1,8 @@
 body{
     font-family: "Helvetica", Sans-Serif;
     background-image: url('https://cdn.forms.office.net/forms/images/theme/colorful-pencils.png');
+    background-color: transparent;
+    /* background-color: #7E685C; */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -35,6 +37,7 @@ h2{
     background-color: white;
     opacity: 0.95;
     padding: 10px;
+    border-radius: 5px;
     padding-bottom: 30px;
     padding-left:50px;
     padding-right:50px;
@@ -49,8 +52,12 @@ h2{
 }
 
 .overview{
-    border: 3px solid #ffcc80;
+    /* border: 3px solid #ffcc80; */
     border-radius: 4px;
+}
+
+.custom-text{
+  padding: 20px;
 }
 
 .statistics{
@@ -60,6 +67,7 @@ h2{
     flex-direction: row; 
     flex-wrap: wrap; 
     align-content: center;
+    text-align: center;
 
     height: 100%;
     padding: 15px;
@@ -74,6 +82,32 @@ h2{
     margin: 10px;
   }
 
+  .next-back-buttons{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+
+  .back-page-button{
+    background-color: rgb(255, 252, 247);
+    border:2px solid  rgb(181, 108, 81);
+    color:rgb(159, 88, 63);
+    padding: 12px;
+    text-align: center;
+    font-size:16px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 46px;
+    width: 20%;
+  }
+
+  .back-page-button:hover{
+    background-color: rgb(248, 244, 236);
+    cursor: pointer;
+
+  }
+
   .next-page-button{
     background-color: rgb(255, 252, 247);
     border:2px solid  rgb(181, 108, 81);
@@ -83,6 +117,7 @@ h2{
     font-size:16px;
     border-radius: 4px;
     margin-left: auto;
+    text-decoration: none;
     margin-top: 46px;
     width: 20%;
   }
