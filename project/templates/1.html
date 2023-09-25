@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div draggable="false" class="learnWellLogo">
+                <img src="{{ url_for('static', filename='learnWellLogo.png') }}">
+            </div>
+            <h1>Category 1</h1>
+        </div>
+        <div class="text">
+            <p><br>
+            <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus laboriosam tempore sequi porro! Doloremque neque quos eum inventore, culpa dicta totam quidem modi ratione temporibus, commodi minima quo quod necessitatibus!<br>
+            <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsum assumenda velit cum commodi, ut culpa quidem at. Cupiditate ducimus at tempora! Error dicta qui autem deserunt beatae ad fugiat!<br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorem sunt explicabo voluptate ipsum neque reprehenderit quis minus fugit maxime officia asperiores molestiae enim corporis, non culpa sequi error minima.</p>
+        </div>
+        <div class="overview">
+            <div class="statistics">
+                <div id="item-1">
+                    <p>place of graph</p>
+                </div>
+            </div>
+            <p class="custom-text">
+                <b>Learning approach: </b><br>
+                <br>
+                {{category_message1}}</p>
+       
+            </div>
+
+            <div class="next-back-buttons">
+                <a href="{{ url_for ('index') }}" class="back-page-button">Back</a>
+                <a href="{{ url_for ('page_2') }}" class="next-page-button">Next Page</a>
+                </div>
+
+        
+    </div>
+    
+</body>
+</html>
