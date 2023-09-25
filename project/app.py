@@ -150,13 +150,13 @@ def page_3():
     # Check COMPETENCE category sum
     if sum_of_competence <= 75 and sum_of_competence > 50:
         #subcategory 1
-        category_message3 = "Felt competent: "
+        category_message3 = "You feel competent in your studies. You feel like you have learned and improved on skills that are useful and you know how to use the learned knowledge to your advantage. This helps you to know your strengths and weaknesses and makes you more confident in your abilities. "
     elif sum_of_competence <= 50 and sum_of_competence > 25: 
         #subcategory 2
-        category_message3 = "Felt somewhat competent: "
+        category_message3 = "You feel somewhat competent when it comes to your studies, but you still have doubts about your skills. You could potentially work and know what you are doing, at least for the most part, but you might feel unsure if you are doing things correctly. Try and ask when it comes to it, maybe you are doing things right and it is about trusting yourself, or maybe you feel like you need more information. Either way, asking is a good way to start gaining that knowledge and confidence. "
     elif sum_of_competence <= 25:
         #subcategory 3
-        category_message3 = "Felt incompetent: "
+        category_message3 = "You do not feel competent in your studies, and you lack knowledge that would help you feel confident in your field. You feel like you do not have the required knowledge to be able to work effectively and you struggle to work in a group. Try to go over the basics of the subject you feel incompetent in and work your way up at your own pace. When you learn the basics and have acquired and understood it, it is easier for you to trust in your abilities and continue building up that knowledge. Do not be afraid to ask for help either. Asking help, especially from your fellow students, helps you gain those social skills that are needed in working as a group, as well as give you more of that needed knowledge. "
 
     return render_template('3.html', category_message3 = category_message3)
 
