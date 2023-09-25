@@ -1,6 +1,8 @@
 body{
     font-family: "Helvetica", Sans-Serif;
     background-image: url('https://cdn.forms.office.net/forms/images/theme/colorful-pencils.png');
+    background-color: transparent;
+    /* background-color: #7E685C; */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
