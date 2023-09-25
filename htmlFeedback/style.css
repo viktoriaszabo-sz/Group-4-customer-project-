@@ -1,6 +1,8 @@
 body{
     font-family: "Helvetica", Sans-Serif;
     background-image: url('https://cdn.forms.office.net/forms/images/theme/colorful-pencils.png');
+    background-color: transparent;
+    /* background-color: #7E685C; */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -35,6 +37,7 @@ h2{
     background-color: white;
     opacity: 0.95;
     padding: 10px;
+    border-radius: 5px;
     padding-bottom: 30px;
     padding-left:50px;
     padding-right:50px;
@@ -49,7 +52,7 @@ h2{
 }
 
 .overview{
-    border: 3px solid #ffcc80;
+    /* border: 3px solid #ffcc80; */
     border-radius: 4px;
 }
 
@@ -64,6 +67,7 @@ h2{
     flex-direction: row; 
     flex-wrap: wrap; 
     align-content: center;
+    text-align: center;
 
     height: 100%;
     padding: 15px;
