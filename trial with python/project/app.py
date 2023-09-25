@@ -1,4 +1,5 @@
 import pandas as pd
+import math
 from flask import Flask, render_template
 # run this code into powershell: pip install Flask 
 
@@ -219,13 +220,13 @@ def page_6():
      #check for PSYCHOLOGICAL FLEXIBILITY sum 
     if sum_of_psych <= 35 and sum_of_psych > 24:
         #subcategory 1
-        category_message6 = "very psychologically flexible "
+        category_message6 = "You are psychologically flexible – you won’t let your emotions become an obstacle in your studies. You can recognize them and handle them in a manner that doesn’t affect your state of studying. "
     elif sum_of_psych <= 24 and sum_of_psych > 13: 
         #subcategory 2
-        category_message6 = "Somewhat psychologically flexible"
+        category_message6 = "You are somewhat psychologically flexible – you are trying not to let your emotions stand in the way of studying, but sometimes you might find yourself being overwhelmed by your feelings, which prevents you being efficient. Try to reflect on them and recognize why those feelings are being triggered.  "
     elif sum_of_psych <= 13:
         #subcategory 3
-        category_message6 = "not psychologically flexible"
+        category_message6 = "You lack psychological flexibility – you let your emotions overwhelm you and it prevents you from reaching your full potential in your studies. Try spending time reflecting on them and talk to other peers with similar problems. Comparing your previous state of education to the current one can also help recognizing the shift in your mental health and emotions.  "
 
     return render_template('6.html', category_message6 = category_message6)
 
@@ -242,17 +243,16 @@ def page_7():
     #check for BURNOUT
     if sum_of_burnout <= 45 and sum_of_burnout > 30:
         #subcategory 1
-        category_message7 = "very burnout"
+        category_message7 = "You have reached the level of burnout – stress and exhaustion overwhelm you and might find yourself feeling cynical towards your education. You might also feel inadequate, which leads you to abandon your studies. Try to take a break from the assignments you have and reflect on your behaviour towards them. Whether or not you should leave tasks behind that’s not your responsibility, cutting some slacks on your expectations towards yourself. If necessary, talk to a professional about your issues.  "
     elif sum_of_burnout <= 30 and sum_of_burnout > 15: 
         #subcategory 2
-        category_message7 = "Somewhat burnout"
+        category_message7 = "You are somewhat burned-out – you might do well in your studies, but stress, cynicism and feelings of inadequacy might lead you further down the road. Try to stop for a second and reflect on your behaviour, to see whether there’s anything you can do to lower the risk of reaching full burn-out.  "
     elif sum_of_burnout <= 15:
         #subcategory 3
-        category_message7 = "no burnout"
+        category_message7 = "You haven’t reached the level of burnout – you can separate many stages of your life from one another and won’t let your studies exhaust you out or feel cynical towards your studies.  "
 
 
     return render_template('7.html', category_message7 = category_message7)
-
 
 @app.route('/page8')
 def page_8():
@@ -267,11 +267,12 @@ def page_8():
     #check for SELF-REFLECTION / SELF-COMPASSION
     if sum_of_sr <= 5 and sum_of_sr > 0:
         #subcategory 1
-        category_message8 = "Self-reflection: You have a good self- compassion – you are compassionate towards yourself and situations, which makes you achieve more in your studies.  "
-    #elif sum_of_sr == 0: 
+        category_message8 = "You have a good self- compassion – you are compassionate towards yourself and situations, which makes you achieve more in your studies.   "
+    elif sum_of_sr == 0: 
         #subcategory 2
-        category_message8 = "Self-reflection: You have a somewhat good self- compassion – you know your worth and capabilities, but sometimes you might find yourself being hard on yourself and feeling self-critical. Try to recognize the achievements you reached so far and feel prouder about how far you’ve come.  "
-    
+        category_message8 = "You have a somewhat good self- compassion – you know your worth and capabilities, but sometimes you might find yourself being hard on yourself and feeling self-critical. Try to recognize the achievements you reached so far and feel prouder about how far you’ve come.  "
+    elif math.isnan(sum_of_sr):
+        category_message8 = "You lack self-compassion – you might find yourself being rather critical about yourself and your achievements, which might lead your abandon your responsibilities and tasks. Think about the last achievement you’ve reached – or how you could help other people with your own knowledge and capabilities. If you work on these, you might find yourself being more motivated to continue your studies.  "
 
     return render_template('8.html', category_message8 = category_message8)
 
