@@ -2,7 +2,7 @@ import pandas as pd
 from flask import Flask, render_template
 # run this code into powershell: pip install Flask 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 file_path = "C:/Users/vikiv/OneDrive - Hämeen ammattikorkeakoulu/learnwell_dataset.xlsx"
 engine = "openpyxl"
@@ -86,34 +86,42 @@ category_message6 = ""
 category_message7 = ""
 category_message8 = ""
 
-@app.route('/')
+
+@app.route('/index')
 def index():
-    
-    global category_message1, category_message2, category_message3, category_message4, category_message5, category_message6, category_message7, category_message8
+
+    return render_template('welcome.html')
+
+@app.route('/page1')
+def page_1():
+    # Check LEARNING category sum
+    global category_message1
     # Access the latest row in the DataFrame (latest response)
     latest_response = df.iloc[-1]
     # Extract the relevant values from the latest response
     sum_of_learning = latest_response['Sum of learning']
-    sum_of_support = latest_response['Sum of support']
-    sum_of_competence = latest_response['Sum of competence']
-    sum_of_filler = latest_response['Sum of filler']
-    sum_of_se = latest_response['Sum of self-efficacy']
-    sum_of_psych = latest_response['Sum of psychological flexibility']
-    sum_of_burnout = latest_response['Sum of burnout']
-    sum_of_sr = latest_response['Sum of self-reflection']
 
-
-    # Check LEARNING category sum
     if sum_of_learning <= 60 and sum_of_learning > 40:
         #subcategory 1
-        category_message1 = "Learning approach: You have a deep approach to learning, meaning that you aim to understand what you have learned in a deeper level, and you try to find connections, as well as find underlying meanings. You find yourself motivated to learn and often have the appropriate background knowledge to connect the new information with the old. "  # <-- this is for the connection 
+        category_message1 = "You have a deep approach to learning, meaning that you aim to understand what you have learned in a deeper level, and you try to find connections, as well as find underlying meanings. You find yourself motivated to learn and often have the appropriate background knowledge to connect the new information with the old. "  # <-- this is for the connection 
     elif sum_of_learning <= 40 and sum_of_learning > 20: 
         #subcategory 2
-        category_message1 = "Learning approach: Your studying is organized. You might not necessarily take a deep approach to learning, but you are more organized than someone who takes on a surface approach. You have the tools to shift to deeper understanding if you want to learn to understand and focus on the meaning, but you can also find yourself easily just repeating the learned information without deeper understanding. "
+        category_message1 = "Your studying is organized. You might not necessarily take a deep approach to learning, but you are more organized than someone who takes on a surface approach. You have the tools to shift to deeper understanding if you want to learn to understand and focus on the meaning, but you can also find yourself easily just repeating the learned information without deeper understanding. "
     elif sum_of_learning <= 20:
         #subcategory 3
-        category_message1 = "Learning approach: You have a surface approach to learning, meaning your learning aims for repetition. This approach is not reflective and studying might often be done in the last minute. This results in fragmented understanding and things you memorized are often forgotten. Typically, you are not interested in understanding and just want to learn what is required.  "
+        category_message1 = "You have a surface approach to learning, meaning your learning aims for repetition. This approach is not reflective and studying might often be done in the last minute. This results in fragmented understanding and things you memorized are often forgotten. Typically, you are not interested in understanding and just want to learn what is required.  "
 
+    #render the HTML template and pass data to it 
+    return render_template('1.html', category_message1 = category_message1)
+
+@app.route('/page2')
+def page_2():
+    
+    global category_message2
+    # Access the latest row in the DataFrame (latest response)
+    latest_response = df.iloc[-1]
+    # Extract the relevant values from the latest response
+    sum_of_support = latest_response['Sum of support']
 
     # Check SUPPORT category sum
     if sum_of_support <= 165 and sum_of_support > 110:
@@ -125,6 +133,17 @@ def index():
     elif sum_of_support <= 55:
         #subcategory 3
         category_message2 = "Learning environment: You feel like you do not get enough support and the learning environment does not support you the way it should. Maybe it is the lack of feedback or guidance, or you do not feel comfortable working with other students. Whichever the case, try to bring this topic up to someone that might help you feel more supported, such as a teacher or student counsellor. "
+
+    return render_template('2.html', category_message2 = category_message2)
+
+@app.route('/page3')
+def page_3():
+    
+    global category_message3
+    # Access the latest row in the DataFrame (latest response)
+    latest_response = df.iloc[-1]
+    # Extract the relevant values from the latest response
+    sum_of_competence = latest_response['Sum of competence']
 
 
     # Check COMPETENCE category sum
@@ -138,6 +157,16 @@ def index():
         #subcategory 3
         category_message3 = "Felt incompetent: "
 
+    return render_template('3.html', category_message3 = category_message3)
+
+@app.route('/page4')
+def page_4():
+    
+    global category_message4
+    # Access the latest row in the DataFrame (latest response)
+    latest_response = df.iloc[-1]
+    # Extract the relevant values from the latest response
+    sum_of_filler = latest_response['Sum of filler']
 
     #check FILLER category sum 
     if sum_of_filler <= 85 and sum_of_filler > 57:
@@ -150,6 +179,16 @@ def index():
         #subcategory 3
         category_message4 = "Future objectives: Your objectives for the future are not as clear as it should be. You might feel you can’t properly use the resources that are given to you or might not even feel like there’s anything to begin with. Try reaching out to your guidance counsellor or talk to peers in higher years to get some information regarding work placement, international opportunities or sustainability.  "
 
+    return render_template('4.html', category_message4 = category_message4)
+
+@app.route('/page5')
+def page_5():
+    
+    global category_message5
+    # Access the latest row in the DataFrame (latest response)
+    latest_response = df.iloc[-1]
+    # Extract the relevant values from the latest response
+    sum_of_se = latest_response['Sum of self-efficacy']
 
     #CHECK FOR WELLBEING - SUBCATEGORIES 
             
@@ -164,39 +203,80 @@ def index():
         #subcategory 3
         category_message5 = "Self-efficacy: Your self-efficacy needs to get back on track – you don’t necessarily trust your capabilities, which might cause you not putting enough effort in your studies and avoiding tasks or assignments. Recognize your previous achievements, so that you can be more persistent in your studies. Also, try reaching out to other students with similar situations, so you could feel more seen and heard about your problems.  "
 
-    #check for PSYCHOLOGICAL FLEXIBILITY sum 
+    
+    return render_template('5.html', category_message5 = category_message5)
+
+@app.route('/page6')
+def page_6():
+    
+    global category_message6
+    # Access the latest row in the DataFrame (latest response)
+    latest_response = df.iloc[-1]
+    # Extract the relevant values from the latest response
+    sum_of_psych = latest_response['Sum of psychological flexibility']
+
+    
+     #check for PSYCHOLOGICAL FLEXIBILITY sum 
     if sum_of_psych <= 35 and sum_of_psych > 24:
         #subcategory 1
-        category_message6 = "Psychological flexibility: You are psychologically flexible – you won’t let your emotions become an obstacle in your studies. You can recognize them and handle them in a manner that doesn’t affect your state of studying.  "
+        category_message6 = "very psychologically flexible "
     elif sum_of_psych <= 24 and sum_of_psych > 13: 
         #subcategory 2
-        category_message6 = "Psychological flexibility: You are somewhat psychologically flexible – you are trying not to let your emotions stand in the way of studying, but sometimes you might find yourself being overwhelmed by your feelings, which prevents you being efficient. Try to reflect on them and recognize why those feelings are being triggered.  "
+        category_message6 = "Somewhat psychologically flexible"
     elif sum_of_psych <= 13:
         #subcategory 3
-        category_message6 = "Psychological flexibility: You lack psychological flexibility – you let your emotions overwhelm you and it prevents you from reaching your full potential in your studies. Try spending time reflecting on them and talk to other peers with similar problems. Comparing your previous state of education to the current one can also help recognizing the shift in your mental health and emotions.  "
-        
+        category_message6 = "not psychologically flexible"
+
+    return render_template('6.html', category_message6 = category_message6)
+
+@app.route('/page7')
+def page_7():
+    
+    global category_message7
+    # Access the latest row in the DataFrame (latest response)
+    latest_response = df.iloc[-1]
+    # Extract the relevant values from the latest response
+    sum_of_burnout = latest_response['Sum of burnout']
+
+    
     #check for BURNOUT
     if sum_of_burnout <= 45 and sum_of_burnout > 30:
         #subcategory 1
-        category_message7 = "Burnout: You have reached the level of burnout – stress and exhaustion overwhelm you and might find yourself feeling cynical towards your education. You might also feel inadequate, which leads you to abandon your studies. Try to take a break from the assignments you have and reflect on your behaviour towards them. Whether or not you should leave tasks behind that’s not your responsibility, cutting some slacks on your expectations towards yourself. If necessary, talk to a professional about your issues.  "
+        category_message7 = "very burnout"
     elif sum_of_burnout <= 30 and sum_of_burnout > 15: 
         #subcategory 2
-        category_message7 = "Burnout: You are somewhat burned-out – you might do well in your studies, but stress, cynicism and feelings of inadequacy might lead you further down the road. Try to stop for a second and reflect on your behaviour, to see whether there’s anything you can do to lower the risk of reaching full burn-out.  "
+        category_message7 = "Somewhat burnout"
     elif sum_of_burnout <= 15:
         #subcategory 3
-        category_message7 = "Burnout: You haven’t reached the level of burnout – you can separate many stages of your life from one another and won’t let your studies exhaust you out or feel cynical towards your studies.  "
+        category_message7 = "no burnout"
 
+
+    return render_template('7.html', category_message7 = category_message7)
+
+
+@app.route('/page8')
+def page_8():
+    
+    global category_message8
+    # Access the latest row in the DataFrame (latest response)
+    latest_response = df.iloc[-1]
+    # Extract the relevant values from the latest response
+    sum_of_sr = latest_response['Sum of self-reflection']
+
+    
     #check for SELF-REFLECTION / SELF-COMPASSION
     if sum_of_sr <= 5 and sum_of_sr > 0:
         #subcategory 1
         category_message8 = "Self-reflection: You have a good self- compassion – you are compassionate towards yourself and situations, which makes you achieve more in your studies.  "
-    elif sum_of_sr == 0: 
+    #elif sum_of_sr == 0: 
         #subcategory 2
         category_message8 = "Self-reflection: You have a somewhat good self- compassion – you know your worth and capabilities, but sometimes you might find yourself being hard on yourself and feeling self-critical. Try to recognize the achievements you reached so far and feel prouder about how far you’ve come.  "
     
 
-    #render the HTML template and pass data to it 
-    return render_template('index.html', category_message1 = category_message1, category_message2 = category_message2, category_message3 = category_message3, category_message4 = category_message4, category_message5 = category_message5, category_message6 = category_message6, category_message7 = category_message7, category_message8 = category_message8)
+    return render_template('8.html', category_message8 = category_message8)
+
+
 
 if __name__ == '__main__': 
     app.run(debug=True)
+
