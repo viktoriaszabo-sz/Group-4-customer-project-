@@ -1,5 +1,6 @@
 import pandas as pd
 from flask import Flask, render_template
+# run this code into powershell: pip install Flask 
 
 app = Flask(__name__)
 
@@ -155,13 +156,13 @@ def index():
     #check for SELF-EFFICIANCY sum 
     if sum_of_se <= 35 and sum_of_se > 24:
         #subcategory 1
-        category_message5 = "very self-efficiant "
+        category_message5 = "Self-efficacy: You are very self-efficient– you trust in yourself and your capabilities, which makes you an efficient learner as well. You persist working towards your future and won’t let anything stand in your way. "
     elif sum_of_se <= 24 and sum_of_se > 13: 
         #subcategory 2
-        category_message5 = "Somewhat self-efficiant "
+        category_message5 = "Self-efficacy: You are some-what self-efficient– you recognize your capabilities but won’t trust them to its full extent; you might be a hard-worker, but the lack of self-trust prevents you from reaching your full extent.  Seek more opportunities for engaging in learning activities.  "
     elif sum_of_se <= 13:
         #subcategory 3
-        category_message5 = "not self-efficiant "
+        category_message5 = "Self-efficacy: Your self-efficacy needs to get back on track – you don’t necessarily trust your capabilities, which might cause you not putting enough effort in your studies and avoiding tasks or assignments. Recognize your previous achievements, so that you can be more persistent in your studies. Also, try reaching out to other students with similar situations, so you could feel more seen and heard about your problems.  "
 
     #check for PSYCHOLOGICAL FLEXIBILITY sum 
     if sum_of_psych <= 35 and sum_of_psych > 24:
