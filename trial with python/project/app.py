@@ -106,25 +106,25 @@ def index():
     # Check LEARNING category sum
     if sum_of_learning <= 60 and sum_of_learning > 40:
         #subcategory 1
-        category_message1 = "Deep approach"  # <-- this is for the connection 
+        category_message1 = "Learning approach: You have a deep approach to learning, meaning that you aim to understand what you have learned in a deeper level, and you try to find connections, as well as find underlying meanings. You find yourself motivated to learn and often have the appropriate background knowledge to connect the new information with the old. "  # <-- this is for the connection 
     elif sum_of_learning <= 40 and sum_of_learning > 20: 
         #subcategory 2
-        category_message1 = "Organized studying: "
+        category_message1 = "Learning approach: Your studying is organized. You might not necessarily take a deep approach to learning, but you are more organized than someone who takes on a surface approach. You have the tools to shift to deeper understanding if you want to learn to understand and focus on the meaning, but you can also find yourself easily just repeating the learned information without deeper understanding. "
     elif sum_of_learning <= 20:
         #subcategory 3
-        category_message1 = "Surface approach: "
+        category_message1 = "Learning approach: You have a surface approach to learning, meaning your learning aims for repetition. This approach is not reflective and studying might often be done in the last minute. This results in fragmented understanding and things you memorized are often forgotten. Typically, you are not interested in understanding and just want to learn what is required.  "
 
 
     # Check SUPPORT category sum
     if sum_of_support <= 165 and sum_of_support > 110:
         #subcategory 1
-        category_message2 = "Felt supported: "
+        category_message2 = "Learning environment: You feel supported in your studies. Your learning environment supports your learning, and you can work well with other students. You get feedback that is accurate, and you feel like guidance is available whenever you need it.  "
     elif sum_of_support <= 110 and sum_of_support > 55: 
         #subcategory 2
-        category_message2 = "Felt somewhat supported: "
+        category_message2 = "Learning environment: You feel somewhat supported. Your learning environment somewhat does its job at supporting you, but it might feel a bit lacking. You get along with other students when it comes to working and studying, if need be, but it does not always feel too fulfilling.  "
     elif sum_of_support <= 55:
         #subcategory 3
-        category_message2 = "Felt unsupported: "
+        category_message2 = "Learning environment: You feel like you do not get enough support and the learning environment does not support you the way it should. Maybe it is the lack of feedback or guidance, or you do not feel comfortable working with other students. Whichever the case, try to bring this topic up to someone that might help you feel more supported, such as a teacher or student counsellor. "
 
 
     # Check COMPETENCE category sum
@@ -142,13 +142,13 @@ def index():
     #check FILLER category sum 
     if sum_of_filler <= 85 and sum_of_filler > 57:
         #subcategory 1
-        category_message4 = "Good in career, good objectives: "
+        category_message4 = "Future objectives: You have clear objectives for the future. You use the resources that are given to you and always try to max out your opportunities, whether it’s about international interactions or work placement. Maybe even entrepreneurship enthusiasm.  "
     elif sum_of_filler <= 57 and sum_of_filler > 29: 
         #subcategory 2
-        category_message4 = "Somewhat good objectives: "
+        category_message4 = "Future objectives: You recognize the options given to you and work with them but might lack the possibility to use them to your own advantage. Try interacting more with internationals or dig up some articles about the work placement advice provided by the university. You could also think about some entrepreneurial tendencies that you might have.  "
     elif sum_of_filler <= 29 or sum_of_filler == 0:
         #subcategory 3
-        category_message4 = "Bad objectives, need more improvement: "
+        category_message4 = "Future objectives: Your objectives for the future are not as clear as it should be. You might feel you can’t properly use the resources that are given to you or might not even feel like there’s anything to begin with. Try reaching out to your guidance counsellor or talk to peers in higher years to get some information regarding work placement, international opportunities or sustainability.  "
 
 
     #CHECK FOR WELLBEING - SUBCATEGORIES 
@@ -156,7 +156,7 @@ def index():
     #check for SELF-EFFICIANCY sum 
     if sum_of_se <= 35 and sum_of_se > 24:
         #subcategory 1
-        category_message5 = "Self-efficacy: You are very self-efficient– you trust in yourself and your capabilities, which makes you an efficient learner as well. You persist working towards your future and won’t let anything stand in your way. "
+        category_message5 = "WELLBEING: Self-efficacy: You are very self-efficient– you trust in yourself and your capabilities, which makes you an efficient learner as well. You persist working towards your future and won’t let anything stand in your way. "
     elif sum_of_se <= 24 and sum_of_se > 13: 
         #subcategory 2
         category_message5 = "Self-efficacy: You are some-what self-efficient– you recognize your capabilities but won’t trust them to its full extent; you might be a hard-worker, but the lack of self-trust prevents you from reaching your full extent.  Seek more opportunities for engaging in learning activities.  "
@@ -167,32 +167,32 @@ def index():
     #check for PSYCHOLOGICAL FLEXIBILITY sum 
     if sum_of_psych <= 35 and sum_of_psych > 24:
         #subcategory 1
-        category_message6 = "very psychologically flexible "
+        category_message6 = "Psychological flexibility: You are psychologically flexible – you won’t let your emotions become an obstacle in your studies. You can recognize them and handle them in a manner that doesn’t affect your state of studying.  "
     elif sum_of_psych <= 24 and sum_of_psych > 13: 
         #subcategory 2
-        category_message6 = "Somewhat psychologically flexible"
+        category_message6 = "Psychological flexibility: You are somewhat psychologically flexible – you are trying not to let your emotions stand in the way of studying, but sometimes you might find yourself being overwhelmed by your feelings, which prevents you being efficient. Try to reflect on them and recognize why those feelings are being triggered.  "
     elif sum_of_psych <= 13:
         #subcategory 3
-        category_message6 = "not psychologically flexible"
+        category_message6 = "Psychological flexibility: You lack psychological flexibility – you let your emotions overwhelm you and it prevents you from reaching your full potential in your studies. Try spending time reflecting on them and talk to other peers with similar problems. Comparing your previous state of education to the current one can also help recognizing the shift in your mental health and emotions.  "
         
     #check for BURNOUT
     if sum_of_burnout <= 45 and sum_of_burnout > 30:
         #subcategory 1
-        category_message7 = "very burnout"
+        category_message7 = "Burnout: You have reached the level of burnout – stress and exhaustion overwhelm you and might find yourself feeling cynical towards your education. You might also feel inadequate, which leads you to abandon your studies. Try to take a break from the assignments you have and reflect on your behaviour towards them. Whether or not you should leave tasks behind that’s not your responsibility, cutting some slacks on your expectations towards yourself. If necessary, talk to a professional about your issues.  "
     elif sum_of_burnout <= 30 and sum_of_burnout > 15: 
         #subcategory 2
-        category_message7 = "Somewhat burnout"
+        category_message7 = "Burnout: You are somewhat burned-out – you might do well in your studies, but stress, cynicism and feelings of inadequacy might lead you further down the road. Try to stop for a second and reflect on your behaviour, to see whether there’s anything you can do to lower the risk of reaching full burn-out.  "
     elif sum_of_burnout <= 15:
         #subcategory 3
-        category_message7 = "no burnout"
+        category_message7 = "Burnout: You haven’t reached the level of burnout – you can separate many stages of your life from one another and won’t let your studies exhaust you out or feel cynical towards your studies.  "
 
     #check for SELF-REFLECTION / SELF-COMPASSION
     if sum_of_sr <= 5 and sum_of_sr > 0:
         #subcategory 1
-        category_message8 = "good self-reflection"
+        category_message8 = "Self-reflection: You have a good self- compassion – you are compassionate towards yourself and situations, which makes you achieve more in your studies.  "
     elif sum_of_sr == 0: 
         #subcategory 2
-        category_message8 = "Somewhat okay self-reflection"
+        category_message8 = "Self-reflection: You have a somewhat good self- compassion – you know your worth and capabilities, but sometimes you might find yourself being hard on yourself and feeling self-critical. Try to recognize the achievements you reached so far and feel prouder about how far you’ve come.  "
     
 
     #render the HTML template and pass data to it 
