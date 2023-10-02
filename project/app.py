@@ -280,7 +280,7 @@ def page_7():
     else: 
         category_message1 = "User email not found."     
 
-    return render_template('7.html', category_message7 = category_message7)
+    return render_template('7.html', category_message7 = category_message7, sum_of_burnout = sum_of_burnout)
 
 @app.route('/page8')
 def page_8():
