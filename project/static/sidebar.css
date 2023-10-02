@@ -1,0 +1,37 @@
+body{
+  font-family: "Helvetica", Sans-Serif;
+  background-image: url('https://cdn.forms.office.net/forms/images/theme/colorful-pencils.png');
+  background-color: transparent;
+  background-color: #7E685C;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: auto;
+  width: 50%;
+  min-height: 100vh;
+  padding-top: 2%;
+}
+
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #4e3b38e8;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f8e8e8;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #ccb0b0;
+  }
