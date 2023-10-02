@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h3 id = sub-title>write your email address</h3>
+                    <form method = "post" action = "/process_form">
+                        <input type = "text" name = "email" placeholder = "email" required><br><br>
+                        <input type = "submit" value = "Get feedback" name = "submit">
+                    </form>
+</body>
+</html>
