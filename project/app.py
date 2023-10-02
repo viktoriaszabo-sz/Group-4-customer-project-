@@ -113,11 +113,11 @@ def page_1():
             sum_of_learning = user_data['Sum of learning'].values[0]
             # Define the category_message1 based on sum_of_learning
             if sum_of_learning <= 60 and sum_of_learning > 40:
-                category_message1 = "You have a deep approach to learning, meaning that you aim to understand what you have learned in a deeper level, and you try to find connections, as well as find underlying meanings. You find yourself motivated to learn and often have the appropriate background knowledge to connect the new information with the old. "  # <-- this is for the connection 
+                category_message1 = "Deep approach: You take a deep approach to learning, meaning that you aim to understand what you have learned in a deeper level, and you try to find connections, as well as find underlying meanings. You find yourself motivated to learn and often have the appropriate background knowledge to connect the new information with the old. "  # <-- this is for the connection 
             elif sum_of_learning <= 40 and sum_of_learning > 20: 
-                category_message1 = "Your studying is organized. You might not necessarily take a deep approach to learning, but you are more organized than someone who takes on a surface approach. You have the tools to shift to deeper understanding if you want to learn to understand and focus on the meaning, but you can also find yourself easily just repeating the learned information without deeper understanding. "
+                category_message1 = "Organized studying: Your studying is organized. You might not necessarily take a deep approach to learning, but you are more organized than someone who takes on a surface approach. You have the tools to shift to deeper understanding if you want to learn to understand and focus on the meaning, but you can also find yourself easily just repeating the learned information without deeper understanding. "
             elif sum_of_learning <= 20:
-                category_message1 = "You have a surface approach to learning, meaning your learning aims for repetition. This approach is not reflective and studying might often be done in the last minute. This results in fragmented understanding and things you memorized are often forgotten. Typically, you are not interested in understanding and just want to learn what is required.  "
+                category_message1 = "Surface approach: You take a surface approach to learning, meaning your learning aims for repetition. This approach is not reflective and studying might often be done in the last minute. This results in fragmented understanding and things you memorized are often forgotten. Typically, you are not interested in understanding and just want to learn what is required. "
         else:
             category_message1 = "User data not found."
     else: 
@@ -139,11 +139,11 @@ def page_2():
             sum_of_support = user_data['Sum of support'].values[0]
             # Check SUPPORT category sum
             if sum_of_support <= 165 and sum_of_support > 110:
-                category_message2 = "Learning environment: You feel supported in your studies. Your learning environment supports your learning, and you can work well with other students. You get feedback that is accurate, and you feel like guidance is available whenever you need it.  "
+                category_message2 = "You feel supported in your studies. Your learning environment supports your learning, and you can work well with other students. You get feedback that is accurate, and you feel like guidance is available whenever you need it. "
             elif sum_of_support <= 110 and sum_of_support > 55: 
-                category_message2 = "Learning environment: You feel somewhat supported. Your learning environment somewhat does its job at supporting you, but it might feel a bit lacking. You get along with other students when it comes to working and studying, if need be, but it does not always feel too fulfilling.  "
+                category_message2 = "You feel somewhat supported. Your learning environment somewhat does its job at supporting you, but it might feel a bit lacking. You get along with other students when it comes to working and studying, if need be, but it does not always feel too fulfilling. "
             elif sum_of_support <= 55:
-                category_message2 = "Learning environment: You feel like you do not get enough support and the learning environment does not support you the way it should. Maybe it is the lack of feedback or guidance, or you do not feel comfortable working with other students. Whichever the case, try to bring this topic up to someone that might help you feel more supported, such as a teacher or student counsellor. "
+                category_message2 = "You feel like you do not get enough support and the learning environment does not support you the way it should. Maybe it is the lack of feedback or guidance, or you do not feel comfortable working with other students. Whichever the case, try to bring this topic up to someone that might help you feel more supported, such as a teacher or student counsellor. "
         else:
             category_message1 = "User data not found."
     else: 
@@ -191,11 +191,11 @@ def page_4():
             sum_of_filler = user_data['Sum of filler'].values[0]
             #check FILLER category sum 
             if sum_of_filler <= 85 and sum_of_filler > 57:
-                category_message4 = "Future objectives: You have clear objectives for the future. You use the resources that are given to you and always try to max out your opportunities, whether it’s about international interactions or work placement. Maybe even entrepreneurship enthusiasm.  "
+                category_message4 = "You have clear objectives for the future. You use the resources that are given to you and always try to max out your opportunities, whether it is about international interactions or work placement. Maybe you even feel enthusiastic for entrepreneurship. "
             elif sum_of_filler <= 57 and sum_of_filler > 29: 
-                category_message4 = "Future objectives: You recognize the options given to you and work with them but might lack the possibility to use them to your own advantage. Try interacting more with internationals or dig up some articles about the work placement advice provided by the university. You could also think about some entrepreneurial tendencies that you might have.  "
+                category_message4 = "You recognize the options given to you and work with them but might lack the possibility to use them to your own advantage. Try interacting more with foreigners or dig up some articles about the work placement advice provided by the university. You could also think about some entrepreneurial tendencies that you might have. "
             elif sum_of_filler <= 29 or sum_of_filler == 0:
-                category_message4 = "Future objectives: Your objectives for the future are not as clear as it should be. You might feel you can’t properly use the resources that are given to you or might not even feel like there’s anything to begin with. Try reaching out to your guidance counsellor or talk to peers in higher years to get some information regarding work placement, international opportunities or sustainability.  "
+                category_message4 = "Your objectives for the future are not clear. You might feel like you can not properly use the resources that are given to you or might not even feel like there is anything to begin with. Try reaching out to your guidance counsellor or talk to peers in higher years to get some information regarding work placement, international opportunities or sustainability. "
         else:
             category_message1 = "User data not found."
     else: 
@@ -219,11 +219,11 @@ def page_5():
             #CHECK FOR WELLBEING - SUBCATEGORIES 
             #check for SELF-EFFICIANCY sum 
             if sum_of_se <= 35 and sum_of_se > 24:
-                category_message5 = "WELLBEING: Self-efficacy: You are very self-efficient– you trust in yourself and your capabilities, which makes you an efficient learner as well. You persist working towards your future and won’t let anything stand in your way. "
+                category_message5 = "Your self-efficacy is good – You trust in yourself and your capabilities, which makes you an efficient learner as well. You persist working towards your future and will not let anything stand in your way. "
             elif sum_of_se <= 24 and sum_of_se > 13: 
-                category_message5 = "Self-efficacy: You are some-what self-efficient– you recognize your capabilities but won’t trust them to its full extent; you might be a hard-worker, but the lack of self-trust prevents you from reaching your full extent.  Seek more opportunities for engaging in learning activities.  "
+                category_message5 = "Your self-efficacy is okay – You recognize your capabilities but will not trust them to their full extent; you might be a hard-worker, but the lack of self-trust prevents you from reaching your full potential. Seek more opportunities for engaging in learning activities. "
             elif sum_of_se <= 13:
-                category_message5 = "Self-efficacy: Your self-efficacy needs to get back on track – you don’t necessarily trust your capabilities, which might cause you not putting enough effort in your studies and avoiding tasks or assignments. Recognize your previous achievements, so that you can be more persistent in your studies. Also, try reaching out to other students with similar situations, so you could feel more seen and heard about your problems.  "
+                category_message5 = "Your self-efficacy is lacking – You do not necessarily trust your capabilities, which might cause you not putting enough effort in your studies and avoiding tasks or assignments. Recognize your previous achievements, so that you can be more persistent in your studies. Also, try reaching out to other students with a similar situation, so you could feel more seen and heard. Maybe you will get more motivation, as well as see your worth when other students are there to help you. "
         else:
             category_message1 = "User data not found."
     else: 
@@ -245,11 +245,11 @@ def page_6():
             sum_of_psych = user_data['Sum of psychological flexibility'].values[0]
             #check for PSYCHOLOGICAL FLEXIBILITY sum 
             if sum_of_psych <= 35 and sum_of_psych > 24:
-                category_message6 = "You are psychologically flexible – you won’t let your emotions become an obstacle in your studies. You can recognize them and handle them in a manner that doesn’t affect your state of studying. "
+                category_message6 = "You are psychologically flexible – you will not let your emotions become an obstacle in your studies. You can recognize them and handle them in a manner that does not affect your state of studying. "
             elif sum_of_psych <= 24 and sum_of_psych > 13: 
-                category_message6 = "You are somewhat psychologically flexible – you are trying not to let your emotions stand in the way of studying, but sometimes you might find yourself being overwhelmed by your feelings, which prevents you being efficient. Try to reflect on them and recognize why those feelings are being triggered.  "
+                category_message6 = "You are somewhat psychologically flexible – you are trying not to let your emotions stand in the way of studying, but sometimes you might find yourself being overwhelmed by your feelings, which prevents you from being efficient. Try to reflect on them and recognize why those feelings are being triggered. "
             elif sum_of_psych <= 13:
-                category_message6 = "You lack psychological flexibility – you let your emotions overwhelm you and it prevents you from reaching your full potential in your studies. Try spending time reflecting on them and talk to other peers with similar problems. Comparing your previous state of education to the current one can also help recognizing the shift in your mental health and emotions.  "
+                category_message6 = "You lack psychological flexibility – you let your emotions overwhelm you and it prevents you from reaching your full potential in your studies. Try spending time reflecting on them and talk to other peers with similar problems. Comparing your previous state of education to the current one can also help recognizing the shift in your mental health and emotions. "
         else:
             category_message1 = "User data not found."
     else: 
@@ -270,11 +270,11 @@ def page_7():
         if not user_data.empty:
             sum_of_burnout = user_data['Sum of burnout'].values[0]
             if sum_of_burnout <= 45 and sum_of_burnout > 30:
-                category_message7 = "You have reached the level of burnout – stress and exhaustion overwhelm you and might find yourself feeling cynical towards your education. You might also feel inadequate, which leads you to abandon your studies. Try to take a break from the assignments you have and reflect on your behaviour towards them. Whether or not you should leave tasks behind that’s not your responsibility, cutting some slacks on your expectations towards yourself. If necessary, talk to a professional about your issues.  "
+                category_message7 = "You feel burnt out – stress and exhaustion overwhelm you and you might find yourself feeling indifference towards your education. You might also feel inadequate, which leads you to abandoning your studies. Try to take a break from the assignments you have and reflect on your behaviour towards them. Cutting the tasks in smaller pieces might also help you complete them more easily, as well as make you less overwhelmed. Or if it is about having high expections, cut some slack on your expectations towards yourself. If possible, talk to a professional about your burnout. "
             elif sum_of_burnout <= 30 and sum_of_burnout > 15: 
-                category_message7 = "You are somewhat burned-out – you might do well in your studies, but stress, cynicism and feelings of inadequacy might lead you further down the road. Try to stop for a second and reflect on your behaviour, to see whether there’s anything you can do to lower the risk of reaching full burn-out.  "
+                category_message7 = "You feel somewhat burnt out – you might do well in your studies, but stress, cynicism and feelings of inadequacy might lead you further down the road. Try to stop for a second and reflect on your behaviour, to see whether there is something you can do to lower the risk of reaching full burnout. If you feel like these feelings are getting worse, seek a professional to help you out. "
             elif sum_of_burnout <= 15:
-                category_message7 = "You haven’t reached the level of burnout – you can separate many stages of your life from one another and won’t let your studies exhaust you out or feel cynical towards your studies.  "
+                category_message7 = "You do not feel burnt out – you are able to handle stress and you feel adequate. You do not let your studies exhaust you and your work is not overwhelming you. "
         else:
             category_message1 = "User data not found."
     else: 
@@ -296,11 +296,11 @@ def page_8():
             sum_of_sr = user_data['Sum of self-reflection'].values[0]
             #check for SELF-REFLECTION / SELF-COMPASSION
             if sum_of_sr <= 5 and sum_of_sr > 0:
-                category_message8 = "You have a good self- compassion – you are compassionate towards yourself and situations, which makes you achieve more in your studies.   "
+                category_message8 = "Your self-compassion is good – you are compassionate towards yourself, which makes you achieve more in your studies. You feel understanding towards yourself when you fail or feel inadequate, rather than being self-critical or ignoring it. "
             elif sum_of_sr == 0: 
-                category_message8 = "You have a somewhat good self- compassion – you know your worth and capabilities, but sometimes you might find yourself being hard on yourself and feeling self-critical. Try to recognize the achievements you reached so far and feel prouder about how far you’ve come.  "
+                category_message8 = "Your self-compassion is somewhat good – you know your worth and capabilities, but sometimes you might find yourself being hard on yourself and feeling self-critical. Try to recognize the achievements you have reached so far and feel prouder about how far you have come. "
             elif math.isnan(sum_of_sr):
-                category_message8 = "You lack self-compassion – you might find yourself being rather critical about yourself and your achievements, which might lead your abandon your responsibilities and tasks. Think about the last achievement you’ve reached – or how you could help other people with your own knowledge and capabilities. If you work on these, you might find yourself being more motivated to continue your studies.  "
+                category_message8 = "You lack self-compassion – you might find yourself being rather critical about yourself and your achievements, which might lead you abandoning your responsibilities and tasks. Think about the last achievement you have reached or how you could help other people with your own knowledge and capabilities. If you work on these, you might find yourself being more motivated to continue your studies as you feel more understanding towards yourself. "
         else:
             category_message1 = "User data not found."
     else: 
