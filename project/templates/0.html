@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h3 id = sub-title>write your email address</h3>
-                    <form method = "post" action = "/process_form">
-                        <input type = "text" name = "email" placeholder = "email" required><br><br>
-                        <input type = "submit" value = "Get feedback" name = "submit">
-                    </form>
+    <div class="container">
+    <h3 id = sub-title>Write your e-mail address</h3>
+        <form method = "post" action = "/process_form">
+            <input type = "text" name = "email" placeholder = "E-mail" required><br><br>
+            <input type = "submit" value = "Get feedback" name = "submit" class="next-page-button">
+        </form>
+    </div>
 </body>
 </html>
