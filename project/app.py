@@ -1,6 +1,6 @@
 import pandas as pd
 import math
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for, session
 # run this code into powershell: pip install Flask 
 
 app = Flask(__name__, static_url_path='/static')
@@ -23,7 +23,6 @@ columns_to_convert = df.columns.difference(string_columns)
 df[columns_to_convert] = df[columns_to_convert].apply(pd.to_numeric, errors='coerce')
 
 
-
 # ------------------    CATEGORIES AND SUMS - WE FILTER THE GOOD AND BAD QUESTIONS IN THIS SECTION --------------------------------------------
 
 learning_all_sum = df[['LP101', 'LP102', 'LP103', 'LP104', 'LP105', 'LP106', 'LP107', 'LP108', 'LP109', 'LP110', 'LP11', 'LP12']].sum(axis=1)
@@ -32,7 +31,6 @@ learning_sum = learning_all_sum - badL_sum    # bc this has the "bad" questions 
 support_sum= df[['LE101', 'LE102', 'LE103', 'LE104', 'LE105', 'LE106', 'LE107', 'LE108', 'LE109', 'LE110', 'LE111', 'LE112', 'LE113', 'LE114', 'LE115', 'LE116', 'LE201', 'LE202', 'LE203', 'LE204', 'LE205', 'LE206', 'LE207', 'LE208', 'LE209', 'LE210', 'LE211', 'LE301', 'LE302', 'LE303', 'LE304', 'LE305', 'LE306']].sum(axis=1)
 competence_sum = df[['CD101', 'CD102', 'CD103', 'CD104', 'CD105', 'CD106', 'CD107', 'CD108', 'CD201', 'CD202', 'CD203', 'CD204', 'CD205', 'CD206', 'CD207']].sum(axis=1)
 filler_sum = df[['PR101', 'PR102', 'PR103', 'CP101', 'CP102', 'CP103', 'CP104', 'EN101', 'SD101', 'SD102', 'CO101', 'CO102', 'DS101', 'DS102', 'DS103', 'IN101', 'IN102']].sum(axis=1)
-
 
 #WELLBEING IS DEVIDED INTO 4 SUBCATEGORIES ==> self-efficiancy, psychological flexibility, burnout, self-reflection (probably will be needed for visualizations)
 
@@ -67,17 +65,8 @@ new_columns_data={
 df = df.assign(**new_columns_data) # puts the new columns to the end of the dataset
 
 
-
-#VARIABLES FOR FRONTEND
-    #   sum_of_learning
-    #   sum_of_support
-    #   sum_of_competence
-    #   sum_of_filler
-    #   sum_of_se       = Self-efficiancy
-    #   sum_of_psych    = psychological flexibility
-    #   sum_of_sr       = self-reflection (like self-compasssion / self-critisim)
-
-
+html_user_email=""
+user_email=""
 category_message1 = ""
 category_message2 = ""
 category_message3 = ""
@@ -87,197 +76,237 @@ category_message6 = ""
 category_message7 = ""
 category_message8 = ""
 
-
 @app.route('/index')
 def index():
+
+    return render_template('0.html')
+
+@app.route('/process_form', methods=['POST'])
+def process_form():
+    # Get the user's email address from the form
+    global user_email 
+    user_email = request.form.get('email')
+    # Store the email in the session
+    session['user_email'] = user_email
+    # Process the email address if needed
+    user_data = df[df['Email'] == user_email]
+
+    # Redirect the user to 'welcome'
+    return redirect(url_for('welcome', user_email=user_email))
+
+@app.route('/welcome')
+def welcome():
 
     return render_template('welcome.html')
 
 @app.route('/page1')
 def page_1():
-    # Check LEARNING category sum
-    global category_message1
-    # Access the latest row in the DataFrame (latest response)
-    latest_response = df.iloc[-1]
-    # Extract the relevant values from the latest response
-    sum_of_learning = latest_response['Sum of learning']
+    # Get the user's email address from the URL query parameter
+    user_email = session.get('user_email')    
 
-    if sum_of_learning <= 60 and sum_of_learning > 40:
-        #subcategory 1
-        category_message1 = "You have a deep approach to learning, meaning that you aim to understand what you have learned in a deeper level, and you try to find connections, as well as find underlying meanings. You find yourself motivated to learn and often have the appropriate background knowledge to connect the new information with the old. "  # <-- this is for the connection 
-    elif sum_of_learning <= 40 and sum_of_learning > 20: 
-        #subcategory 2
-        category_message1 = "Your studying is organized. You might not necessarily take a deep approach to learning, but you are more organized than someone who takes on a surface approach. You have the tools to shift to deeper understanding if you want to learn to understand and focus on the meaning, but you can also find yourself easily just repeating the learned information without deeper understanding. "
-    elif sum_of_learning <= 20:
-        #subcategory 3
-        category_message1 = "You have a surface approach to learning, meaning your learning aims for repetition. This approach is not reflective and studying might often be done in the last minute. This results in fragmented understanding and things you memorized are often forgotten. Typically, you are not interested in understanding and just want to learn what is required.  "
+    if user_email:
+        # Check LEARNING category sum
+        global category_message1
+        user_data = df[df['Email'] == user_email]
+        
+        if not user_data.empty:
+            sum_of_learning = user_data['Sum of learning'].values[0]
+            # Define the category_message1 based on sum_of_learning
+            if sum_of_learning <= 60 and sum_of_learning > 40:
+                category_message1 = "Deep approach: You take a deep approach to learning, meaning that you aim to understand what you have learned in a deeper level, and you try to find connections, as well as find underlying meanings. You find yourself motivated to learn and often have the appropriate background knowledge to connect the new information with the old. "  # <-- this is for the connection 
+            elif sum_of_learning <= 40 and sum_of_learning > 20: 
+                category_message1 = "Organized studying: Your studying is organized. You might not necessarily take a deep approach to learning, but you are more organized than someone who takes on a surface approach. You have the tools to shift to deeper understanding if you want to learn to understand and focus on the meaning, but you can also find yourself easily just repeating the learned information without deeper understanding. "
+            elif sum_of_learning <= 20:
+                category_message1 = "Surface approach: You take a surface approach to learning, meaning your learning aims for repetition. This approach is not reflective and studying might often be done in the last minute. This results in fragmented understanding and things you memorized are often forgotten. Typically, you are not interested in understanding and just want to learn what is required. "
+        else:
+            category_message1 = "User data not found."
+    else: 
+        category_message1 = "User email not found."
 
-    #render the HTML template and pass data to it 
-    return render_template('1.html', category_message1 = category_message1)
+    return render_template('1.html', category_message1=category_message1)
 
 @app.route('/page2')
 def page_2():
-    
-    global category_message2
-    # Access the latest row in the DataFrame (latest response)
-    latest_response = df.iloc[-1]
-    # Extract the relevant values from the latest response
-    sum_of_support = latest_response['Sum of support']
+    # Get the user's email address from the URL query parameter
+    user_email = session.get('user_email')    
 
-    # Check SUPPORT category sum
-    if sum_of_support <= 165 and sum_of_support > 110:
-        #subcategory 1
-        category_message2 = "Learning environment: You feel supported in your studies. Your learning environment supports your learning, and you can work well with other students. You get feedback that is accurate, and you feel like guidance is available whenever you need it.  "
-    elif sum_of_support <= 110 and sum_of_support > 55: 
-        #subcategory 2
-        category_message2 = "Learning environment: You feel somewhat supported. Your learning environment somewhat does its job at supporting you, but it might feel a bit lacking. You get along with other students when it comes to working and studying, if need be, but it does not always feel too fulfilling.  "
-    elif sum_of_support <= 55:
-        #subcategory 3
-        category_message2 = "Learning environment: You feel like you do not get enough support and the learning environment does not support you the way it should. Maybe it is the lack of feedback or guidance, or you do not feel comfortable working with other students. Whichever the case, try to bring this topic up to someone that might help you feel more supported, such as a teacher or student counsellor. "
+    if user_email:
+        # Check LEARNING category sum
+        global category_message2
+        user_data = df[df['Email'] == user_email]
+        
+        if not user_data.empty:
+            sum_of_support = user_data['Sum of support'].values[0]
+            # Check SUPPORT category sum
+            if sum_of_support <= 165 and sum_of_support > 110:
+                category_message2 = "You feel supported in your studies. Your learning environment supports your learning, and you can work well with other students. You get feedback that is accurate, and you feel like guidance is available whenever you need it. "
+            elif sum_of_support <= 110 and sum_of_support > 55: 
+                category_message2 = "You feel somewhat supported. Your learning environment somewhat does its job at supporting you, but it might feel a bit lacking. You get along with other students when it comes to working and studying, if need be, but it does not always feel too fulfilling. "
+            elif sum_of_support <= 55:
+                category_message2 = "You feel like you do not get enough support and the learning environment does not support you the way it should. Maybe it is the lack of feedback or guidance, or you do not feel comfortable working with other students. Whichever the case, try to bring this topic up to someone that might help you feel more supported, such as a teacher or student counsellor. "
+        else:
+            category_message1 = "User data not found."
+    else: 
+        category_message1 = "User email not found."
 
     return render_template('2.html', category_message2 = category_message2)
 
 @app.route('/page3')
 def page_3():
-    
-    global category_message3
-    # Access the latest row in the DataFrame (latest response)
-    latest_response = df.iloc[-1]
-    # Extract the relevant values from the latest response
-    sum_of_competence = latest_response['Sum of competence']
+    # Get the user's email address from the URL query parameter
+    user_email = session.get('user_email')    
 
-
-    # Check COMPETENCE category sum
-    if sum_of_competence <= 75 and sum_of_competence > 50:
-        #subcategory 1
-        category_message3 = "You feel competent in your studies. You feel like you have learned and improved on skills that are useful and you know how to use the learned knowledge to your advantage. This helps you to know your strengths and weaknesses and makes you more confident in your abilities. "
-    elif sum_of_competence <= 50 and sum_of_competence > 25: 
-        #subcategory 2
-        category_message3 = "You feel somewhat competent when it comes to your studies, but you still have doubts about your skills. You could potentially work and know what you are doing, at least for the most part, but you might feel unsure if you are doing things correctly. Try and ask when it comes to it, maybe you are doing things right and it is about trusting yourself, or maybe you feel like you need more information. Either way, asking is a good way to start gaining that knowledge and confidence. "
-    elif sum_of_competence <= 25:
-        #subcategory 3
-        category_message3 = "You do not feel competent in your studies, and you lack knowledge that would help you feel confident in your field. You feel like you do not have the required knowledge to be able to work effectively and you struggle to work in a group. Try to go over the basics of the subject you feel incompetent in and work your way up at your own pace. When you learn the basics and have acquired and understood it, it is easier for you to trust in your abilities and continue building up that knowledge. Do not be afraid to ask for help either. Asking help, especially from your fellow students, helps you gain those social skills that are needed in working as a group, as well as give you more of that needed knowledge. "
+    if user_email:
+        # Check LEARNING category sum
+        global category_message3
+        user_data = df[df['Email'] == user_email]
+        
+        if not user_data.empty:
+            sum_of_competence = user_data['Sum of competence'].values[0]
+            # Check COMPETENCE category sum
+            if sum_of_competence <= 75 and sum_of_competence > 50:
+                category_message3 = "You feel competent in your studies. You feel like you have learned and improved on skills that are useful and you know how to use the learned knowledge to your advantage. This helps you to know your strengths and weaknesses and makes you more confident in your abilities. "
+            elif sum_of_competence <= 50 and sum_of_competence > 25: 
+                category_message3 = "You feel somewhat competent when it comes to your studies, but you still have doubts about your skills. You could potentially work and know what you are doing, at least for the most part, but you might feel unsure if you are doing things correctly. Try and ask when it comes to it, maybe you are doing things right and it is about trusting yourself, or maybe you feel like you need more information. Either way, asking is a good way to start gaining that knowledge and confidence. "
+            elif sum_of_competence <= 25:
+                category_message3 = "You do not feel competent in your studies, and you lack knowledge that would help you feel confident in your field. You feel like you do not have the required knowledge to be able to work effectively and you struggle to work in a group. Try to go over the basics of the subject you feel incompetent in and work your way up at your own pace. When you learn the basics and have acquired and understood it, it is easier for you to trust in your abilities and continue building up that knowledge. Do not be afraid to ask for help either. Asking help, especially from your fellow students, helps you gain those social skills that are needed in working as a group, as well as give you more of that needed knowledge. "
+        else:
+            category_message1 = "User data not found."
+    else: 
+        category_message1 = "User email not found."
 
     return render_template('3.html', category_message3 = category_message3)
 
 @app.route('/page4')
 def page_4():
-    
-    global category_message4
-    # Access the latest row in the DataFrame (latest response)
-    latest_response = df.iloc[-1]
-    # Extract the relevant values from the latest response
-    sum_of_filler = latest_response['Sum of filler']
+    # Get the user's email address from the URL query parameter
+    user_email = session.get('user_email')    
 
-    #check FILLER category sum 
-    if sum_of_filler <= 85 and sum_of_filler > 57:
-        #subcategory 1
-        category_message4 = "Future objectives: You have clear objectives for the future. You use the resources that are given to you and always try to max out your opportunities, whether it’s about international interactions or work placement. Maybe even entrepreneurship enthusiasm.  "
-    elif sum_of_filler <= 57 and sum_of_filler > 29: 
-        #subcategory 2
-        category_message4 = "Future objectives: You recognize the options given to you and work with them but might lack the possibility to use them to your own advantage. Try interacting more with internationals or dig up some articles about the work placement advice provided by the university. You could also think about some entrepreneurial tendencies that you might have.  "
-    elif sum_of_filler <= 29 or sum_of_filler == 0:
-        #subcategory 3
-        category_message4 = "Future objectives: Your objectives for the future are not as clear as it should be. You might feel you can’t properly use the resources that are given to you or might not even feel like there’s anything to begin with. Try reaching out to your guidance counsellor or talk to peers in higher years to get some information regarding work placement, international opportunities or sustainability.  "
+    if user_email:
+        # Check LEARNING category sum
+        global category_message4
+        user_data = df[df['Email'] == user_email]
+        
+        if not user_data.empty:
+            sum_of_filler = user_data['Sum of filler'].values[0]
+            #check FILLER category sum 
+            if sum_of_filler <= 85 and sum_of_filler > 57:
+                category_message4 = "You have clear objectives for the future. You use the resources that are given to you and always try to max out your opportunities, whether it is about international interactions or work placement. Maybe you even feel enthusiastic for entrepreneurship. "
+            elif sum_of_filler <= 57 and sum_of_filler > 29: 
+                category_message4 = "You recognize the options given to you and work with them but might lack the possibility to use them to your own advantage. Try interacting more with foreigners or dig up some articles about the work placement advice provided by the university. You could also think about some entrepreneurial tendencies that you might have. "
+            elif sum_of_filler <= 29 or sum_of_filler == 0:
+                category_message4 = "Your objectives for the future are not clear. You might feel like you can not properly use the resources that are given to you or might not even feel like there is anything to begin with. Try reaching out to your guidance counsellor or talk to peers in higher years to get some information regarding work placement, international opportunities or sustainability. "
+        else:
+            category_message1 = "User data not found."
+    else: 
+        category_message1 = "User email not found."
 
     return render_template('4.html', category_message4 = category_message4)
 
 @app.route('/page5')
 def page_5():
-    
-    global category_message5
-    # Access the latest row in the DataFrame (latest response)
-    latest_response = df.iloc[-1]
-    # Extract the relevant values from the latest response
-    sum_of_se = latest_response['Sum of self-efficacy']
+    # Get the user's email address from the URL query parameter
+    user_email = session.get('user_email')    
 
-    #CHECK FOR WELLBEING - SUBCATEGORIES 
-            
-    #check for SELF-EFFICIANCY sum 
-    if sum_of_se <= 35 and sum_of_se > 24:
-        #subcategory 1
-        category_message5 = "WELLBEING: Self-efficacy: You are very self-efficient– you trust in yourself and your capabilities, which makes you an efficient learner as well. You persist working towards your future and won’t let anything stand in your way. "
-    elif sum_of_se <= 24 and sum_of_se > 13: 
-        #subcategory 2
-        category_message5 = "Self-efficacy: You are some-what self-efficient– you recognize your capabilities but won’t trust them to its full extent; you might be a hard-worker, but the lack of self-trust prevents you from reaching your full extent.  Seek more opportunities for engaging in learning activities.  "
-    elif sum_of_se <= 13:
-        #subcategory 3
-        category_message5 = "Self-efficacy: Your self-efficacy needs to get back on track – you don’t necessarily trust your capabilities, which might cause you not putting enough effort in your studies and avoiding tasks or assignments. Recognize your previous achievements, so that you can be more persistent in your studies. Also, try reaching out to other students with similar situations, so you could feel more seen and heard about your problems.  "
+    if user_email:
+        # Check LEARNING category sum
+        global category_message5
+        user_data = df[df['Email'] == user_email]
+        
+        if not user_data.empty:
+            sum_of_se = user_data['Sum of self-efficacy'].values[0]
 
+            #CHECK FOR WELLBEING - SUBCATEGORIES 
+            #check for SELF-EFFICIANCY sum 
+            if sum_of_se <= 35 and sum_of_se > 24:
+                category_message5 = "Your self-efficacy is good – You trust in yourself and your capabilities, which makes you an efficient learner as well. You persist working towards your future and will not let anything stand in your way. "
+            elif sum_of_se <= 24 and sum_of_se > 13: 
+                category_message5 = "Your self-efficacy is okay – You recognize your capabilities but will not trust them to their full extent; you might be a hard-worker, but the lack of self-trust prevents you from reaching your full potential. Seek more opportunities for engaging in learning activities. "
+            elif sum_of_se <= 13:
+                category_message5 = "Your self-efficacy is lacking – You do not necessarily trust your capabilities, which might cause you not putting enough effort in your studies and avoiding tasks or assignments. Recognize your previous achievements, so that you can be more persistent in your studies. Also, try reaching out to other students with a similar situation, so you could feel more seen and heard. Maybe you will get more motivation, as well as see your worth when other students are there to help you. "
+        else:
+            category_message1 = "User data not found."
+    else: 
+        category_message1 = "User email not found."     
     
     return render_template('5.html', category_message5 = category_message5)
 
 @app.route('/page6')
 def page_6():
-    
-    global category_message6
-    # Access the latest row in the DataFrame (latest response)
-    latest_response = df.iloc[-1]
-    # Extract the relevant values from the latest response
-    sum_of_psych = latest_response['Sum of psychological flexibility']
+    # Get the user's email address from the URL query parameter
+    user_email = session.get('user_email')    
 
-    
-     #check for PSYCHOLOGICAL FLEXIBILITY sum 
-    if sum_of_psych <= 35 and sum_of_psych > 24:
-        #subcategory 1
-        category_message6 = "You are psychologically flexible – you won’t let your emotions become an obstacle in your studies. You can recognize them and handle them in a manner that doesn’t affect your state of studying. "
-    elif sum_of_psych <= 24 and sum_of_psych > 13: 
-        #subcategory 2
-        category_message6 = "You are somewhat psychologically flexible – you are trying not to let your emotions stand in the way of studying, but sometimes you might find yourself being overwhelmed by your feelings, which prevents you being efficient. Try to reflect on them and recognize why those feelings are being triggered.  "
-    elif sum_of_psych <= 13:
-        #subcategory 3
-        category_message6 = "You lack psychological flexibility – you let your emotions overwhelm you and it prevents you from reaching your full potential in your studies. Try spending time reflecting on them and talk to other peers with similar problems. Comparing your previous state of education to the current one can also help recognizing the shift in your mental health and emotions.  "
+    if user_email:
+        # Check LEARNING category sum
+        global category_message6
+        user_data = df[df['Email'] == user_email]
+        
+        if not user_data.empty:
+            sum_of_psych = user_data['Sum of psychological flexibility'].values[0]
+            #check for PSYCHOLOGICAL FLEXIBILITY sum 
+            if sum_of_psych <= 35 and sum_of_psych > 24:
+                category_message6 = "You are psychologically flexible – you will not let your emotions become an obstacle in your studies. You can recognize them and handle them in a manner that does not affect your state of studying. "
+            elif sum_of_psych <= 24 and sum_of_psych > 13: 
+                category_message6 = "You are somewhat psychologically flexible – you are trying not to let your emotions stand in the way of studying, but sometimes you might find yourself being overwhelmed by your feelings, which prevents you from being efficient. Try to reflect on them and recognize why those feelings are being triggered. "
+            elif sum_of_psych <= 13:
+                category_message6 = "You lack psychological flexibility – you let your emotions overwhelm you and it prevents you from reaching your full potential in your studies. Try spending time reflecting on them and talk to other peers with similar problems. Comparing your previous state of education to the current one can also help recognizing the shift in your mental health and emotions. "
+        else:
+            category_message1 = "User data not found."
+    else: 
+        category_message1 = "User email not found."     
 
     return render_template('6.html', category_message6 = category_message6)
 
 @app.route('/page7')
 def page_7():
-    
-    global category_message7
-    # Access the latest row in the DataFrame (latest response)
-    latest_response = df.iloc[-1]
-    # Extract the relevant values from the latest response
-    sum_of_burnout = latest_response['Sum of burnout']
+    # Get the user's email address from the URL query parameter
+    user_email = session.get('user_email')    
 
-    
-    #check for BURNOUT
-    if sum_of_burnout <= 45 and sum_of_burnout > 30:
-        #subcategory 1
-        category_message7 = "You have reached the level of burnout – stress and exhaustion overwhelm you and might find yourself feeling cynical towards your education. You might also feel inadequate, which leads you to abandon your studies. Try to take a break from the assignments you have and reflect on your behaviour towards them. Whether or not you should leave tasks behind that’s not your responsibility, cutting some slacks on your expectations towards yourself. If necessary, talk to a professional about your issues.  "
-    elif sum_of_burnout <= 30 and sum_of_burnout > 15: 
-        #subcategory 2
-        category_message7 = "You are somewhat burned-out – you might do well in your studies, but stress, cynicism and feelings of inadequacy might lead you further down the road. Try to stop for a second and reflect on your behaviour, to see whether there’s anything you can do to lower the risk of reaching full burn-out.  "
-    elif sum_of_burnout <= 15:
-        #subcategory 3
-        category_message7 = "You haven’t reached the level of burnout – you can separate many stages of your life from one another and won’t let your studies exhaust you out or feel cynical towards your studies.  "
+    if user_email:
+        # Check LEARNING category sum
+        global category_message7
+        user_data = df[df['Email'] == user_email]
+        
+        if not user_data.empty:
+            sum_of_burnout = user_data['Sum of burnout'].values[0]
+            if sum_of_burnout <= 45 and sum_of_burnout > 30:
+                category_message7 = "You feel burnt out – stress and exhaustion overwhelm you and you might find yourself feeling indifference towards your education. You might also feel inadequate, which leads you to abandoning your studies. Try to take a break from the assignments you have and reflect on your behaviour towards them. Cutting the tasks in smaller pieces might also help you complete them more easily, as well as make you less overwhelmed. Or if it is about having high expections, cut some slack on your expectations towards yourself. If possible, talk to a professional about your burnout. "
+            elif sum_of_burnout <= 30 and sum_of_burnout > 15: 
+                category_message7 = "You feel somewhat burnt out – you might do well in your studies, but stress, cynicism and feelings of inadequacy might lead you further down the road. Try to stop for a second and reflect on your behaviour, to see whether there is something you can do to lower the risk of reaching full burnout. If you feel like these feelings are getting worse, seek a professional to help you out. "
+            elif sum_of_burnout <= 15:
+                category_message7 = "You do not feel burnt out – you are able to handle stress and you feel adequate. You do not let your studies exhaust you and your work is not overwhelming you. "
+        else:
+            category_message1 = "User data not found."
+    else: 
+        category_message1 = "User email not found."     
 
-
-    return render_template('7.html', category_message7 = category_message7)
+    return render_template('7.html', category_message7 = category_message7, sum_of_burnout = sum_of_burnout)
 
 @app.route('/page8')
 def page_8():
-    
-    global category_message8
-    # Access the latest row in the DataFrame (latest response)
-    latest_response = df.iloc[-1]
-    # Extract the relevant values from the latest response
-    sum_of_sr = latest_response['Sum of self-reflection']
+    # Get the user's email address from the URL query parameter
+    user_email = session.get('user_email')    
 
-    
-    #check for SELF-REFLECTION / SELF-COMPASSION
-    if sum_of_sr <= 5 and sum_of_sr > 0:
-        #subcategory 1
-        category_message8 = "You have a good self- compassion – you are compassionate towards yourself and situations, which makes you achieve more in your studies.   "
-    elif sum_of_sr == 0: 
-        #subcategory 2
-        category_message8 = "You have a somewhat good self- compassion – you know your worth and capabilities, but sometimes you might find yourself being hard on yourself and feeling self-critical. Try to recognize the achievements you reached so far and feel prouder about how far you’ve come.  "
-    elif math.isnan(sum_of_sr):
-        category_message8 = "You lack self-compassion – you might find yourself being rather critical about yourself and your achievements, which might lead your abandon your responsibilities and tasks. Think about the last achievement you’ve reached – or how you could help other people with your own knowledge and capabilities. If you work on these, you might find yourself being more motivated to continue your studies.  "
+    if user_email:
+        # Check LEARNING category sum
+        global category_message8
+        user_data = df[df['Email'] == user_email]
+        
+        if not user_data.empty:
+            sum_of_sr = user_data['Sum of self-reflection'].values[0]
+            #check for SELF-REFLECTION / SELF-COMPASSION
+            if sum_of_sr <= 5 and sum_of_sr > 0:
+                category_message8 = "Your self-compassion is good – you are compassionate towards yourself, which makes you achieve more in your studies. You feel understanding towards yourself when you fail or feel inadequate, rather than being self-critical or ignoring it. "
+            elif sum_of_sr == 0: 
+                category_message8 = "Your self-compassion is somewhat good – you know your worth and capabilities, but sometimes you might find yourself being hard on yourself and feeling self-critical. Try to recognize the achievements you have reached so far and feel prouder about how far you have come. "
+            elif math.isnan(sum_of_sr):
+                category_message8 = "You lack self-compassion – you might find yourself being rather critical about yourself and your achievements, which might lead you abandoning your responsibilities and tasks. Think about the last achievement you have reached or how you could help other people with your own knowledge and capabilities. If you work on these, you might find yourself being more motivated to continue your studies as you feel more understanding towards yourself. "
+        else:
+            category_message1 = "User data not found."
+    else: 
+        category_message1 = "User email not found."     
 
     return render_template('8.html', category_message8 = category_message8)
 
-
-
 if __name__ == '__main__': 
     app.run(debug=True)
-
