@@ -2,7 +2,6 @@ body{
     font-family: "Helvetica", Sans-Serif;
     background-image: url('https://cdn.forms.office.net/forms/images/theme/colorful-pencils.png');
     background-color: transparent;
-    /* background-color: #7E685C; */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -11,7 +10,6 @@ body{
     min-height: 100vh;
     padding-top: 2%;
 }
-
 
 .learnWellLogo{
     -webkit-user-drag: none;
@@ -52,7 +50,6 @@ h2{
 }
 
 .overview{
-    /* border: 3px solid #ffcc80; */
     border-radius: 4px;
 }
 
@@ -63,7 +60,6 @@ h2{
 .statistics{
     display: flex;
     justify-content: center;  
-    /* flex-flow: row wrap; */ 
     flex-direction: row; 
     flex-wrap: wrap; 
     align-content: center;
@@ -127,15 +123,6 @@ h2{
     cursor: pointer;
 
   }
-
-
-  /* @media only screen and (min-width: 600px) {
-    For tablets:
-    body{
-      width: 100%;
-      min-height: 50vh;
-    }
-  } */
 
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */

@@ -12,7 +12,6 @@ body{
     padding-top: 2%;
 }
 
-
 .learnWellLogo{
     -webkit-user-drag: none;
     user-select: none;
@@ -52,7 +51,6 @@ h2{
 }
 
 .overview{
-    /* border: 3px solid #ffcc80; */
     border-radius: 4px;
 }
 
@@ -63,7 +61,6 @@ h2{
 .statistics{
     display: flex;
     justify-content: center;  
-    /* flex-flow: row wrap; */ 
     flex-direction: row; 
     flex-wrap: wrap; 
     align-content: center;
@@ -127,15 +124,6 @@ h2{
     cursor: pointer;
 
   }
-
-
-  /* @media only screen and (min-width: 600px) {
-    For tablets:
-    body{
-      width: 100%;
-      min-height: 50vh;
-    }
-  } */
 
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */
