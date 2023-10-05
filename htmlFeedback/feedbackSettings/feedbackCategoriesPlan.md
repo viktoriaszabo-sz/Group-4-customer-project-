@@ -22,7 +22,7 @@ Feedback categories
 │	│
 │	└── 5.Wellbeing: (4 subcategories)
 │		├── 50.Self-efficacy
-│		│	├── 501.WBSE_very self-efficient_fi.txt
+│		│	├── 501_WBSE_very self-efficient_fi.txt
 │		│	├── 502_WBSE_2_somewhat_self-efficient_fi.txt
 │		│	└── 503_WBSE_3_not self-efficient_fi.txt
 │		│
@@ -64,7 +64,7 @@ Feedback categories
 	│
 	└── 5.Wellbeing: (4 subcategories)
 		├── 50.Self-efficacy
-		│	├── 501.WBSE_very self-efficient_en.txt
+		│	├── 501_WBSE_very self-efficient_en.txt
 		│	├── 502_WBSE_2_somewhat_self-efficient_en.txt
 		│	└── 503_WBSE_3_not self-efficient_en.txt
 		│
