@@ -13,11 +13,40 @@
         <div class="header">
             <div draggable="false" class="learnWellLogo">
                 <img src="{{ url_for('static', filename='learnWellLogo.png') }}" alt="Learnwell Logo">
-                <h3 id=sub-title>write your email address</h3>
-                <form method="post" action="/process_form">
-                    <input type="text" name="email" placeholder="email" required><br><br>
+                <h3 id=sub-title>Write your email address</h3>
+                <form id="emailForm" method="post" action="/process_form">
+                    <input type="text" id = "email" name="email" placeholder="email" required><br><br>
+                    <span id="domainError" style="color: red;"></span>
+                    <br>
                     <input type="submit" value="Get feedback" name="submit">
                 </form>
+
+                <script>  // Function to validate the email and check the domain
+                    function validateEmail() {
+                        const emailInput = document.getElementById("email");
+                        const domainError = document.getElementById("domainError");
+                        const allowedDomain = "hamk.fi"; 
+                        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                        const emailDomain = emailInput.value.split('@')[1];
+
+                        if (!emailInput.value.match(emailPattern)) {
+                            domainError.textContent = "Invalid email format. Make sure you use your student email.";
+                            return false;
+                        }
+                        else if (!emailDomain.includes(allowedDomain)) {
+                            domainError.textContent = "Invalid domain name. Make sure your email contains 'hamk.fi'";
+                            return false;
+                        }
+                        domainError.textContent = "";
+                        return true;
+                    }
+                    // Attach the validation function to the form's submit event
+                    document.getElementById("emailForm").addEventListener("submit", function(event) {
+                        if (!validateEmail()) {
+                            event.preventDefault(); // Prevent form submission if validation fails
+                        }
+                    });
+                </script>
             </div>
         </div>
     </div>
