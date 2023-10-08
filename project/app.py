@@ -1,5 +1,6 @@
 import pandas as pd
 import math
+import re
 from flask import Flask, render_template, request, redirect, url_for, session
 # run this code into powershell: pip install Flask 
 
@@ -85,14 +86,16 @@ def index():
 def process_form():
     # Get the user's email address from the form
     global user_email 
-    user_email = request.form.get('email')
-    # Store the email in the session
-    session['user_email'] = user_email
-    # Process the email address if needed
-    user_data = df[df['Email'] == user_email]
-
-    # Redirect the user to 'welcome'
-    return redirect(url_for('welcome', user_email=user_email))
+    global user_data
+    user_email = request.form.get('email')  #user email address after form validation in 0.html
+    session['user_email'] = user_email          # Store the email in the session
+    user_data = df[df['Email'] == user_email]  # Process the email address if needed
+        
+    if user_data.empty:   # checks if the email address is in the dataset
+        print("Invalid email address. It seems like your data is not accessible from our database")
+        return redirect(url_for('index'))  # Redirect the user back to the form
+    else: 
+        return redirect(url_for('welcome', user_email=user_email))  # Redirect the user to 'welcome'
 
 @app.route('/welcome')
 def welcome():
@@ -145,9 +148,9 @@ def page_2():
             elif sum_of_support <= 55:
                 category_message2 = "You feel like you do not get enough support and the learning environment does not support you the way it should. Maybe it is the lack of feedback or guidance, or you do not feel comfortable working with other students. Whichever the case, try to bring this topic up to someone that might help you feel more supported, such as a teacher or student counsellor. "
         else:
-            category_message1 = "User data not found."
+            category_message2 = "User data not found."
     else: 
-        category_message1 = "User email not found."
+        category_message2 = "User email not found."
 
     return render_template('2.html', category_message2 = category_message2)
 
@@ -171,9 +174,9 @@ def page_3():
             elif sum_of_competence <= 25:
                 category_message3 = "You do not feel competent in your studies, and you lack knowledge that would help you feel confident in your field. You feel like you do not have the required knowledge to be able to work effectively and you struggle to work in a group. Try to go over the basics of the subject you feel incompetent in and work your way up at your own pace. When you learn the basics and have acquired and understood it, it is easier for you to trust in your abilities and continue building up that knowledge. Do not be afraid to ask for help either. Asking help, especially from your fellow students, helps you gain those social skills that are needed in working as a group, as well as give you more of that needed knowledge. "
         else:
-            category_message1 = "User data not found."
+            category_message3 = "User data not found."
     else: 
-        category_message1 = "User email not found."
+        category_message3 = "User email not found."
 
     return render_template('3.html', category_message3 = category_message3)
 
@@ -197,9 +200,9 @@ def page_4():
             elif sum_of_filler <= 29 or sum_of_filler == 0:
                 category_message4 = "Your objectives for the future are not clear. You might feel like you can not properly use the resources that are given to you or might not even feel like there is anything to begin with. Try reaching out to your guidance counsellor or talk to peers in higher years to get some information regarding work placement, international opportunities or sustainability. "
         else:
-            category_message1 = "User data not found."
+            category_message4 = "User data not found."
     else: 
-        category_message1 = "User email not found."
+        category_message4 = "User email not found."
 
     return render_template('4.html', category_message4 = category_message4)
 
@@ -225,9 +228,9 @@ def page_5():
             elif sum_of_se <= 13:
                 category_message5 = "Your self-efficacy is lacking – You do not necessarily trust your capabilities, which might cause you not putting enough effort in your studies and avoiding tasks or assignments. Recognize your previous achievements, so that you can be more persistent in your studies. Also, try reaching out to other students with a similar situation, so you could feel more seen and heard. Maybe you will get more motivation, as well as see your worth when other students are there to help you. "
         else:
-            category_message1 = "User data not found."
+            category_message5 = "User data not found."
     else: 
-        category_message1 = "User email not found."     
+        category_message5 = "User email not found."     
     
     return render_template('5.html', category_message5 = category_message5)
 
@@ -251,9 +254,9 @@ def page_6():
             elif sum_of_psych <= 13:
                 category_message6 = "You lack psychological flexibility – you let your emotions overwhelm you and it prevents you from reaching your full potential in your studies. Try spending time reflecting on them and talk to other peers with similar problems. Comparing your previous state of education to the current one can also help recognizing the shift in your mental health and emotions. "
         else:
-            category_message1 = "User data not found."
+            category_message6 = "User data not found."
     else: 
-        category_message1 = "User email not found."     
+        category_message6 = "User email not found."     
 
     return render_template('6.html', category_message6 = category_message6)
 
@@ -276,9 +279,9 @@ def page_7():
             elif sum_of_burnout <= 15:
                 category_message7 = "You do not feel burnt out – you are able to handle stress and you feel adequate. You do not let your studies exhaust you and your work is not overwhelming you. "
         else:
-            category_message1 = "User data not found."
+            category_message7 = "User data not found."
     else: 
-        category_message1 = "User email not found."     
+        category_message7 = "User email not found."     
 
     return render_template('7.html', category_message7 = category_message7, sum_of_burnout = sum_of_burnout)
 
@@ -302,9 +305,9 @@ def page_8():
             elif math.isnan(sum_of_sr):
                 category_message8 = "You lack self-compassion – you might find yourself being rather critical about yourself and your achievements, which might lead you abandoning your responsibilities and tasks. Think about the last achievement you have reached or how you could help other people with your own knowledge and capabilities. If you work on these, you might find yourself being more motivated to continue your studies as you feel more understanding towards yourself. "
         else:
-            category_message1 = "User data not found."
+            category_message8 = "User data not found."
     else: 
-        category_message1 = "User email not found."     
+        category_message8 = "User email not found."     
 
     return render_template('8.html', category_message8 = category_message8)
 
