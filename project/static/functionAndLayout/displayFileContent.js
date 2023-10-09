@@ -16,5 +16,5 @@ function readFile(elementId, filePath) {
 // Function to display file content with line breaks
 function displayFileContent(elementId, content) {
     const displaying = document.getElementById(elementId); // Gets the HTML element by ID
-    displaying.innerHTML = '<strong>The content of ' + elementId + ' is the following:</strong><br>' + content.replace(/\n/g, '<br>'); // Displays the content
+    displaying.innerHTML =  content.replace(/\n/g, '<br>'); // Displays the content
 }

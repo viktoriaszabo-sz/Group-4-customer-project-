@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Feedback | Learn Well 2023 | Powered by Group 4</title>
+    <title>Category 7</title>
     <!--Style-->
     <link rel="stylesheet" href="{{ url_for('static', filename='functionAndLayout/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://kit.fontawesome.com/5c1299d2f2.js" crossorigin="anonymous"></script>
     <!--Script to select a div to display-->
     <script src="{{ url_for('static', filename='functionAndLayout/displayDiv.js') }}"></script>
     <!--Script to display the content of the feedback stored in .txt files-->
@@ -16,18 +18,45 @@
 </head>
 
 <body>
+    <!-- sidebar start -->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a href="{{ url_for ('welcome') }}">Welcome</a></li>
+            <li><a href="{{ url_for ('page1') }}">1. Learning approach</a></li>
+            <li><a href="{{ url_for ('page2') }}">2. Learning environment</a></li>
+            <li><a href="{{ url_for ('page3') }}">3. Competence development </a></li>
+            <li><a href="{{ url_for ('page4') }}">4. Objectives for the future</a></li>
+            <li><a href="{{ url_for ('page5') }}">5. Wellbeing: sef-efficacy</a></li>
+            <li><a href="{{ url_for ('page6') }}">6. Wellbeing: psychological flexibility</a></li>
+            <li><a href="{{ url_for ('page7') }}">7. Wellbeing: level of burnout</a></li>
+            <li><a href="{{ url_for ('page8') }}">8. Wellbeing: self-compassion</a></li>
+        </ul>
+    </nav>
+    <!-- sidebar end -->
     <div class="container">
-
         <div class="header">
             <div draggable="false" class="learnWellLogo">
                 <img src="{{ url_for('static', filename='functionAndLayout/learnWellLogo.png') }}">
             </div>
+            <br>
+            <h1>Learn Well Project - Group 4</h1>
+            <br>
+            <h2>Category 7</h2>
+            <br>
+            <h3><i>
+                    <center>henkilökohtainen palautteesi | your personal feedback</center>
+                </i></h3>
         </div>
-    <center>
-        <div id="welcoming_div">
 
-                <h1>Learn Well Project - Group 4</h1>
-                <h3><i>henkilökohtainen palautteesi | your personal feedback</i></h3>
+        <br>
+
+        <!--welcome messaage-->
+        <center>
+            <div id="welcoming_div">
                 <p id="welcoming_p"></p>
                 <!--IMPORTANT this script must come after the above p element with id="welcoming"-->
                 <script id="welcoming_script">
@@ -35,271 +64,299 @@
                     var user_name = "{{ user_name }}";
                     // Display the user_name in the element with id="welcoming" above
                     var userNameDisplay = document.getElementById('welcoming_p');
-                    userNameDisplay.innerText = "Welcome " + user_name + ".\nHere's a personalized feedback based on the survey you gave.";
+                    userNameDisplay.innerText = "Tervetuloa | Welcome " + user_name + ".\nTässä on henkilökohtainen palaute antamasi kyselyn perusteella. \nHere's a personalized feedback based on the survey you gave.";
                 </script>
-            
-        </div>
-
-        <!--Select a Category's Language block to display-->
-        <div>
-            <!--The selector to select a Category's Language block to display-->
-            <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+            </div>
+            <!--end of welcome message-->
+            <br>
+            <!--Select a Language block to display-->
+            <div>
+                <!--The selector to select a Category's Language block to display-->
                 <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                     <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
-                        <label for="selectDiv">Valitse kieli | Select a language</label>
-                        <select id="selectDiv" onchange="displaySelectedDiv()">
-                            <option value="div_fi">Suomi</option>
-                            <option value="div_en">English</option>
-                        </select>
+                        <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                            <label for="selectDiv">Valitse kieli | Select a language</label>
+                            <select id="selectDiv" onchange="displaySelectedDiv()">
+                                <option value="div_fi">Suomi</option>
+                                <option value="div_en">English</option>
+                            </select>
+                        </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                     </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                 </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
-
-                <div id="div_fi" class="category_block">
-                    <!-- Content for Category 7 -->
-                    <h3>Kategoria 7</h3>
-                    <p>Luokan 7 kuvaus.</p>
-                    <div>
-                        <script>
-                            var elementId_overview_fi = "overview_7"
-                            var overviewFilePath_fi = "{{overviewResponse_url}}" + "overview_7.txt"
-                            readFile(elementId_overview_fi, overviewFilePath_fi);
-                        </script>
-                        <p id="overview_7"></p>
-                    </div>
-
-                    <div class="chart_7_fi">
-                        <canvas id="myChart_fi" width="40%" height="10%"></canvas>
-                    </div>
-
-                    <h3>Henkilökohtainen palaute 1</h3>
-                    <div>
-                        <script>
-                            var feedback_fi = "{{category_message7}}"
-                            var elementId_fi = "Category_fi"
-                            var personalizedFilePath_fi = "{{personalizedResponse_url}}" + "7_fi_" +  feedback_fi + ".txt"
-                            readFile(elementId_fi, personalizedFilePath_fi);
-                        </script>
-                        <p id="Category_fi"></p>
-                    </div>
-
-                </div>
-
-                <div id="div_en" class="category_block">
-                    <!-- Content for Category 7 -->
-                    <h3>Category 7</h3>
-                    <p>Description of of Category 7.</p>
-                    <div>
-                        <script>
-                            var elementId_overview_en = "overview_7"
-                            var overviewFilePath_en = "{{overviewResponse_url}}" + "overview_7.txt"
-                            readFile(elementId_overview_en, overviewFilePath_en);
-                        </script>
-                        <p id="overview_7"></p>
-                    </div>
-                    <div class="chart_7_en">
-                        <canvas id="myChart_en" width="40%" height="10%"></canvas>
-                    </div>
-
-                    <h3>Personalized feedback 7</h3>
-                    <div>
-                        <script>
-                            var feedback_en = "{{category_message7}}";
-                            var elementId_en = "Category_en"
-                            var personalizedFilePath_en = "{{personalizedResponse_url}}" + "7_en_" + feedback_en + ".txt"
-                            readFile(elementId_en, personalizedFilePath_en);
-                        </script>
-                        <p id="Category_en"></p>
-                    </div>
-                </div>
-
-            </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
-
-            <!--CHART-->
-            <div class="statistics">
+            </div>
+        </center>
+        <!--Finnish language block-->
+        <div id="div_fi" class="category_block">
+            <!--overview of the category -->
+            <br>
+            <center>
+                <h3>Yleiskatsaus kategoriaan</h3>
+                <br>
+            </center>
+            <br>
+            <div>
                 <script>
-                    Chart.defaults.doughnutLabels = Chart.helpers.clone(Chart.defaults.doughnut);
+                    var elementId_overview_fi = "overview_7_fi"
+                    var overviewFilePath_fi = "{{overviewResponse_url}}" + "overview_7_fi.txt"
+                    readFile(elementId_overview_fi, overviewFilePath_fi);
+                </script>
+                <p id="overview_7_fi" class="custom-text"></p>
+            </div>
 
-                    var helpers = Chart.helpers;
-                    var defaults = Chart.defaults;
+            <br>
+            <!--the Chart come here-->
+            <div class="chart_7_fi">
+                <canvas id="myChart_fi" width="40%" height="10%"></canvas>
+            </div>
 
-                    Chart.controllers.doughnutLabels = Chart.controllers.doughnut.extend({
-                        updateElement: function (arc, index, reset) {
-                            var _this = this;
-                            var chart = _this.chart,
-                                chartArea = chart.chartArea,
-                                opts = chart.options,
-                                animationOpts = opts.animation,
-                                arcOpts = opts.elements.arc,
-                                centerX = (chartArea.left + chartArea.right) / 2,
-                                centerY = (chartArea.top + chartArea.bottom) / 2,
-                                startAngle = opts.rotation, // non reset case handled later
-                                endAngle = opts.rotation, // non reset case handled later
-                                dataset = _this.getDataset(),
-                                circumference = reset && animationOpts.animateRotate ? 0 : arc.hidden ? 0 : _this.calculateCircumference(dataset.data[index]) * (opts.circumference / (2.0 * Math.PI)),
-                                innerRadius = reset && animationOpts.animateScale ? 0 : _this.innerRadius,
-                                outerRadius = reset && animationOpts.animateScale ? 0 : _this.outerRadius,
-                                custom = arc.custom || {},
-                                valueAtIndexOrDefault = helpers.getValueAtIndexOrDefault;
+            <!--personalized feedback of the category -->
+            <h3>
+                <br>
+                <br>
+                <center>Henkilökohtainen palaute</center>
+            </h3>
+            <div>
+                <script>
+                    var feedback_fi = "{{category_message7}}"
+                    var elementId_fi = "Category_fi"
+                    var personalizedFilePath_fi = "{{personalizedResponse_url}}" + "7_fi_" + feedback_fi + ".txt"
+                    readFile(elementId_fi, personalizedFilePath_fi);
+                </script>
+                <p id="Category_fi" class="custom-text"></p>
+            </div>
 
-                            helpers.extend(arc, {
-                                // Utility
-                                _datasetIndex: _this.index,
-                                _index: index,
+        </div>
 
-                                // Desired view properties
-                                _model: {
-                                    x: centerX + chart.offsetX,
-                                    y: centerY + chart.offsetY,
-                                    startAngle: startAngle,
-                                    endAngle: endAngle,
-                                    circumference: circumference,
-                                    outerRadius: outerRadius,
-                                    innerRadius: innerRadius,
-                                    label: valueAtIndexOrDefault(dataset.label, index, chart.data.labels[index])
-                                },
+        <!--English language block-->
+        <div id="div_en" class="category_block">
+            <!--overview of the category -->
+            <br>
+            <center>
+                <h3>Description of the Category</h3>
+                <br>
+            </center>
+            <br>
+            <div>
+                <script>
+                    var elementId_overview_en = "overview_7_en"
+                    var overviewFilePath_en = "{{overviewResponse_url}}" + "overview_7_en.txt"
+                    readFile(elementId_overview_en, overviewFilePath_en);
+                </script>
+                <p id="overview_7_en" class="custom-text"></p>
+            </div>
 
-                                draw: function () {
-                                    var ctx = this._chart.ctx,
-                                        vm = this._view,
-                                        sA = vm.startAngle,
-                                        eA = vm.endAngle,
-                                        opts = this._chart.config.options;
+            <br>
+            <!--the Chart come here-->
+            <div class="chart_7_en">
+                <canvas id="myChart_en" width="40%" height="10%"></canvas>
+            </div>
 
-                                    var labelPos = this.tooltipPosition();
-                                    var segmentLabel = vm.circumference / opts.circumference * 100;
+            <!--personalized feedback of the category -->
+            <h3>
+                <br>
+                <br>
+                <center>Personalized feedback</center>
+            </h3>
+            <div>
+                <script>
+                    var feedback_en = "{{category_message7}}";
+                    var elementId_en = "Category_en"
+                    var personalizedFilePath_en = "{{personalizedResponse_url}}" + "7_en_" + feedback_en + ".txt"
+                    readFile(elementId_en, personalizedFilePath_en);
+                </script>
+                <p id="Category_en" class="custom-text"></p>
+            </div>
+        </div>
 
-                                    ctx.beginPath();
+        <div class="next-back-buttons">
+            <a href="{{ url_for('page6') }}" class="back-page-button">Back</a>
+            <a href="{{ url_for('page8') }}" class="next-page-button">Next Page</a>
+        </div>
 
-                                    ctx.arc(vm.x, vm.y, vm.outerRadius, sA, eA);
-                                    ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
+    </div>
 
-                                    ctx.closePath();
-                                    ctx.strokeStyle = vm.borderColor;
-                                    ctx.lineWidth = vm.borderWidth;
 
-                                    ctx.fillStyle = vm.backgroundColor;
+</body>
 
-                                    ctx.fill();
-                                    ctx.lineJoin = 'bevel';
+<footer>
+    <!--Javascript for the chart-->
+    <div class="statistics">
+        <script>
+            Chart.defaults.doughnutLabels = Chart.helpers.clone(Chart.defaults.doughnut);
 
-                                    if (vm.borderWidth) {
-                                        ctx.stroke();
-                                    }
+            var helpers = Chart.helpers;
+            var defaults = Chart.defaults;
 
-                                    if (vm.circumference > 0.0015) { // Trying to hide label when it doesn't fit in segment
-                                        ctx.beginPath();
-                                        ctx.font = helpers.fontString(opts.defaultFontSize, opts.defaultFontStyle, opts.defaultFontFamily);
-                                        ctx.fillStyle = "#190707";
-                                        ctx.textBaseline = "top";
-                                        ctx.textAlign = "center";
+            Chart.controllers.doughnutLabels = Chart.controllers.doughnut.extend({
+                updateElement: function (arc, index, reset) {
+                    var _this = this;
+                    var chart = _this.chart,
+                        chartArea = chart.chartArea,
+                        opts = chart.options,
+                        animationOpts = opts.animation,
+                        arcOpts = opts.elements.arc,
+                        centerX = (chartArea.left + chartArea.right) / 2,
+                        centerY = (chartArea.top + chartArea.bottom) / 2,
+                        startAngle = opts.rotation, // non reset case handled later
+                        endAngle = opts.rotation, // non reset case handled later
+                        dataset = _this.getDataset(),
+                        circumference = reset && animationOpts.animateRotate ? 0 : arc.hidden ? 0 : _this.calculateCircumference(dataset.data[index]) * (opts.circumference / (2.0 * Math.PI)),
+                        innerRadius = reset && animationOpts.animateScale ? 0 : _this.innerRadius,
+                        outerRadius = reset && animationOpts.animateScale ? 0 : _this.outerRadius,
+                        custom = arc.custom || {},
+                        valueAtIndexOrDefault = helpers.getValueAtIndexOrDefault;
 
-                                        // Round percentage in a way that it always adds up to 100%
-                                        ctx.fillText(segmentLabel.toFixed() + "%", labelPos.x, labelPos.y);
-                                    }
-                                    //display in the center the total sum of all segments
-                                    var total = dataset.data.reduce((sum, val) => sum + val, 0);
-                                    //ctx.fillText('Total = ' + total, vm.x, vm.y - 20, 200);
+                    helpers.extend(arc, {
+                        // Utility
+                        _datasetIndex: _this.index,
+                        _index: index,
 
-                                    ctx.fillText('No burnout', vm.x - 300, vm.y + 50);
-                                    ctx.fillText('Bad burnout', vm.x + 300, vm.y + 50);
-                                }
-                            });
+                        // Desired view properties
+                        _model: {
+                            x: centerX + chart.offsetX,
+                            y: centerY + chart.offsetY,
+                            startAngle: startAngle,
+                            endAngle: endAngle,
+                            circumference: circumference,
+                            outerRadius: outerRadius,
+                            innerRadius: innerRadius,
+                            label: valueAtIndexOrDefault(dataset.label, index, chart.data.labels[index])
+                        },
 
-                            var model = arc._model;
-                            model.backgroundColor = valueAtIndexOrDefault(dataset.backgroundColor, index, arcOpts.backgroundColor);
-                            model.hoverBackgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : valueAtIndexOrDefault(dataset.hoverBackgroundColor, index, arcOpts.hoverBackgroundColor);
-                            model.borderWidth = custom.borderWidth ? custom.borderWidth : valueAtIndexOrDefault(dataset.borderWidth, index, arcOpts.borderWidth);
-                            model.borderColor = custom.borderColor ? custom.borderColor : valueAtIndexOrDefault(dataset.borderColor, index, arcOpts.borderColor);
+                        draw: function () {
+                            var ctx = this._chart.ctx,
+                                vm = this._view,
+                                sA = vm.startAngle,
+                                eA = vm.endAngle,
+                                opts = this._chart.config.options;
 
-                            // Set correct angles if not resetting
-                            if (!reset || !animationOpts.animateRotate) {
-                                if (index === 0) {
-                                    model.startAngle = opts.rotation;
-                                } else {
-                                    model.startAngle = _this.getMeta().data[index - 1]._model.endAngle;
-                                }
+                            var labelPos = this.tooltipPosition();
+                            var segmentLabel = vm.circumference / opts.circumference * 100;
 
-                                model.endAngle = model.startAngle + model.circumference;
+                            ctx.beginPath();
+
+                            ctx.arc(vm.x, vm.y, vm.outerRadius, sA, eA);
+                            ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
+
+                            ctx.closePath();
+                            ctx.strokeStyle = vm.borderColor;
+                            ctx.lineWidth = vm.borderWidth;
+
+                            ctx.fillStyle = vm.backgroundColor;
+
+                            ctx.fill();
+                            ctx.lineJoin = 'bevel';
+
+                            if (vm.borderWidth) {
+                                ctx.stroke();
                             }
 
-                            arc.pivot();
+                            if (vm.circumference > 0.0015) { // Trying to hide label when it doesn't fit in segment
+                                ctx.beginPath();
+                                ctx.font = helpers.fontString(opts.defaultFontSize, opts.defaultFontStyle, opts.defaultFontFamily);
+                                ctx.fillStyle = "#190707";
+                                ctx.textBaseline = "top";
+                                ctx.textAlign = "center";
+
+                                // Round percentage in a way that it always adds up to 100%
+                                ctx.fillText(segmentLabel.toFixed() + "%", labelPos.x, labelPos.y);
+                            }
+                            //display in the center the total sum of all segments
+                            var total = dataset.data.reduce((sum, val) => sum + val, 0);
+                            //ctx.fillText('Total = ' + total, vm.x, vm.y - 20, 200);
+
+                            ctx.fillText('No burnout', vm.x - 300, vm.y + 50);
+                            ctx.fillText('Bad burnout', vm.x + 300, vm.y + 50);
                         }
                     });
 
-                    var config = {
-                        type: 'doughnutLabels',
-                        data: {
-                            datasets: [{
-                                data: [
-                                    sum_data = '{{sum_of_burnout}}',
-                                    40 - sum_data
+                    var model = arc._model;
+                    model.backgroundColor = valueAtIndexOrDefault(dataset.backgroundColor, index, arcOpts.backgroundColor);
+                    model.hoverBackgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : valueAtIndexOrDefault(dataset.hoverBackgroundColor, index, arcOpts.hoverBackgroundColor);
+                    model.borderWidth = custom.borderWidth ? custom.borderWidth : valueAtIndexOrDefault(dataset.borderWidth, index, arcOpts.borderWidth);
+                    model.borderColor = custom.borderColor ? custom.borderColor : valueAtIndexOrDefault(dataset.borderColor, index, arcOpts.borderColor);
 
-                                ],
-                                backgroundColor: (function () {
-
-                                    var r, g, b;
-
-                                    if (sum_data < 20) {
-                                        // green to yellow
-                                        r = Math.floor(255 * (sum_data / 20));
-                                        g = 255;
-
-                                    } else {
-                                        // yellow to red
-                                        r = 255;
-                                        g = Math.floor(255 * ((20 - sum_data % 20) / 20));
-                                    }
-                                    b = 0;
-
-
-                                    var color1 = 'rgb(' + r + ',' + g + ',' + b + ')';
-                                    var color2 = 'rgba(50, 50, 100, 0.1)';
-
-                                    return [color1, color2];
-
-                                }
-
-                                )(),
-                            }],
-                            labels: [
-                                "Your score",
-                                "Total"
-                            ]
-                        },
-                        options: {
-                            circumference: Math.PI,
-                            rotation: 1.0 * Math.PI,
-                            responsive: true,
-                            legend: {
-                                display: false,
-                            },
-                            title: {
-                                display: true,
-                                text: 'Your total burnout score'
-                            },
-                            animation: {
-                                animateScale: true,
-                                animateRotate: true
-                            }
+                    // Set correct angles if not resetting
+                    if (!reset || !animationOpts.animateRotate) {
+                        if (index === 0) {
+                            model.startAngle = opts.rotation;
+                        } else {
+                            model.startAngle = _this.getMeta().data[index - 1]._model.endAngle;
                         }
-                    };
 
-                    var ctx = document.getElementById("myChart_fi").getContext("2d");
-                    window.upDownChart = new Chart(ctx, config);
+                        model.endAngle = model.startAngle + model.circumference;
+                    }
 
-                    var ctx = document.getElementById("myChart_en").getContext("2d");
-                    window.upDownChart = new Chart(ctx, config);
+                    arc.pivot();
+                }
+            });
 
-                </script>
-            </div>
+            var config = {
+                type: 'doughnutLabels',
+                data: {
+                    datasets: [{
+                        data: [
+                            sum_data = '{{sum_of_burnout}}',
+                            40 - sum_data
 
-            <div class="next-back-buttons">
-                <a href="{{ url_for('welcome') }}" class="back-page-button">Back</a>
-                <a href="{{ url_for('index') }}" class="next-page-button">Next Page</a>
-            </div>
-        </div>
-    </center>
+                        ],
+                        backgroundColor: (function () {
+
+                            var r, g, b;
+
+                            if (sum_data < 20) {
+                                // green to yellow
+                                r = Math.floor(255 * (sum_data / 20));
+                                g = 255;
+
+                            } else {
+                                // yellow to red
+                                r = 255;
+                                g = Math.floor(255 * ((20 - sum_data % 20) / 20));
+                            }
+                            b = 0;
+
+
+                            var color1 = 'rgb(' + r + ',' + g + ',' + b + ')';
+                            var color2 = 'rgba(50, 50, 100, 0.1)';
+
+                            return [color1, color2];
+
+                        }
+
+                        )(),
+                    }],
+                    labels: [
+                        "Your score",
+                        "Total"
+                    ]
+                },
+                options: {
+                    circumference: Math.PI,
+                    rotation: 1.0 * Math.PI,
+                    responsive: true,
+                    legend: {
+                        display: false,
+                    },
+                    title: {
+                        display: true,
+                        text: 'Your total burnout score'
+                    },
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true
+                    }
+                }
+            };
+
+            var ctx = document.getElementById("myChart_fi").getContext("2d");
+            window.upDownChart = new Chart(ctx, config);
+
+            var ctx = document.getElementById("myChart_en").getContext("2d");
+            window.upDownChart = new Chart(ctx, config);
+
+        </script>
     </div>
-</body>
+</footer>
 
 </html>

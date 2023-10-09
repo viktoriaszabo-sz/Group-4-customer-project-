@@ -114,8 +114,6 @@ def page1():
         emailNotFound = None
         # user data to retrieve the row (1st row found)
         user_data = df[df['Email'] == user_email]
-        # retrieve the language preselected by user when giving survey
-        lang_preselect = user_data['lang'].values[0]
         # retrieve the user Name for greeting
         user_name = user_data['Name'].values[0]
         # check for existence of user data
@@ -148,7 +146,7 @@ def page1():
                 personalizedResponse_url=personalizedResponse_url,
                 overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 1
-                chart_1 = chart_1,
+                # chart_1 = chart_1,
                 # the output of the category
                 category_message1 = category_message1
                 )
@@ -170,8 +168,6 @@ def page2():
         emailNotFound = None
         # user data to retrieve the row (1st row found)
         user_data = df[df['Email'] == user_email]
-        # retrieve the language preselected by user when giving survey
-        lang_preselect = user_data['lang'].values[0]
         # retrieve the user Name for greeting
         user_name = user_data['Name'].values[0]
         # check for existence of user data
@@ -204,7 +200,7 @@ def page2():
                 personalizedResponse_url=personalizedResponse_url,
                 overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 2
-                chart_2 = chart_2,
+                # chart_2 = chart_2,
                 # the output of the category
                 category_message2 = category_message2,
                 )
@@ -227,8 +223,6 @@ def page3():
         emailNotFound = None
         # user data to retrieve the row (1st row found)
         user_data = df[df['Email'] == user_email]
-        # retrieve the language preselected by user when giving survey
-        lang_preselect = user_data['lang'].values[0]
         # retrieve the user Name for greeting
         user_name = user_data['Name'].values[0]
         # check for existence of user data
@@ -261,7 +255,7 @@ def page3():
                 personalizedResponse_url=personalizedResponse_url,
                 overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 3
-                chart_3 = chart_3,
+                # chart_3 = chart_3,
                 # the output of the category
                 category_message3 = category_message3
                 )
@@ -284,8 +278,6 @@ def page4():
         emailNotFound = None
         # user data to retrieve the row (1st row found)
         user_data = df[df['Email'] == user_email]
-        # retrieve the language preselected by user when giving survey
-        lang_preselect = user_data['lang'].values[0]
         # retrieve the user Name for greeting
         user_name = user_data['Name'].values[0]
         # check for existence of user data
@@ -318,7 +310,7 @@ def page4():
                 personalizedResponse_url=personalizedResponse_url,
                 overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 4
-                chart_4 = chart_4,
+                # chart_4 = chart_4,
                 # the output of the category
                 category_message4 = category_message4
                 )
@@ -341,8 +333,6 @@ def page5():
         emailNotFound = None
         # user data to retrieve the row (1st row found)
         user_data = df[df['Email'] == user_email]
-        # retrieve the language preselected by user when giving survey
-        lang_preselect = user_data['lang'].values[0]
         # retrieve the user Name for greeting
         user_name = user_data['Name'].values[0]
         # check for existence of user data
@@ -375,7 +365,7 @@ def page5():
                 personalizedResponse_url=personalizedResponse_url,
                 overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 5
-                chart_5 = chart_5,
+                # chart_5 = chart_5,
                 # the output of the category
                 category_message5 = category_message5,
                 )
@@ -398,8 +388,6 @@ def page6():
         emailNotFound = None
         # user data to retrieve the row (1st row found)
         user_data = df[df['Email'] == user_email]
-        # retrieve the language preselected by user when giving survey
-        lang_preselect = user_data['lang'].values[0]
         # retrieve the user Name for greeting
         user_name = user_data['Name'].values[0]
         # check for existence of user data
@@ -432,7 +420,7 @@ def page6():
                 personalizedResponse_url=personalizedResponse_url,
                 overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 6
-                chart_6 = chart_6,
+                # chart_6 = chart_6,
                 # the output of the category
                 category_message6 = category_message6, 
                 )
@@ -454,8 +442,6 @@ def page7():
         emailNotFound = None
         # user data to retrieve the row (1st row found)
         user_data = df[df['Email'] == user_email]
-        # retrieve the language preselected by user when giving survey
-        lang_preselect = user_data['lang'].values[0]
         # retrieve the user Name for greeting
         user_name = user_data['Name'].values[0]
         # check for existence of user data
@@ -510,8 +496,7 @@ def page8():
         emailNotFound = None
         # user data to retrieve the row (1st row found)
         user_data = df[df['Email'] == user_email]
-        # retrieve the language preselected by user when giving survey
-        lang_preselect = user_data['lang'].values[0]
+
         # retrieve the user Name for greeting
         user_name = user_data['Name'].values[0]
         # check for existence of user data
@@ -544,7 +529,7 @@ def page8():
                 personalizedResponse_url=personalizedResponse_url,
                 overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 8
-                chart_ = chart_,
+                # chart_ = # chart_,
                 # the output of the category
                 category_message8 = category_message8
                 )
