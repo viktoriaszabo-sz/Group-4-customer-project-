@@ -31,10 +31,10 @@
                 the lower the value, the better the result.
             </p>
         </div>
-
-        <div class="overview">
+    <div class="container">
+        <div class="header">
             <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
-
+        </div></div>
             <select id="chartType">
                 <option value="chart1">Your statistics</option>
                 <option value="chart2">Your statistics compared to other respondents</option>
@@ -42,7 +42,7 @@
             <div id="chartContainer">
                 <canvas id="myChart"></canvas>
             </div>
-
+        </div>
             <script>
                 const chartData = {
                     chart1: [
@@ -149,6 +149,7 @@
                                 }],
                             },
                             options: {
+                                maintainAspectRatio: false,
                                 indexAxis: 'y', // Set to "y" for horizontal bar chart
                                 scales: {
                                     x: {
@@ -169,10 +170,9 @@
                     updateChart();
                 });
             </script>
-        </div>
-    </div>
+  
     <a href="{{ url_for('page_1') }}" class="next-page-button">Next Page</a>
-    </div>
+    
 
 </body>
 
