@@ -1,0 +1,6 @@
+1@hamk.fi	1
+2@hamk.fi	2
+3@hamk.fi	3
+4@hamk.fi	4
+5@hamk.fi	5
+6@hamk.fi	'a'

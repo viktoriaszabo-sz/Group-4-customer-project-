@@ -4,62 +4,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category 7</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Personal Feedback | Learn Well 2023 | Powered by Group 4</title>
+    <!--Style-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='functionAndLayout/style.css') }}">
+    <!--Script to select a div to display-->
+    <script src="{{ url_for('static', filename='functionAndLayout/displayDiv.js') }}"></script>
+    <!--Script to display the content of the feedback stored in .txt files-->
+    <script src="{{ url_for('static', filename='functionAndLayout/displayFileContent.js') }}"></script>
+    <!--Script for the Chart-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <script src="https://kit.fontawesome.com/5c1299d2f2.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <!-- sidebar start -->
-    <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-      </label>
-            <ul>
-                <li><a href="{{ url_for ('welcome') }}">Welcome</a></li>
-                <li><a href="{{ url_for ('page_1') }}">1. Learning approach</a></li>
-                <li><a href="{{ url_for ('page_2') }}">2. Learning environment</a></li>
-                <li><a href="{{ url_for ('page_3') }}">3. Competence development </a></li>
-                <li><a href="{{ url_for ('page_4') }}">4. Objectives for the future</a></li>
-                <li><a href="{{ url_for ('page_5') }}">5. Wellbeing: sef-efficacy</a></li>
-                <li><a href="{{ url_for ('page_6') }}">6. Wellbeing: psychological flexibility</a></li>
-                <li><a href="{{ url_for ('page_7') }}">7. Wellbeing: level of burnout</a></li>
-                <li><a href="{{ url_for ('page_8') }}">8. Wellbeing: self-compassion</a></li>
-            </ul>
-    </nav>
-    <!-- sidebar end -->
     <div class="container">
+
         <div class="header">
             <div draggable="false" class="learnWellLogo">
-                <img src="{{ url_for('static', filename='learnWellLogo.png') }}">
+                <img src="{{ url_for('static', filename='functionAndLayout/learnWellLogo.png') }}">
             </div>
-            <h1>Category 7</h1>
         </div>
-        <div class="text">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero accusantium ullam quo placeat iusto
-                cupiditate corporis quidem eaque incidunt delectus optio minus, laboriosam quos tempore obcaecati labore
-                impedit atque voluptatibus.<br>
-                <br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus laboriosam tempore sequi porro!
-                Doloremque neque quos eum inventore, culpa dicta totam quidem modi ratione temporibus, commodi minima
-                quo quod necessitatibus!<br>
-                <br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ipsum assumenda velit cum commodi, ut
-                culpa quidem at. Cupiditate ducimus at tempora! Error dicta qui autem deserunt beatae ad fugiat!<br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolorem sunt explicabo voluptate
-                ipsum neque reprehenderit quis minus fugit maxime officia asperiores molestiae enim corporis, non culpa
-                sequi error minima.
-            </p>
+    <center>
+        <div id="welcoming_div">
+
+                <h1>Learn Well Project - Group 4</h1>
+                <h3><i>henkilökohtainen palautteesi | your personal feedback</i></h3>
+                <p id="welcoming_p"></p>
+                <!--IMPORTANT this script must come after the above p element with id="welcoming"-->
+                <script id="welcoming_script">
+                    // Retrieve the user_name passed from Python
+                    var user_name = "{{ user_name }}";
+                    // Display the user_name in the element with id="welcoming" above
+                    var userNameDisplay = document.getElementById('welcoming_p');
+                    userNameDisplay.innerText = "Welcome " + user_name + ".\nHere's a personalized feedback based on the survey you gave.";
+                </script>
+            
         </div>
-        <div class="overview">
 
+        <!--Select a Category's Language block to display-->
+        <div>
+            <!--The selector to select a Category's Language block to display-->
+            <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                    <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                        <label for="selectDiv">Valitse kieli | Select a language</label>
+                        <select id="selectDiv" onchange="displaySelectedDiv()">
+                            <option value="div_fi">Suomi</option>
+                            <option value="div_en">English</option>
+                        </select>
+                    </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
 
+                <div id="div_fi" class="category_block">
+                    <!-- Content for Category 7 -->
+                    <h3>Kategoria 7</h3>
+                    <p>Luokan 7 kuvaus.</p>
+                    <div>
+                        <script>
+                            var elementId_overview_fi = "overview_7"
+                            var overviewFilePath_fi = "{{overviewResponse_url}}" + "overview_7.txt"
+                            readFile(elementId_overview_fi, overviewFilePath_fi);
+                        </script>
+                        <p id="overview_7"></p>
+                    </div>
+
+                    <div class="chart_7_fi">
+                        <canvas id="myChart_fi" width="40%" height="10%"></canvas>
+                    </div>
+
+                    <h3>Henkilökohtainen palaute 1</h3>
+                    <div>
+                        <script>
+                            var feedback_fi = "{{category_message7}}"
+                            var elementId_fi = "Category_fi"
+                            var personalizedFilePath_fi = "{{personalizedResponse_url}}" + "7_fi_" +  feedback_fi + ".txt"
+                            readFile(elementId_fi, personalizedFilePath_fi);
+                        </script>
+                        <p id="Category_fi"></p>
+                    </div>
+
+                </div>
+
+                <div id="div_en" class="category_block">
+                    <!-- Content for Category 7 -->
+                    <h3>Category 7</h3>
+                    <p>Description of of Category 7.</p>
+                    <div>
+                        <script>
+                            var elementId_overview_en = "overview_7"
+                            var overviewFilePath_en = "{{overviewResponse_url}}" + "overview_7.txt"
+                            readFile(elementId_overview_en, overviewFilePath_en);
+                        </script>
+                        <p id="overview_7"></p>
+                    </div>
+                    <div class="chart_7_en">
+                        <canvas id="myChart_en" width="40%" height="10%"></canvas>
+                    </div>
+
+                    <h3>Personalized feedback 7</h3>
+                    <div>
+                        <script>
+                            var feedback_en = "{{category_message7}}";
+                            var elementId_en = "Category_en"
+                            var personalizedFilePath_en = "{{personalizedResponse_url}}" + "7_en_" + feedback_en + ".txt"
+                            readFile(elementId_en, personalizedFilePath_en);
+                        </script>
+                        <p id="Category_en"></p>
+                    </div>
+                </div>
+
+            </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+
+            <!--CHART-->
             <div class="statistics">
-                <canvas id="myChart" width="400" height="300"></canvas>
-
                 <script>
                     Chart.defaults.doughnutLabels = Chart.helpers.clone(Chart.defaults.doughnut);
 
@@ -228,26 +284,22 @@
                         }
                     };
 
-                    var ctx = document.getElementById("myChart").getContext("2d");
+                    var ctx = document.getElementById("myChart_fi").getContext("2d");
                     window.upDownChart = new Chart(ctx, config);
+
+                    var ctx = document.getElementById("myChart_en").getContext("2d");
+                    window.upDownChart = new Chart(ctx, config);
+
                 </script>
             </div>
-            <p class="custom-text">
-                <b>Wellbeing: level of burnout </b><br>
-                <br>
-                {{category_message7}}
-            </p>
 
+            <div class="next-back-buttons">
+                <a href="{{ url_for('welcome') }}" class="back-page-button">Back</a>
+                <a href="{{ url_for('index') }}" class="next-page-button">Next Page</a>
+            </div>
         </div>
-
-        <div class="next-back-buttons">
-            <a href="{{ url_for('page_6') }}" class="back-page-button">Back</a>
-            <a href="{{ url_for('page_8') }}" class="next-page-button">Next Page</a>
-        </div>
-
-
+    </center>
     </div>
-
 </body>
 
 </html>
