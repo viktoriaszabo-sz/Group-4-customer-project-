@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'your_secret_key'
-file_path = "C:/Users/vikiv/OneDrive - Hämeen ammattikorkeakoulu/learnwell_dataset.xlsx"
+file_path = "C:/Users/hyggeuwu/OneDrive - Hämeen ammattikorkeakoulu/learnwell_dataset.xlsx"
 engine = "openpyxl"
 df = pd.read_excel(file_path, engine=engine, sheet_name='Form1')
 
