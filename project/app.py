@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'your_secret_key'
-file_path = "./project/learnwell_dataset.xlsx"
+file_path = "C:/Users/vikiv/OneDrive - Hämeen ammattikorkeakoulu/learnwell_dataset.xlsx"
 engine = "openpyxl"
 df = pd.read_excel(file_path, engine=engine, sheet_name='Form1')
 
@@ -83,13 +83,16 @@ def index():
 def process_form():
     # Get the user's email address from the form
     global user_email 
-    user_email = request.form.get('email')
-    # Store the email in the session
-    session['user_email'] = user_email
-    # Process the email address if needed
-    user_data = df[df['Email'] == user_email]
-    # Redirect the user to 'welcome'
-    return redirect(url_for('welcome', user_email=user_email))
+    global user_data
+    user_email = request.form.get('email')  #user email address after form validation in 0.html
+    session['user_email'] = user_email          # Store the email in the session
+    user_data = df[df['Email'] == user_email]  # Process the email address if needed
+        
+    if user_data.empty:   # checks if the email address is in the dataset
+        print("Invalid email address. It seems like your data is not accessible from our database")
+        return redirect('/')  # Redirect the user back to the form
+    else: 
+        return redirect(url_for('welcome', user_email=user_email))  # Redirect the user to 'welcome'
 
 # The welcome page
 @app.route('/welcome')
