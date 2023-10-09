@@ -5,27 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='functionAndLayout/style.css') }}">
 </head>
 
 <body>
     <div class="container">
         <div class="header">
             <div draggable="false" class="learnWellLogo">
-                <img src="{{ url_for('static', filename='learnWellLogo.png') }}" alt="Learnwell Logo">
-                <h3 id=sub-title>Write your email address</h3>
-                <form id="emailForm" method="post" action="/process_form">
-                    <input type="text" id = "email" name="email" placeholder="email" required><br><br>
-                    <span id="domainError" style="color: red;"></span>
-                    <br>
-                    <input type="submit" value="Get feedback" name="submit">
-                </form>
-
+                <img src="{{ url_for('static', filename='functionAndLayout/learnWellLogo.png') }}" alt="Learnwell Logo">
+                <h1>
+                    Learn Well Project - Group 4
+                </h1>
+                <br>
+                <br>
+                <h3 id=sub-title>Tervetuloa Learn Well -projektiin, ryhmä 4! | Welcome to Learn Well Project, Group 4!
+                </h3>
+                <br>
+                <p>Enter your email address to retrieve your personalized feedback</p>
+                <br>
+                <center>
+                    <form id="emailForm" method="post" action="/process_form">
+                        <input type="text" id="email" name="email" placeholder="email" required><br><br>
+                        <span id="domainError" style="color: red;"></span>
+                        <input type="submit" value="Get feedback" name="submit">
+                    </form>
+                </center>
                 <script>  // Function to validate the email and check the domain
                     function validateEmail() {
                         const emailInput = document.getElementById("email");
                         const domainError = document.getElementById("domainError");
-                        const allowedDomain = "hamk.fi"; 
+                        const allowedDomain = "hamk.fi";
                         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                         const emailDomain = emailInput.value.split('@')[1];
 
@@ -41,7 +50,7 @@
                         return true;
                     }
                     // Attach the validation function to the form's submit event
-                    document.getElementById("emailForm").addEventListener("submit", function(event) {
+                    document.getElementById("emailForm").addEventListener("submit", function (event) {
                         if (!validateEmail()) {
                             event.preventDefault(); // Prevent form submission if validation fails
                         }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='functionAndLayout/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://kit.fontawesome.com/5c1299d2f2.js" crossorigin="anonymous"></script>
 </head>
@@ -19,21 +19,21 @@
       </label>
             <ul>
                 <li><a href="{{ url_for ('welcome') }}">Welcome</a></li>
-                <li><a href="{{ url_for ('page_1') }}">1. Learning approach</a></li>
-                <li><a href="{{ url_for ('page_2') }}">2. Learning environment</a></li>
-                <li><a href="{{ url_for ('page_3') }}">3. Competence development </a></li>
-                <li><a href="{{ url_for ('page_4') }}">4. Objectives for the future</a></li>
-                <li><a href="{{ url_for ('page_5') }}">5. Wellbeing: sef-efficacy</a></li>
-                <li><a href="{{ url_for ('page_6') }}">6. Wellbeing: psychological flexibility</a></li>
-                <li><a href="{{ url_for ('page_7') }}">7. Wellbeing: level of burnout</a></li>
-                <li><a href="{{ url_for ('page_8') }}">8. Wellbeing: self-compassion</a></li>
+                <li><a href="{{ url_for ('page1') }}">1. Learning approach</a></li>
+                <li><a href="{{ url_for ('page2') }}">2. Learning environment</a></li>
+                <li><a href="{{ url_for ('page3') }}">3. Competence development </a></li>
+                <li><a href="{{ url_for ('page4') }}">4. Objectives for the future</a></li>
+                <li><a href="{{ url_for ('page5') }}">5. Wellbeing: sef-efficacy</a></li>
+                <li><a href="{{ url_for ('page6') }}">6. Wellbeing: psychological flexibility</a></li>
+                <li><a href="{{ url_for ('page7') }}">7. Wellbeing: level of burnout</a></li>
+                <li><a href="{{ url_for ('page8') }}">8. Wellbeing: self-compassion</a></li>
             </ul>
     </nav>
     <!-- sidebar end -->
     <div class="container">
         <div class="header">
             <div draggable="false" class="learnWellLogo">
-                <img src="{{ url_for('static', filename='learnWellLogo.png') }}" alt="Learnwell Logo">
+                <img src="{{ url_for('static', filename='functionAndLayout/learnWellLogo.png') }}" alt="Learnwell Logo">
             </div>
             <h1>Feedback Session (year)</h1>
         </div>
@@ -64,7 +64,7 @@
                 <div id="item-8">8</div>
             </div>
         </div>
-        <a href="{{ url_for('page_1') }}" class="next-page-button">Next Page</a>
+        <a href="{{ url_for('page1') }}" class="next-page-button">Next Page</a>
     </div>
 
 </body>
