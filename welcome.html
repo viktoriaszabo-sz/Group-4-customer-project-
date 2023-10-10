@@ -5,174 +5,193 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='functionAndLayout/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://kit.fontawesome.com/5c1299d2f2.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 
 </head>
 
 <body>
+    <!-- sidebar start -->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+      </label>
+            <ul>
+                <li><a href="{{ url_for ('welcome') }}">Welcome</a></li>
+                <li><a href="{{ url_for ('page1') }}">1. Learning approach</a></li>
+                <li><a href="{{ url_for ('page2') }}">2. Learning environment</a></li>
+                <li><a href="{{ url_for ('page3') }}">3. Competence development </a></li>
+                <li><a href="{{ url_for ('page4') }}">4. Objectives for the future</a></li>
+                <li><a href="{{ url_for ('page5') }}">5. Wellbeing: self-efficacy</a></li>
+                <li><a href="{{ url_for ('page6') }}">6. Wellbeing: psychological flexibility</a></li>
+                <li><a href="{{ url_for ('page7') }}">7. Wellbeing: level of burnout</a></li>
+                <li><a href="{{ url_for ('page8') }}">8. Wellbeing: self-compassion</a></li>
+            </ul>
+    </nav>
+    <!-- sidebar end -->
     <div class="container">
         <div class="header">
             <div draggable="false" class="learnWellLogo">
-                <img src="{{ url_for('static', filename='learnWellLogo.png') }}" alt="Learnwell Logo">
+                <img src="{{ url_for('static', filename='functionAndLayout/learnWellLogo.png') }}" alt="Learnwell Logo">
             </div>
             <h1>Feedback Session (year)</h1>
         </div>
         <div class="text">
-            <p>Welcome to the LearnWell feedback session!<br>
+            <p><br>Welcome to the LearnWell feedback session!<br>
                 <br>
                 The session is organised together with the 1st year students, study counsellors, and researchers from
                 the LearnWell team. The aim is to discuss together study-related well-being both from the students and
                 the teaching/degree programme perspectives.<br>
                 <br>
-                Factor scores are computed as a mean value of its five-point Likert scale items (1 = totally disagree, 3
-                = between, 5 = totally agree)<br>
+                Factor scores are computed as a mean value of its five-point Likert scale items (1 = totally disagree, 2 = disagree, 3
+                = between, 4 = agree, 5 = totally agree)<br>
                 High value is the aim in self-efficacy, psychological flexibility and self-compassion. In other factors,
                 the lower the value, the better the result.
             </p>
         </div>
-    <div class="container">
-        <div class="header">
-            <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
-        </div></div>
-            <select id="chartType">
-                <option value="chart1">Your statistics</option>
-                <option value="chart2">Your statistics compared to other respondents</option>
-            </select>
-            <div id="chartContainer">
-                <canvas id="myChart"></canvas>
+
+        <div class="container">
+            <div class="header">
+                <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
+            </div></div>
+                <select id="chartType">
+                    <option value="chart1">Your statistics</option>
+                    <option value="chart2">Your statistics compared to other respondents</option>
+                </select>
+                <div id="chartContainer">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
-        </div>
-            <script>
-                const chartData = {
-                    chart1: [
-                        { value: 10, label: 'Learning approach'},
-                        { value: 20, label: 'Learning environment' },
-                        { value: 30, label: 'Competence development' },
-                        { value: 40, label: 'Objectives for the future' },
-                        { value: 50, label: 'Wellbeing: sef-efficacy' },
-                        { value: 60, label: 'Wellbeing: psychological flexibility ' },
-                        { value: 70, label: 'Wellbeing: level of burnout' },
-                        { value: 80, label: 'Wellbeing: self-compassion' },
-                    ],
-                    chart2: [
-                        { value: 5, label: 'Learning approach (you)' },
-                        { value: 10, label: 'Learning approach (average of others)' },
-                        { value: 15, label: 'Learning environment (you)' },
-                        { value: 20, label: 'Learning environment (average of others)' },
-                        { value: 25, label: 'Competence development (you)' },
-                        { value: 30, label: 'Competence development (average of others)' },
-                        { value: 35, label: 'Objectives for the future (you)' },
-                        { value: 40, label: 'Objectives for the future (average of others)' },
-                        { value: 45, label: 'Wellbeing: sef-efficacy (you)' },
-                        { value: 50, label: 'Wellbeing: sef-efficacy (average of others)' },
-                        { value: 55, label: 'Wellbeing: psychological flexibility (you)' },
-                        { value: 60, label: 'Wellbeing: psychological flexibility (average of others)' },
-                        { value: 65, label: 'Wellbeing: level of burnout (you)' },
-                        { value: 70, label: 'Wellbeing: level of burnout (average of others)' },
-                        { value: 75, label: 'Wellbeing: self-compassion (you)' },
-                        { value: 100, label: 'Wellbeing: self-compassion (average of others)' },
-                    ],
-                };
-
-                const chartTypeSelect = document.getElementById('chartType');
-                const chartContainer = document.getElementById('chartContainer');
-                const ctx = document.getElementById('myChart').getContext('2d');
-                let currentChartType = chartTypeSelect.value;
-                let myChart; // Variable to store the chart instance
-
-                const getColorScheme = (chartType) => {
-            if (chartType === 'chart1') {
-                // Color scheme for 8 categories in chart1
-
-                
-                return [
-                    'rgba(255, 105, 97, 1.0)',
-                    'rgba(255, 180, 128, 1.0)',
-                    'rgba(248, 243, 141, 1.0)',
-                    'rgba(66, 214, 164, 1.0)',
-                    'rgba(8, 202, 209, 1.0)',
-                    'rgba(89, 173, 246, 1.0)',
-                    'rgba(157, 148, 255, 1.0)',
-                    'rgba(199, 128, 232, 1.0)',
-                ];
-            } else if (chartType === 'chart2') {
-                // Color scheme for 16 categories in chart2
-                return [
-                    'rgba(255, 105, 97, 1.0)',
-                    'rgba(255, 105, 97, 0.5)',
-
-                    'rgba(255, 180, 128, 1.0)',
-                    'rgba(255, 180, 128, 0.5)',
-
-                    'rgba(248, 243, 141, 1.0)',
-                    'rgba(248, 243, 141, 0.5)',
-
-                    'rgba(66, 214, 164, 1.0)',
-                    'rgba(66, 214, 164, 0.5)',
-
-                    'rgba(8, 202, 209, 1.0)',
-                    'rgba(8, 202, 209, 0.5)',
-
-                    'rgba(89, 173, 246, 1.0)',
-                    'rgba(89, 173, 246, 0.5)',
-
-                    'rgba(157, 148, 255, 1.0)',
-                    'rgba(157, 148, 255, 0.5)',
-
-                    'rgba(199, 128, 232, 1.0)',
-                    'rgba(199, 128, 232, 0.5)',
-                ];
-            }
-        };
-
-        const updateChart = () => {
-            const data = chartData[currentChartType];
-            const labels = data.map(item => item.label);
-            const backgroundColor = getColorScheme(currentChartType);
-
-            if (myChart) {
-                myChart.data.labels = labels;
-                myChart.data.datasets[0].data = data.map(item => item.value);
-                myChart.data.datasets[0].backgroundColor = backgroundColor;
-                myChart.update();
-            } else {
-                myChart = new Chart(ctx, {
-                    type: 'bar', // Use "bar" for horizontal bar chart
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            data: data.map(item => item.value),
-                            backgroundColor: backgroundColor,
-                                    // borderColor: 'rgba(75, 192, 192, 1)',
-                                    borderWidth: 1,
-                                }],
-                            },
-                            options: {
-                                maintainAspectRatio: false,
-                                indexAxis: 'y', // Set to "y" for horizontal bar chart
-                                scales: {
-                                    x: {
-                                        beginAtZero: true,
+                <script>
+                    const chartData = {
+                        chart1: [
+                            { value: 10, label: 'Learning approach'},
+                            { value: 20, label: 'Learning environment' },
+                            { value: 30, label: 'Competence development' },
+                            { value: 40, label: 'Objectives for the future' },
+                            { value: 50, label: 'Wellbeing: sef-efficacy' },
+                            { value: 60, label: 'Wellbeing: psychological flexibility ' },
+                            { value: 70, label: 'Wellbeing: level of burnout' },
+                            { value: 80, label: 'Wellbeing: self-compassion' },
+                        ],
+                        chart2: [
+                            { value: 5, label: 'Learning approach (you)' },
+                            { value: 10, label: 'Learning approach (average of others)' },
+                            { value: 15, label: 'Learning environment (you)' },
+                            { value: 20, label: 'Learning environment (average of others)' },
+                            { value: 25, label: 'Competence development (you)' },
+                            { value: 30, label: 'Competence development (average of others)' },
+                            { value: 35, label: 'Objectives for the future (you)' },
+                            { value: 40, label: 'Objectives for the future (average of others)' },
+                            { value: 45, label: 'Wellbeing: sef-efficacy (you)' },
+                            { value: 50, label: 'Wellbeing: sef-efficacy (average of others)' },
+                            { value: 55, label: 'Wellbeing: psychological flexibility (you)' },
+                            { value: 60, label: 'Wellbeing: psychological flexibility (average of others)' },
+                            { value: 65, label: 'Wellbeing: level of burnout (you)' },
+                            { value: 70, label: 'Wellbeing: level of burnout (average of others)' },
+                            { value: 75, label: 'Wellbeing: self-compassion (you)' },
+                            { value: 100, label: 'Wellbeing: self-compassion (average of others)' },
+                        ],
+                    };
+    
+                    const chartTypeSelect = document.getElementById('chartType');
+                    const chartContainer = document.getElementById('chartContainer');
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    let currentChartType = chartTypeSelect.value;
+                    let myChart; // Variable to store the chart instance
+    
+                    const getColorScheme = (chartType) => {
+                if (chartType === 'chart1') {
+                    // Color scheme for 8 categories in chart1
+    
+                    
+                    return [
+                        '#556EE6',
+                        '#E66868',
+                        '#556EE6',
+                        '#E66868',
+                        '#556EE6',
+                        '#E66868',
+                        '#556EE6',
+                        '#E66868',
+                    ];
+                } else if (chartType === 'chart2') {
+                    // Color scheme for 16 categories in chart2
+                    return [
+                        '#556EE6',
+                        '#778BEB',
+    
+                        '#E66868',
+                        '#EB8686',
+    
+                        '#556EE6',
+                        '#778BEB',
+    
+                        '#E66868',
+                        '#EB8686',
+    
+                        '#556EE6',
+                        '#778BEB',
+    
+                        '#E66868',
+                        '#EB8686',
+    
+                        '#556EE6',
+                        '#778BEB',
+    
+                        '#E66868',
+                        '#EB8686',
+                    ];
+                }
+            };
+    
+            const updateChart = () => {
+                const data = chartData[currentChartType];
+                const labels = data.map(item => item.label);
+                const backgroundColor = getColorScheme(currentChartType);
+    
+                if (myChart) {
+                    myChart.data.labels = labels;
+                    myChart.data.datasets[0].data = data.map(item => item.value);
+                    myChart.data.datasets[0].backgroundColor = backgroundColor;
+                    myChart.update();
+                } else {
+                    myChart = new Chart(ctx, {
+                        type: 'bar', // Use "bar" for horizontal bar chart
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                data: data.map(item => item.value),
+                                backgroundColor: backgroundColor,
+                                        // borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1,
+                                    }],
+                                },
+                                options: {
+                                    maintainAspectRatio: false,
+                                    indexAxis: 'y', // Set to "y" for horizontal bar chart
+                                    scales: {
+                                        x: {
+                                            beginAtZero: true,
+                                        },
                                     },
                                 },
-                            },
-                        });
-                    }
-                };
-
-                // Initial chart rendering
-                updateChart();
-
-                // Add event listener to switch chart types
-                chartTypeSelect.addEventListener('change', (event) => {
-                    currentChartType = event.target.value;
-                    updateChart();
-                });
-            </script>
-  
-    <a href="{{ url_for('page_1') }}" class="next-page-button">Next Page</a>
+                            });
+                        }
+                    };
     
+                    // Initial chart rendering
+                    updateChart();
+    
+                    // Add event listener to switch chart types
+                    chartTypeSelect.addEventListener('change', (event) => {
+                        currentChartType = event.target.value;
+                        updateChart();
+                    });
+                </script>
 
 </body>
 
