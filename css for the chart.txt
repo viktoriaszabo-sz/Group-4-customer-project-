@@ -1,8 +1,6 @@
+}
 #myChart {
-  border-radius: 4px;
   background-color: white;
   display: block;
   height: 500.5px;
-  width: 180.1px;
-
-}
+  width: 450.1px;
