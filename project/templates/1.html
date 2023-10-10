@@ -53,7 +53,6 @@
         </div>
 
         <br>
-
         <!--welcome messaage-->
         <center>
             <div id="welcoming_div">
@@ -75,8 +74,9 @@
                 <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                     <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                         <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
-                            <label for="selectDiv">Valitse kieli | Select a language</label>
+                            <label for="selectDiv">Kieli | Language</label>
                             <select id="selectDiv" onchange="displaySelectedDiv()">
+                                <option value="" disabled selected>vaihtaa kieltä | switch the language</option>
                                 <option value="div_en">English</option>
                                 <option value="div_fi">Suomi</option>
                             </select>
@@ -90,16 +90,10 @@
             <!--overview of the category -->
             <br>
             <center>
-                <h3>Yleiskatsaus kategoriaan</h3>
                 <br>
+                <h3>Yleiskatsaus kategoriaan</h3>
             </center>
-            <br>
             <div>
-                <script>
-                    var elementId_overview_fi = "overview_1_fi"
-                    var overviewFilePath_fi = "{{overviewResponse_url}}" + "overview_1_fi.txt"
-                    readFile(elementId_overview_fi, overviewFilePath_fi);
-                </script>
                 <p id="overview_1_fi" class="custom-text"></p>
             </div>
 
@@ -120,13 +114,8 @@
                 <center>Henkilökohtainen palaute</center>
             </h3>
             <div>
-                <script>
-                    var feedback_fi = "{{category_message1}}"
-                    var elementId_fi = "Category_fi"
-                    var personalizedFilePath_fi = "{{personalizedResponse_url}}" + "1_fi_" + feedback_fi + ".txt"
-                    readFile(elementId_fi, personalizedFilePath_fi);
-                </script>
-                <p id="Category_fi" class="custom-text"></p>
+                <p id="{{ category_message1 }}_fi" class="custom-text"></p>
+                </p>
             </div>
 
         </div>
@@ -136,22 +125,15 @@
             <!--overview of the category -->
             <br>
             <center>
-                <h3>Description of the Category</h3>
                 <br>
+                <h3>Description of the Category</h3>
             </center>
-            <br>
             <div>
-                <script>
-                    var elementId_overview_en = "overview_1_en"
-                    var overviewFilePath_en = "{{overviewResponse_url}}" + "overview_1_en.txt"
-                    readFile(elementId_overview_en, overviewFilePath_en);
-                </script>
                 <p id="overview_1_en" class="custom-text"></p>
             </div>
 
             <br>
             <!--the Chart come here-->
-
             <center>
                 <div class="chart_1_en">
                     <p>----------------------------------------------------</p>
@@ -167,13 +149,8 @@
                 <center>Personalized feedback</center>
             </h3>
             <div>
-                <script>
-                    var feedback_en = "{{category_message1}}";
-                    var elementId_en = "Category_en"
-                    var personalizedFilePath_en = "{{personalizedResponse_url}}" + "1_en_" + feedback_en + ".txt"
-                    readFile(elementId_en, personalizedFilePath_en);
-                </script>
-                <p id="Category_en" class="custom-text"></p>
+                <p id="{{ category_message1 }}_en" class="custom-text"></p>
+                </p>
             </div>
         </div>
 
@@ -189,11 +166,12 @@
 <footer>
     <!--Javascript for the chart-->
     <div class="statistics">
-
         <script>
             // Javascript for the chart
         </script>
     </div>
+    <!--Script to display the Paragraph from paragraph.xlsx-->
+    <script src="{{ url_for('static', filename='functionAndLayout/displayParagraph.js') }}"></script>
 </footer>
 
 </html>
