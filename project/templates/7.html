@@ -48,12 +48,11 @@
             <h2>Wellbeing: Level of Burnout</h2>
             <br>
             <h3><i>
-                <center>Henkilökohtainen palautteesi | Your personal feedback</center>
-            </i></h3>
+                    <center>Henkilökohtainen palautteesi | Your personal feedback</center>
+                </i></h3>
         </div>
 
         <br>
-
         <!--welcome messaage-->
         <center>
             <div id="welcoming_div">
@@ -91,24 +90,20 @@
             <!--overview of the category -->
             <br>
             <center>
-                <h3>Yleiskatsaus kategoriaan</h3>
                 <br>
+                <h3>Yleiskatsaus kategoriaan</h3>
             </center>
-            <br>
             <div>
-                <script>
-                    var elementId_overview_fi = "overview_7_fi"
-                    var overviewFilePath_fi = "{{overviewResponse_url}}" + "overview_7_fi.txt"
-                    readFile(elementId_overview_fi, overviewFilePath_fi);
-                </script>
                 <p id="overview_7_fi" class="custom-text"></p>
             </div>
 
             <br>
             <!--the Chart come here-->
-            <div class="chart_7_fi">
-                <canvas id="myChart_fi" width="40%" height="10%"></canvas>
-            </div>
+            <center>
+                <div class="chart_7_fi">
+                    <canvas id="myChart_fi" width="40%" height="10%"></canvas>
+                </div>
+            </center>
 
             <!--personalized feedback of the category -->
             <h3>
@@ -117,13 +112,8 @@
                 <center>Henkilökohtainen palaute</center>
             </h3>
             <div>
-                <script>
-                    var feedback_fi = "{{category_message7}}"
-                    var elementId_fi = "Category_fi"
-                    var personalizedFilePath_fi = "{{personalizedResponse_url}}" + "7_fi_" + feedback_fi + ".txt"
-                    readFile(elementId_fi, personalizedFilePath_fi);
-                </script>
-                <p id="Category_fi" class="custom-text"></p>
+                <p id="{{ category_message7 }}_fi" class="custom-text"></p>
+                </p>
             </div>
 
         </div>
@@ -133,24 +123,20 @@
             <!--overview of the category -->
             <br>
             <center>
-                <h3>Description of the Category</h3>
                 <br>
+                <h3>Description of the Category</h3>
             </center>
-            <br>
             <div>
-                <script>
-                    var elementId_overview_en = "overview_7_en"
-                    var overviewFilePath_en = "{{overviewResponse_url}}" + "overview_7_en.txt"
-                    readFile(elementId_overview_en, overviewFilePath_en);
-                </script>
                 <p id="overview_7_en" class="custom-text"></p>
             </div>
 
             <br>
             <!--the Chart come here-->
-            <div class="chart_7_en">
-                <canvas id="myChart_en" width="40%" height="10%"></canvas>
-            </div>
+            <center>
+                <div class="chart_7_en">
+                    <canvas id="myChart_en" width="40%" height="10%"></canvas>
+                </div>
+            </center>
 
             <!--personalized feedback of the category -->
             <h3>
@@ -159,13 +145,8 @@
                 <center>Personalized feedback</center>
             </h3>
             <div>
-                <script>
-                    var feedback_en = "{{category_message7}}";
-                    var elementId_en = "Category_en"
-                    var personalizedFilePath_en = "{{personalizedResponse_url}}" + "7_en_" + feedback_en + ".txt"
-                    readFile(elementId_en, personalizedFilePath_en);
-                </script>
-                <p id="Category_en" class="custom-text"></p>
+                <p id="{{ category_message7 }}_en" class="custom-text"></p>
+                </p>
             </div>
         </div>
 
@@ -175,7 +156,6 @@
         </div>
 
     </div>
-
 
 </body>
 
@@ -358,6 +338,8 @@
 
         </script>
     </div>
+    <!--Script to display the Paragraph from paragraph.xlsx-->
+    <script src="{{ url_for('static', filename='functionAndLayout/displayParagraph.js') }}"></script>
 </footer>
 
 </html>
