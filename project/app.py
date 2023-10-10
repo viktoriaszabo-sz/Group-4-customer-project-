@@ -1,11 +1,11 @@
 import pandas as pd
 import math
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 # run this code into powershell: pip install Flask 
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'your_secret_key'
-file_path = "C:/Users/vikiv/OneDrive - Hämeen ammattikorkeakoulu/learnwell_dataset.xlsx"
+file_path = "./project/learnwell_dataset.xlsx"
 engine = "openpyxl"
 df = pd.read_excel(file_path, engine=engine, sheet_name='Form1')
 
@@ -145,9 +145,6 @@ def page1():
     return render_template('1.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
-                # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 1
                 # chart_1 = chart_1,
                 # the output of the category
@@ -199,9 +196,6 @@ def page2():
     return render_template('2.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
-                # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 2
                 # chart_2 = chart_2,
                 # the output of the category
@@ -254,9 +248,6 @@ def page3():
     return render_template('3.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
-                # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 3
                 # chart_3 = chart_3,
                 # the output of the category
@@ -309,9 +300,6 @@ def page4():
     return render_template('4.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
-                # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 4
                 # chart_4 = chart_4,
                 # the output of the category
@@ -364,9 +352,6 @@ def page5():
     return render_template('5.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
-                # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 5
                 # chart_5 = chart_5,
                 # the output of the category
@@ -419,9 +404,6 @@ def page6():
     return render_template('6.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
-                # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 6
                 # chart_6 = chart_6,
                 # the output of the category
@@ -473,10 +455,7 @@ def page7():
     return render_template('7.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
-                # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
-                # sum of burn out for page 7
+                # chart variable: sum of burn out for page 7
                 sum_of_burnout = sum_of_burnout,
                 # the output of the category
                 category_message7 = category_message7
@@ -528,14 +507,24 @@ def page8():
     return render_template('8.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
-                # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 8
                 # chart_ = # chart_,
                 # the output of the category
                 category_message8 = category_message8
                 )
+
+# Load the Excel file into a DataFrame
+text_file_path = './project/paragraph.xlsx'
+paragraph = pd.read_excel(text_file_path)
+
+@app.route('/get_content/<id>')
+def get_content(id):
+    content_row = paragraph[paragraph['ID'] == id]
+    if content_row.empty:
+        return jsonify({'content': ''})
+
+    content = content_row['Content'].values[0]
+    return jsonify({'content': content})
 
 # app running
 if __name__ == '__main__': 
