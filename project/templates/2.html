@@ -11,8 +11,8 @@
     <script src="https://kit.fontawesome.com/5c1299d2f2.js" crossorigin="anonymous"></script>
     <!--Script to select a div to display-->
     <script src="{{ url_for('static', filename='functionAndLayout/displayDiv.js') }}"></script>
-    <!--Script to display the Paragraph from paragraph.xlsx-->
-    <script src="{{ url_for('static', filename='functionAndLayout/displayParagraph.js') }}"></script>
+    <!--Script to display the content of the feedback stored in .txt files-->
+    <script src="{{ url_for('static', filename='functionAndLayout/displayFileContent.js') }}"></script>
     <!--Script for the Chart-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
 </head>
@@ -45,12 +45,15 @@
             <br>
             <h1>Learn Well Project - Group 4</h1>
             <br>
-            <h2><b>Learning Environment (Support)</b></h2>
+            <h2>Learning Environment (Support)</h2>
             <br>
-            <p><i><center>Henkilökohtainen palautteesi | Your personal feedback</center></i></p>
+            <h3><i>
+                    <center>Henkilökohtainen palautteesi | Your personal feedback</center>
+                </i></h3>
         </div>
 
         <br>
+
         <!--welcome messaage-->
         <center>
             <div id="welcoming_div">
@@ -72,9 +75,8 @@
                 <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                     <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                         <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
-                            <label for="selectDiv">Kieli | Language</label>
+                            <label for="selectDiv">Valitse kieli | Select a language</label>
                             <select id="selectDiv" onchange="displaySelectedDiv()">
-                                <option value="" disabled selected>vaihtaa kieltä | switch the language</option>
                                 <option value="div_en">English</option>
                                 <option value="div_fi">Suomi</option>
                             </select>
@@ -83,27 +85,203 @@
                 </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
             </div>
         </center>
-        
         <!--Finnish language block-->
         <div id="div_fi" class="category_block">
             <!--overview of the category -->
             <br>
             <center>
-                <br>
                 <h3>Yleiskatsaus kategoriaan</h3>
+                <br>
             </center>
+            <br>
             <div>
+                <script>
+                    var elementId_overview_fi = "overview_2_fi"
+                    var overviewFilePath_fi = "{{overviewResponse_url}}" + "overview_2_fi.txt"
+                    readFile(elementId_overview_fi, overviewFilePath_fi);
+                </script>
                 <p id="overview_2_fi" class="custom-text"></p>
-                <script>displayParagraph("overview_2_fi");</script>
             </div>
 
             <br>
             <!--the Chart come here-->
             <center>
                 <div class="chart_2_fi">
-                    <p>----------------------------------------------------</p>
-                    <p>SIJOITA KAAVIOON PIDIN</p>
-                    <p>----------------------------------------------------</p>
+                    <canvas id="myChart_fi" width="40%" height="10%"></canvas>
+                    <script>
+                        Chart.defaults.doughnutLabels = Chart.helpers.clone(Chart.defaults.doughnut);
+
+                        var helpers = Chart.helpers;
+                        var defaults = Chart.defaults;
+
+                        Chart.controllers.doughnutLabels = Chart.controllers.doughnut.extend({
+                            updateElement: function (arc, index, reset) {
+                                var _this = this;
+                                var chart = _this.chart,
+                                    chartArea = chart.chartArea,
+                                    opts = chart.options,
+                                    animationOpts = opts.animation,
+                                    arcOpts = opts.elements.arc,
+                                    centerX = (chartArea.left + chartArea.right) / 2,
+                                    centerY = (chartArea.top + chartArea.bottom) / 2,
+                                    startAngle = opts.rotation, // non reset case handled later
+                                    endAngle = opts.rotation, // non reset case handled later
+                                    dataset = _this.getDataset(),
+                                    circumference = reset && animationOpts.animateRotate ? 0 : arc.hidden ? 0 : _this.calculateCircumference(dataset.data[index]) * (opts.circumference / (2.0 * Math.PI)),
+                                    innerRadius = reset && animationOpts.animateScale ? 0 : _this.innerRadius,
+                                    outerRadius = reset && animationOpts.animateScale ? 0 : _this.outerRadius,
+                                    custom = arc.custom || {},
+                                    valueAtIndexOrDefault = helpers.getValueAtIndexOrDefault;
+
+                                helpers.extend(arc, {
+                                    // Utility
+                                    _datasetIndex: _this.index,
+                                    _index: index,
+
+                                    // Desired view properties
+                                    _model: {
+                                        x: centerX + chart.offsetX,
+                                        y: centerY + chart.offsetY,
+                                        startAngle: startAngle,
+                                        endAngle: endAngle,
+                                        circumference: circumference,
+                                        outerRadius: outerRadius,
+                                        innerRadius: innerRadius,
+                                        label: valueAtIndexOrDefault(dataset.label, index, chart.data.labels[index])
+                                    },
+
+                                    draw: function () {
+                                        var ctx = this._chart.ctx,
+                                            vm = this._view,
+                                            sA = vm.startAngle,
+                                            eA = vm.endAngle,
+                                            opts = this._chart.config.options;
+
+                                        var labelPos = this.tooltipPosition();
+                                        var segmentLabel = vm.circumference / opts.circumference * 100;
+
+                                        ctx.beginPath();
+
+                                        ctx.arc(vm.x, vm.y, vm.outerRadius, sA, eA);
+                                        ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
+
+                                        ctx.closePath();
+                                        ctx.strokeStyle = vm.borderColor;
+                                        ctx.lineWidth = vm.borderWidth;
+
+                                        ctx.fillStyle = vm.backgroundColor;
+
+                                        ctx.fill();
+                                        ctx.lineJoin = 'bevel';
+
+                                        if (vm.borderWidth) {
+                                            ctx.stroke();
+                                        }
+
+                                        if (vm.circumference > 0.0015) { // Trying to hide label when it doesn't fit in segment
+                                            ctx.beginPath();
+                                            ctx.font = helpers.fontString(opts.defaultFontSize, opts.defaultFontStyle, opts.defaultFontFamily);
+                                            ctx.fillStyle = "#190707";
+                                            ctx.textBaseline = "top";
+                                            ctx.textAlign = "center";
+
+                                            // Round percentage in a way that it always adds up to 100%
+                                            ctx.fillText(segmentLabel.toFixed() + "%", labelPos.x, labelPos.y);
+                                        }
+                                        //display in the center the total sum of all segments
+                                        var total = dataset.data.reduce((sum, val) => sum + val, 0);
+                                        //ctx.fillText('Total = ' + total, vm.x, vm.y - 20, 200);
+
+                                        ctx.fillText('No burnout', vm.x - 300, vm.y + 50);
+                                        ctx.fillText('Bad burnout', vm.x + 300, vm.y + 50);
+                                    }
+                                });
+
+                                var model = arc._model;
+                                model.backgroundColor = valueAtIndexOrDefault(dataset.backgroundColor, index, arcOpts.backgroundColor);
+                                model.hoverBackgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : valueAtIndexOrDefault(dataset.hoverBackgroundColor, index, arcOpts.hoverBackgroundColor);
+                                model.borderWidth = custom.borderWidth ? custom.borderWidth : valueAtIndexOrDefault(dataset.borderWidth, index, arcOpts.borderWidth);
+                                model.borderColor = custom.borderColor ? custom.borderColor : valueAtIndexOrDefault(dataset.borderColor, index, arcOpts.borderColor);
+
+                                // Set correct angles if not resetting
+                                if (!reset || !animationOpts.animateRotate) {
+                                    if (index === 0) {
+                                        model.startAngle = opts.rotation;
+                                    } else {
+                                        model.startAngle = _this.getMeta().data[index - 1]._model.endAngle;
+                                    }
+
+                                    model.endAngle = model.startAngle + model.circumference;
+                                }
+
+                                arc.pivot();
+                            }
+                        });
+
+                        var config = {
+                            type: 'doughnutLabels',
+                            data: {
+                                datasets: [{
+                                    data: [
+                                        sum_data = '{{sum_of_support}}',
+                                        165 - sum_data
+
+                                    ],
+                                    backgroundColor: (function () {
+
+                                        var r, g, b;
+
+                                        if (sum_data > 82.5) {
+                                            // green to yellow
+                                            r = Math.floor(255 * (sum_data / 82.5));
+                                            g = 255;
+
+                                        } else {
+                                            // yellow to red
+                                            r = 255;
+                                            g = Math.floor(255 * ((82.5 - sum_data % 82.5) / 82.5));
+                                        }
+                                        b = 0;
+
+
+                                        var color1 = 'rgb(' + r + ',' + g + ',' + b + ')';
+                                        var color2 = 'rgba(50, 50, 100, 0.1)';
+
+                                        return [color1, color2];
+
+                                    }
+
+                                    )(),
+                                }],
+                                labels: [
+                                    "Sinun tulos",
+                                    "Kokonaispisteet"
+                                ]
+                            },
+                            options: {
+                                circumference: Math.PI,
+                                rotation: 1.0 * Math.PI,
+                                responsive: true,
+                                legend: {
+                                    display: false,
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Oppimisympäristösi tulos'
+                                },
+                                animation: {
+                                    animateScale: true,
+                                    animateRotate: true
+                                }
+                            }
+                        };
+
+                        var ctx = document.getElementById("myChart_fi").getContext("2d");
+                        window.upDownChart = new Chart(ctx, config);
+
+
+
+                    </script>
                 </div>
             </center>
 
@@ -114,8 +292,13 @@
                 <center>Henkilökohtainen palaute</center>
             </h3>
             <div>
-                <p id="{{ category_message2 }}_fi" class="custom-text"></p>
-                <script>displayParagraph("{{ category_message2 }}_fi");</script>
+                <script>
+                    var feedback_fi = "{{category_message2}}"
+                    var elementId_fi = "Category_fi"
+                    var personalizedFilePath_fi = "{{personalizedResponse_url}}" + "2_fi_" + feedback_fi + ".txt"
+                    readFile(elementId_fi, personalizedFilePath_fi);
+                </script>
+                <p id="Category_fi" class="custom-text"></p>
             </div>
 
         </div>
@@ -125,21 +308,199 @@
             <!--overview of the category -->
             <br>
             <center>
-                <br>
                 <h3>Description of the Category</h3>
+                <br>
             </center>
+            <br>
             <div>
+                <script>
+                    var elementId_overview_en = "overview_2_en"
+                    var overviewFilePath_en = "{{overviewResponse_url}}" + "overview_2_en.txt"
+                    readFile(elementId_overview_en, overviewFilePath_en);
+                </script>
                 <p id="overview_2_en" class="custom-text"></p>
-                <script>displayParagraph("overview_2_en");</script>
             </div>
 
             <br>
             <!--the Chart come here-->
+
             <center>
                 <div class="chart_2_en">
-                    <p>----------------------------------------------------</p>
-                    <p>PLACE HOLDER FOR THE CHART</p>
-                    <p>----------------------------------------------------</p>
+                    <canvas id="myChart_en" width="40%" height="10%"></canvas>
+                    <script>
+                        Chart.defaults.doughnutLabels = Chart.helpers.clone(Chart.defaults.doughnut);
+
+                        var helpers = Chart.helpers;
+                        var defaults = Chart.defaults;
+
+                        Chart.controllers.doughnutLabels = Chart.controllers.doughnut.extend({
+                            updateElement: function (arc, index, reset) {
+                                var _this = this;
+                                var chart = _this.chart,
+                                    chartArea = chart.chartArea,
+                                    opts = chart.options,
+                                    animationOpts = opts.animation,
+                                    arcOpts = opts.elements.arc,
+                                    centerX = (chartArea.left + chartArea.right) / 2,
+                                    centerY = (chartArea.top + chartArea.bottom) / 2,
+                                    startAngle = opts.rotation, // non reset case handled later
+                                    endAngle = opts.rotation, // non reset case handled later
+                                    dataset = _this.getDataset(),
+                                    circumference = reset && animationOpts.animateRotate ? 0 : arc.hidden ? 0 : _this.calculateCircumference(dataset.data[index]) * (opts.circumference / (2.0 * Math.PI)),
+                                    innerRadius = reset && animationOpts.animateScale ? 0 : _this.innerRadius,
+                                    outerRadius = reset && animationOpts.animateScale ? 0 : _this.outerRadius,
+                                    custom = arc.custom || {},
+                                    valueAtIndexOrDefault = helpers.getValueAtIndexOrDefault;
+
+                                helpers.extend(arc, {
+                                    // Utility
+                                    _datasetIndex: _this.index,
+                                    _index: index,
+
+                                    // Desired view properties
+                                    _model: {
+                                        x: centerX + chart.offsetX,
+                                        y: centerY + chart.offsetY,
+                                        startAngle: startAngle,
+                                        endAngle: endAngle,
+                                        circumference: circumference,
+                                        outerRadius: outerRadius,
+                                        innerRadius: innerRadius,
+                                        label: valueAtIndexOrDefault(dataset.label, index, chart.data.labels[index])
+                                    },
+
+                                    draw: function () {
+                                        var ctx = this._chart.ctx,
+                                            vm = this._view,
+                                            sA = vm.startAngle,
+                                            eA = vm.endAngle,
+                                            opts = this._chart.config.options;
+
+                                        var labelPos = this.tooltipPosition();
+                                        var segmentLabel = vm.circumference / opts.circumference * 100;
+
+                                        ctx.beginPath();
+
+                                        ctx.arc(vm.x, vm.y, vm.outerRadius, sA, eA);
+                                        ctx.arc(vm.x, vm.y, vm.innerRadius, eA, sA, true);
+
+                                        ctx.closePath();
+                                        ctx.strokeStyle = vm.borderColor;
+                                        ctx.lineWidth = vm.borderWidth;
+
+                                        ctx.fillStyle = vm.backgroundColor;
+
+                                        ctx.fill();
+                                        ctx.lineJoin = 'bevel';
+
+                                        if (vm.borderWidth) {
+                                            ctx.stroke();
+                                        }
+
+                                        if (vm.circumference > 0.0015) { // Trying to hide label when it doesn't fit in segment
+                                            ctx.beginPath();
+                                            ctx.font = helpers.fontString(opts.defaultFontSize, opts.defaultFontStyle, opts.defaultFontFamily);
+                                            ctx.fillStyle = "#190707";
+                                            ctx.textBaseline = "top";
+                                            ctx.textAlign = "center";
+
+                                            // Round percentage in a way that it always adds up to 100%
+                                            ctx.fillText(segmentLabel.toFixed() + "%", labelPos.x, labelPos.y);
+                                        }
+                                        //display in the center the total sum of all segments
+                                        var total = dataset.data.reduce((sum, val) => sum + val, 0);
+                                        //ctx.fillText('Total = ' + total, vm.x, vm.y - 20, 200);
+
+                                        ctx.fillText('No burnout', vm.x - 300, vm.y + 50);
+                                        ctx.fillText('Bad burnout', vm.x + 300, vm.y + 50);
+                                    }
+                                });
+
+                                var model = arc._model;
+                                model.backgroundColor = valueAtIndexOrDefault(dataset.backgroundColor, index, arcOpts.backgroundColor);
+                                model.hoverBackgroundColor = custom.hoverBackgroundColor ? custom.hoverBackgroundColor : valueAtIndexOrDefault(dataset.hoverBackgroundColor, index, arcOpts.hoverBackgroundColor);
+                                model.borderWidth = custom.borderWidth ? custom.borderWidth : valueAtIndexOrDefault(dataset.borderWidth, index, arcOpts.borderWidth);
+                                model.borderColor = custom.borderColor ? custom.borderColor : valueAtIndexOrDefault(dataset.borderColor, index, arcOpts.borderColor);
+
+                                // Set correct angles if not resetting
+                                if (!reset || !animationOpts.animateRotate) {
+                                    if (index === 0) {
+                                        model.startAngle = opts.rotation;
+                                    } else {
+                                        model.startAngle = _this.getMeta().data[index - 1]._model.endAngle;
+                                    }
+
+                                    model.endAngle = model.startAngle + model.circumference;
+                                }
+
+                                arc.pivot();
+                            }
+                        });
+
+                        var config = {
+                            type: 'doughnutLabels',
+                            data: {
+                                datasets: [{
+                                    data: [
+                                        sum_data = '{{sum_of_support}}',
+                                        165 - sum_data
+
+                                    ],
+                                    backgroundColor: (function () {
+
+                                        var r, g, b;
+
+                                        if (sum_data > 82.5) {
+                                            // green to yellow
+                                            r = Math.floor(255 * (sum_data / 82.5));
+                                            g = 255;
+
+                                        } else {
+                                            // yellow to red
+                                            r = 255;
+                                            g = Math.floor(255 * ((82.5 - sum_data % 82.5) / 82.5));
+                                        }
+                                        b = 0;
+
+
+                                        var color1 = 'rgb(' + r + ',' + g + ',' + b + ')';
+                                        var color2 = 'rgba(50, 50, 100, 0.1)';
+
+                                        return [color1, color2];
+
+                                    }
+
+                                    )(),
+                                }],
+                                labels: [
+                                    "Your result",
+                                    "Total"
+                                ]
+                            },
+                            options: {
+                                circumference: Math.PI,
+                                rotation: 1.0 * Math.PI,
+                                responsive: true,
+                                legend: {
+                                    display: false,
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Your learning environment result'
+                                },
+                                animation: {
+                                    animateScale: true,
+                                    animateRotate: true
+                                }
+                            }
+                        };
+
+                        var ctx = document.getElementById("myChart_en").getContext("2d");
+                        window.upDownChart = new Chart(ctx, config);
+
+
+
+                    </script>
                 </div>
             </center>
 
@@ -150,8 +511,13 @@
                 <center>Personalized feedback</center>
             </h3>
             <div>
-                <p id="{{ category_message2 }}_en" class="custom-text"></p>
-                <script>displayParagraph("{{ category_message2 }}_en");</script>
+                <script>
+                    var feedback_en = "{{category_message2}}";
+                    var elementId_en = "Category_en"
+                    var personalizedFilePath_en = "{{personalizedResponse_url}}" + "2_en_" + feedback_en + ".txt"
+                    readFile(elementId_en, personalizedFilePath_en);
+                </script>
+                <p id="Category_en" class="custom-text"></p>
             </div>
         </div>
 
@@ -167,6 +533,7 @@
 <footer>
     <!--Javascript for the chart-->
     <div class="statistics">
+
         <script>
             // Javascript for the chart
         </script>

@@ -1,11 +1,11 @@
 import pandas as pd
 import math
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session
 # run this code into powershell: pip install Flask 
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'your_secret_key'
-file_path = "./project/learnwell_dataset.xlsx"
+file_path = "C:/Users/Jamiv/Desktop/HAMK/2023-2024/1 Moduuli/Design Factory Project/TestingFeedback/project/testdata.xlsx"
 engine = "openpyxl"
 df = pd.read_excel(file_path, engine=engine, sheet_name='Form1')
 
@@ -43,8 +43,8 @@ wb_psych_bad_sum = df[['WB109', 'WB401', 'WB403']].sum(axis=1)
 wb_psychological_sum = wb_psych_all_sum - wb_psych_bad_sum
 #this had good and bad columns, created a sum for this case too 
 
-wb_sc_bad_sum = df['WB304']
-wb_sc_good_sum = df['WB102']
+wb_sc_bad_sum = df[['WB304']].sum(axis=1)
+wb_sc_good_sum = df[['WB102']].sum(axis=1)
 wb_sc_sum = wb_sc_good_sum - wb_sc_bad_sum
 wb_sc_sum_filled = wb_sc_sum.fillna(0) #it will gives us the actual negative result 
 #this could be a negative score too bc theres only 1 good and 1 bad question
@@ -61,6 +61,60 @@ new_columns_data={
     "Sum of self-reflection": wb_sc_sum 
 }
 df = df.assign(**new_columns_data) # puts the new columns to the end of the dataset
+
+
+# counting the average of all users for the welcome.html chart
+rows = len(df)
+    # Learning avg
+learningavgsum = learning_sum
+cells = rows * 12 # vai 16??
+learning_avg_all = learningavgsum.sum() / cells
+learning_avg_all
+
+# Support avg
+supportavgsum = support_sum
+cells = rows * 33
+support_avg_all = supportavgsum.sum() / cells
+support_avg_all
+
+# Competence avg
+competenceavgsum = competence_sum
+cells = rows * 15
+competence_avg_all = competenceavgsum.sum() / cells
+competence_avg_all
+
+# Filler avg
+filleravgsum = filler_sum
+cells = rows * 17
+filler_avg_all = filleravgsum.sum() / cells
+filler_avg_all
+
+# Wb self efficiancy avg
+wb_self_efficiancyavgsum = wb_self_efficiancy_sum
+cells = rows * 7
+wb_self_efficiancy_avg_all = wb_self_efficiancyavgsum.sum() / cells
+wb_self_efficiancy_avg_all
+
+# Wb psychological avg
+wb_psychological_avgsum = wb_psychological_sum
+cells = rows * 7 #vai 10?
+wb_psychological_avg_all = wb_psychological_avgsum.sum() / cells
+wb_psychological_avg_all
+
+# Wb burnout avg
+wb_burnout_avgsum = wb_burnout_sum
+cells = rows * 8
+wb_burnout_avg_all = wb_burnout_avgsum.sum() / cells
+wb_burnout_avg_all
+
+# Wb sc avg
+wb_sc_avgsum = wb_sc_sum
+wb_sc_avgsum
+cells = rows * 1
+wb_sc_avg = wb_sc_avgsum.sum() / cells
+wb_sc_avg_all = str(round(wb_sc_avg, 2))
+wb_sc_avg_all
+
 
 # initiate the variables value with empty strings
 html_user_email=""
@@ -97,8 +151,56 @@ def process_form():
 # The welcome page
 @app.route('/welcome')
 def welcome():
+ # Process the email address if needed
+    user_data = df[df['Email'] == user_email]
+    rows = len(df)
+    #1
+    sum_of_learning = user_data['Sum of learning'].values[0]
+    learning_percent = 5 * (sum_of_learning / 60)
+    #all average
+    learningavg_all_sum = ['LP101', 'LP102', 'LP103', 'LP104', 'LP105', 'LP106', 'LP107', 'LP108', 'LP109', 'LP110', 'LP11', 'LP12']
+    badavgL_sum = ['LP101', 'LP103', 'LP107', 'LP109']
+    learning_avg_sum = row_sums = df[learningavg_all_sum].sum(axis=1) - df[badavgL_sum].sum(axis=1)
+    cells = rows *12
+    learning_avg = learning_avg_sum / cells
+    #2
+    sum_of_support = user_data['Sum of support'].values[0]
+    #avg
+    supportavgsum = ['LE101', 'LE102', 'LE103', 'LE104', 'LE105', 'LE106', 'LE107', 'LE108', 'LE109', 'LE110', 'LE111', 'LE112', 'LE113', 'LE114', 'LE115', 'LE116', 'LE201', 'LE202', 'LE203', 'LE204', 'LE205', 'LE206', 'LE207', 'LE208', 'LE209', 'LE210', 'LE211', 'LE301', 'LE302', 'LE303', 'LE304', 'LE305', 'LE306']
+    #supportavgsum
+    rows = len(df)
+    # rows
+    # Sum the desired columns row-wise
+    row_sums = df[supportavgsum].sum(axis=1)
+    #row_sums
+    cells = rows *33
+    lp_sum_avg = row_sums.sum() / cells
+    #sp_avg = row_sums.sum() / cells
+    support_percent = 5 * (sum_of_support / 165)
+    #3
+    sum_of_competence = user_data['Sum of competence'].values[0]
+    competence_percent = 5 * (sum_of_competence / 75)
+    #4
+    sum_of_filler = user_data['Sum of filler'].values[0]
+    filler_percent = 5 * (sum_of_filler / 85) 
+    #5
+    sum_of_se = user_data['Sum of self-efficacy'].values[0]
+    self_ef_percent = 5 * (sum_of_se / 35)
+    #6
+    sum_of_psych = user_data['Sum of psychological flexibility'].values[0]
+    psy_flex_percent = 5 * (sum_of_psych / 35)
+    #7
+    sum_of_burnout = user_data['Sum of burnout'].values[0]
+    burnoutpercent = 5 * (sum_of_burnout / 45)
+    #8
+    sum_of_sr = user_data['Sum of self-reflection'].values[0]
+    selfrefpercent = 5 * (sum_of_sr / 5)
 
-    return render_template('welcome.html')
+    return render_template('welcome.html', learning_avg_all=learning_avg_all, support_avg_all=support_avg_all, competence_avg_all=competence_avg_all, filler_avg_all=filler_avg_all, wb_self_efficiancy_avg_all=wb_self_efficiancy_avg_all, wb_psychological_avg_all=wb_psychological_avg_all, wb_burnout_avg_all=wb_burnout_avg_all, wb_sc_avg_all=wb_sc_avg_all, learningpercent = learning_percent, \
+                           supportpercent = support_percent, competencepercent = competence_percent, \
+                            fillerpercent = filler_percent, self_ef_percent = self_ef_percent, psy_flex_percent = psy_flex_percent, \
+                                burnoutpercent = burnoutpercent, selfrefpercent = selfrefpercent, lp_sum_avg = lp_sum_avg, \
+                                    learning_avg = learning_avg)
 
 # Category 1
 @app.route('/page1')
@@ -145,10 +247,13 @@ def page1():
     return render_template('1.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
+                # path to the personalizedResponse which stores feedback paragraphs
+                personalizedResponse_url=personalizedResponse_url,
+                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 1
                 # chart_1 = chart_1,
                 # the output of the category
-                category_message1 = category_message1
+                category_message1 = category_message1, sum_of_learning = sum_of_learning
                 )
 
 # Category 2
@@ -193,9 +298,12 @@ def page2():
     else: 
         emailNotFound = "User email not found."
 
-    return render_template('2.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
+    return render_template('2.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_support = sum_of_support, 
                 # user name
                 user_name=user_name,
+                # path to the personalizedResponse which stores feedback paragraphs
+                personalizedResponse_url=personalizedResponse_url,
+                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 2
                 # chart_2 = chart_2,
                 # the output of the category
@@ -245,9 +353,12 @@ def page3():
     else: 
         emailNotFound = "User email not found."
 
-    return render_template('3.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
+    return render_template('3.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_competence = sum_of_competence, 
                 # user name
                 user_name=user_name,
+                # path to the personalizedResponse which stores feedback paragraphs
+                personalizedResponse_url=personalizedResponse_url,
+                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 3
                 # chart_3 = chart_3,
                 # the output of the category
@@ -300,6 +411,9 @@ def page4():
     return render_template('4.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
+                # path to the personalizedResponse which stores feedback paragraphs
+                personalizedResponse_url=personalizedResponse_url,
+                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 4
                 # chart_4 = chart_4,
                 # the output of the category
@@ -349,9 +463,12 @@ def page5():
     else: 
         emailNotFound = "User email not found."
 
-    return render_template('5.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
+    return render_template('5.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_se = sum_of_se, 
                 # user name
                 user_name=user_name,
+                # path to the personalizedResponse which stores feedback paragraphs
+                personalizedResponse_url=personalizedResponse_url,
+                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 5
                 # chart_5 = chart_5,
                 # the output of the category
@@ -401,9 +518,12 @@ def page6():
     else: 
         emailNotFound = "User email not found."
 
-    return render_template('6.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
+    return render_template('6.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_psych = sum_of_psych, 
                 # user name
                 user_name=user_name,
+                # path to the personalizedResponse which stores feedback paragraphs
+                personalizedResponse_url=personalizedResponse_url,
+                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 6
                 # chart_6 = chart_6,
                 # the output of the category
@@ -455,7 +575,10 @@ def page7():
     return render_template('7.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
                 # user name
                 user_name=user_name,
-                # chart variable: sum of burn out for page 7
+                # path to the personalizedResponse which stores feedback paragraphs
+                personalizedResponse_url=personalizedResponse_url,
+                overviewResponse_url = overviewResponse_url,
+                # sum of burn out for page 7
                 sum_of_burnout = sum_of_burnout,
                 # the output of the category
                 category_message7 = category_message7
@@ -504,27 +627,17 @@ def page8():
     else: 
         emailNotFound = "User email not found."
 
-    return render_template('8.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
+    return render_template('8.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_sr = sum_of_sr, 
                 # user name
                 user_name=user_name,
+                # path to the personalizedResponse which stores feedback paragraphs
+                personalizedResponse_url=personalizedResponse_url,
+                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 8
                 # chart_ = # chart_,
                 # the output of the category
                 category_message8 = category_message8
                 )
-
-# Load the Excel file into a DataFrame
-text_file_path = './project/paragraph.xlsx'
-paragraph = pd.read_excel(text_file_path)
-
-@app.route('/get_content/<id>')
-def get_content(id):
-    content_row = paragraph[paragraph['ID'] == id]
-    if content_row.empty:
-        return jsonify({'content': ''})
-
-    content = content_row['Content'].values[0]
-    return jsonify({'content': content})
 
 # app running
 if __name__ == '__main__': 

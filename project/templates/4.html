@@ -11,8 +11,8 @@
     <script src="https://kit.fontawesome.com/5c1299d2f2.js" crossorigin="anonymous"></script>
     <!--Script to select a div to display-->
     <script src="{{ url_for('static', filename='functionAndLayout/displayDiv.js') }}"></script>
-    <!--Script to display the Paragraph from paragraph.xlsx-->
-    <script src="{{ url_for('static', filename='functionAndLayout/displayParagraph.js') }}"></script>
+    <!--Script to display the content of the feedback stored in .txt files-->
+    <script src="{{ url_for('static', filename='functionAndLayout/displayFileContent.js') }}"></script>
     <!--Script for the Chart-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
 </head>
@@ -45,9 +45,11 @@
             <br>
             <h1>Learn Well Project - Group 4</h1>
             <br>
-            <h2><b>Objectives For The Future</b></h2>
+            <h2>Objectives For The Future</h2>
             <br>
-            <p><i><center>Henkilökohtainen palautteesi | Your personal feedback</center></i></p>
+            <h3><i>
+                    <center>Henkilökohtainen palautteesi | Your personal feedback</center>
+                </i></h3>
         </div>
 
         <br>
@@ -73,9 +75,8 @@
                 <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                     <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                         <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
-                            <label for="selectDiv">Kieli | Language</label>
+                            <label for="selectDiv">Valitse kieli | Select a language</label>
                             <select id="selectDiv" onchange="displaySelectedDiv()">
-                                <option value="" disabled selected>vaihtaa kieltä | switch the language</option>
                                 <option value="div_en">English</option>
                                 <option value="div_fi">Suomi</option>
                             </select>
@@ -84,30 +85,25 @@
                 </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
             </div>
         </center>
-        
         <!--Finnish language block-->
         <div id="div_fi" class="category_block">
             <!--overview of the category -->
             <br>
             <center>
-                <br>
                 <h3>Yleiskatsaus kategoriaan</h3>
+                <br>
             </center>
+            <br>
             <div>
+                <script>
+                    var elementId_overview_fi = "overview_4_fi"
+                    var overviewFilePath_fi = "{{overviewResponse_url}}" + "overview_4_fi.txt"
+                    readFile(elementId_overview_fi, overviewFilePath_fi);
+                </script>
                 <p id="overview_4_fi" class="custom-text"></p>
-                <script>displayParagraph("overview_4_fi");</script>
             </div>
 
             <br>
-            <!--the Chart come here-->
-            <center>
-                <div class="chart_4_fi">
-                    <p>----------------------------------------------------</p>
-                    <p>SIJOITA KAAVIOON PIDIN</p>
-                    <p>----------------------------------------------------</p>
-                </div>
-            </center>
-
             <!--personalized feedback of the category -->
             <h3>
                 <br>
@@ -115,8 +111,13 @@
                 <center>Henkilökohtainen palaute</center>
             </h3>
             <div>
-                <p id="{{ category_message4 }}_fi" class="custom-text"></p>
-                <script>displayParagraph("{{ category_message4 }}_fi");</script>
+                <script>
+                    var feedback_fi = "{{category_message4}}"
+                    var elementId_fi = "Category_fi"
+                    var personalizedFilePath_fi = "{{personalizedResponse_url}}" + "4_fi_" + feedback_fi + ".txt"
+                    readFile(elementId_fi, personalizedFilePath_fi);
+                </script>
+                <p id="Category_fi" class="custom-text"></p>
             </div>
 
         </div>
@@ -126,24 +127,20 @@
             <!--overview of the category -->
             <br>
             <center>
-                <br>
                 <h3>Description of the Category</h3>
+                <br>
             </center>
+            <br>
             <div>
+                <script>
+                    var elementId_overview_en = "overview_4_en"
+                    var overviewFilePath_en = "{{overviewResponse_url}}" + "overview_4_en.txt"
+                    readFile(elementId_overview_en, overviewFilePath_en);
+                </script>
                 <p id="overview_4_en" class="custom-text"></p>
-                <script>displayParagraph("overview_4_en");</script>
             </div>
 
             <br>
-            <!--the Chart come here-->
-            <center>
-                <div class="chart_4_en">
-                    <p>----------------------------------------------------</p>
-                    <p>PLACE HOLDER FOR THE CHART</p>
-                    <p>----------------------------------------------------</p>
-                </div>
-            </center>
-
             <!--personalized feedback of the category -->
             <h3>
                 <br>
@@ -151,10 +148,16 @@
                 <center>Personalized feedback</center>
             </h3>
             <div>
-                <p id="{{ category_message4 }}_en" class="custom-text"></p>
-                <script>displayParagraph("{{ category_message4 }}_en");</script>
+                <script>
+                    var feedback_en = "{{category_message4}}";
+                    var elementId_en = "Category_en"
+                    var personalizedFilePath_en = "{{personalizedResponse_url}}" + "4_en_" + feedback_en + ".txt"
+                    readFile(elementId_en, personalizedFilePath_en);
+                </script>
+                <p id="Category_en" class="custom-text"></p>
             </div>
         </div>
+
         <div class="next-back-buttons">
             <a href="{{ url_for ('page3') }}" class="back-page-button">Back</a>
             <a href="{{ url_for ('page5') }}" class="next-page-button">Next Page</a>
@@ -167,6 +170,7 @@
 <footer>
     <!--Javascript for the chart-->
     <div class="statistics">
+
         <script>
             // Javascript for the chart
         </script>

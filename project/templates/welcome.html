@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='functionAndLayout/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script src="https://kit.fontawesome.com/5c1299d2f2.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
 </head>
 
 <body>
@@ -16,18 +18,18 @@
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
-      </label>
-            <ul>
-                <li><a href="{{ url_for ('welcome') }}">Welcome</a></li>
-                <li><a href="{{ url_for ('page1') }}">1. Learning approach</a></li>
-                <li><a href="{{ url_for ('page2') }}">2. Learning environment</a></li>
-                <li><a href="{{ url_for ('page3') }}">3. Competence development </a></li>
-                <li><a href="{{ url_for ('page4') }}">4. Objectives for the future</a></li>
-                <li><a href="{{ url_for ('page5') }}">5. Wellbeing: self-efficacy</a></li>
-                <li><a href="{{ url_for ('page6') }}">6. Wellbeing: psychological flexibility</a></li>
-                <li><a href="{{ url_for ('page7') }}">7. Wellbeing: level of burnout</a></li>
-                <li><a href="{{ url_for ('page8') }}">8. Wellbeing: self-compassion</a></li>
-            </ul>
+        </label>
+        <ul>
+            <li><a href="{{ url_for ('welcome') }}">Welcome</a></li>
+            <li><a href="{{ url_for ('page1') }}">1. Learning approach</a></li>
+            <li><a href="{{ url_for ('page2') }}">2. Learning environment</a></li>
+            <li><a href="{{ url_for ('page3') }}">3. Competence development </a></li>
+            <li><a href="{{ url_for ('page4') }}">4. Objectives for the future</a></li>
+            <li><a href="{{ url_for ('page5') }}">5. Wellbeing: self-efficacy</a></li>
+            <li><a href="{{ url_for ('page6') }}">6. Wellbeing: psychological flexibility</a></li>
+            <li><a href="{{ url_for ('page7') }}">7. Wellbeing: level of burnout</a></li>
+            <li><a href="{{ url_for ('page8') }}">8. Wellbeing: self-compassion</a></li>
+        </ul>
     </nav>
     <!-- sidebar end -->
     <div class="container">
@@ -44,29 +46,174 @@
                 the LearnWell team. The aim is to discuss together study-related well-being both from the students and
                 the teaching/degree programme perspectives.<br>
                 <br>
-                Factor scores are computed as a mean value of its five-point Likert scale items (1 = totally disagree, 2 = disagree, 3
+                Factor scores are computed as a mean value of its five-point Likert scale items (1 = totally disagree, 2
+                = disagree, 3
                 = between, 4 = agree, 5 = totally agree)<br>
                 High value is the aim in self-efficacy, psychological flexibility and self-compassion. In other factors,
                 the lower the value, the better the result.
             </p>
-        </div>
 
-        <div class="overview">
-            <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
-            <div class="statistics">
-                <div id="item-1">1</div>
-                <div id="item-2">2</div>
-                <div id="item-3">3</div>
-                <div id="item-4">4</div>
-                <div id="item-5">5</div>
-                <div id="item-6">6</div>
-                <div id="item-7">7</div>
-                <div id="item-8">8</div>
+
+            <div class="container">
+                <div class="header">
+                    <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
+                </div>
+                <select id="chartType">
+                    <option value="chart1">Your statistics</option>
+                    <option value="chart2">Your statistics compared to other respondents</option>
+                </select>
+                <div id="chartContainer">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
+        <script>
+            var learningpercent = '{{learningpercent}}'
+            var supportpercent = '{{supportpercent}}'
+            var competencepercent = '{{competencepercent}}'
+            var fillerpercent = '{{fillerpercent}}'
+            var self_ef_percent = '{{self_ef_percent}}'
+            var psy_flex_percent = '{{psy_flex_percent}}'
+            var burnoutpercent = '{{burnoutpercent}}'
+            var selfrefpercent = '{{selfrefpercent}}'
+
+            var learning_avg_all = '{{learning_avg_all}}'
+            var support_avg_all = '{{support_avg_all}}'
+            var competence_avg_all = '{{competence_avg_all}}'
+            var filler_avg_all = '{{filler_avg_all}}'
+            var wb_self_efficiancy_avg_all = '{{wb_self_efficiancy_avg_all}}'
+            var wb_psychological_avg_all = '{{wb_psychological_avg_all}}'
+            var wb_burnout_avg_all = '{{wb_burnout_avg_all}}'
+            var wb_sc_avg_all = '{{wb_sc_avg_all}}'
+            const chartData = {
+                chart1: [
+                    { value: learningpercent, label: 'Learning approach' },
+                    { value: supportpercent, label: 'Learning environment' },
+                    { value: competencepercent, label: 'Competence development' },
+                    { value: fillerpercent, label: 'Objectives for the future' },
+                    { value: self_ef_percent, label: 'Wellbeing: sef-efficacy' },
+                    { value: psy_flex_percent, label: 'Wellbeing: psychological flexibility ' },
+                    { value: burnoutpercent, label: 'Wellbeing: level of burnout' },
+                    { value: selfrefpercent, label: 'Wellbeing: self-compassion' },
+                ],
+                chart2: [
+                    { value: learningpercent, label: 'Learning approach (you)' },
+                    { value: learning_avg_all, label: 'Learning approach (average of others)' },
+                    { value: supportpercent, label: 'Learning environment (you)' },
+                    { value: support_avg_all, label: 'Learning environment (average of others)' },
+                    { value: competencepercent, label: 'Competence development (you)' },
+                    { value: competence_avg_all, label: 'Competence development (average of others)' },
+                    { value: fillerpercent, label: 'Objectives for the future (you)' },
+                    { value: filler_avg_all, label: 'Objectives for the future (average of others)' },
+                    { value: self_ef_percent, label: 'Wellbeing: sef-efficacy (you)' },
+                    { value: wb_self_efficiancy_avg_all, label: 'Wellbeing: sef-efficacy (average of others)' },
+                    { value: psy_flex_percent, label: 'Wellbeing: psychological flexibility (you)' },
+                    { value: wb_psychological_avg_all, label: 'Wellbeing: psychological flexibility (average of others)' },
+                    { value: burnoutpercent, label: 'Wellbeing: level of burnout (you)' },
+                    { value: wb_burnout_avg_all, label: 'Wellbeing: level of burnout (average of others)' },
+                    { value: selfrefpercent, label: 'Wellbeing: self-compassion (you)' },
+                    { value: wb_sc_avg_all, label: 'Wellbeing: self-compassion (average of others)' },
+                ],
+            }
+
+            const chartTypeSelect = document.getElementById('chartType')
+            const chartContainer = document.getElementById('chartContainer')
+            const ctx = document.getElementById('myChart').getContext('2d')
+            let currentChartType = chartTypeSelect.value
+            let myChart // Variable to store the chart instance
+
+            const getColorScheme = (chartType) => {
+                if (chartType === 'chart1') {
+                    // Color scheme for 8 categories in chart1
+
+
+                    return [
+                        '#556EE6',
+                        '#E66868',
+                        '#556EE6',
+                        '#E66868',
+                        '#556EE6',
+                        '#E66868',
+                        '#556EE6',
+                        '#E66868',
+                    ]
+                } else if (chartType === 'chart2') {
+                    // Color scheme for 16 categories in chart2
+                    return [
+                        '#556EE6',
+                        '#778BEB',
+
+                        '#E66868',
+                        '#EB8686',
+
+                        '#556EE6',
+                        '#778BEB',
+
+                        '#E66868',
+                        '#EB8686',
+
+                        '#556EE6',
+                        '#778BEB',
+
+                        '#E66868',
+                        '#EB8686',
+
+                        '#556EE6',
+                        '#778BEB',
+
+                        '#E66868',
+                        '#EB8686',
+                    ]
+                }
+            }
+
+            const updateChart = () => {
+                const data = chartData[currentChartType]
+                const labels = data.map(item => item.label)
+                const backgroundColor = getColorScheme(currentChartType)
+
+                if (myChart) {
+                    myChart.data.labels = labels
+                    myChart.data.datasets[0].data = data.map(item => item.value)
+                    myChart.data.datasets[0].backgroundColor = backgroundColor
+                    myChart.update()
+                } else {
+                    myChart = new Chart(ctx, {
+                        type: 'bar', // Use "bar" for horizontal bar chart
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                data: data.map(item => item.value),
+                                backgroundColor: backgroundColor,
+                                // borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1,
+                                label: 'Average scale of 1 (Bad) - 5 (Good)', // Add the dataset label here
+                            }],
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            indexAxis: 'y', // Set to "y" for horizontal bar chart
+                            scales: {
+                                x: {
+                                    beginAtZero: true,
+                                },
+                            },
+                        },
+                    })
+                }
+            }
+
+            // Initial chart rendering
+            updateChart()
+
+            // Add event listener to switch chart types
+            chartTypeSelect.addEventListener('change', (event) => {
+                currentChartType = event.target.value
+                updateChart()
+            })
+        </script>
         <a href="{{ url_for('page1') }}" class="next-page-button">Next Page</a>
     </div>
-
 </body>
 
 </html>
