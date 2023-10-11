@@ -18,16 +18,16 @@
                 </h1>
                 <br>
                 <br>
-                <h3 id=sub-title>Tervetuloa Learn Well -projektiin, ryhmä 4! | Welcome to Learn Well Project, Group 4!
-                </h3>
-                <br>
-                <p>Enter your email address to retrieve your personalized feedback</p>
-                <br>
+                <h3 id=sub-title>Tervetuloa Learn Well -projektiin, ryhmä 4!</h3><br>
+                <h3 id=sub-title>Welcome to Learn Well Project, Group 4!</h3>
+                <br><br>
+                <p>Hakeaksesi henkilökohtaisen palautteesi, syötä sähköpostiosoitteesi</p><br>
+                <p>Enter your email address to retrieve your personalized feedback</p><br>
                 <center>
                     <form id="emailForm" method="post" action="/process_form">
-                        <input type="text" id="email" name="email" placeholder="email" required><br><br>
+                        <input style="width: 20vw;height: 40px; font-size: 18px;" type="text" id="email" name="email" placeholder="E-mail" required><br>
                         <span id="domainError" style="color: red;"></span>
-                        <input type="submit" value="Get feedback" name="submit">
+                        <input type="submit" value="Get feedback" name="submit" class="next-page-button">
                     </form>
                 </center>
                 <script>  // Function to validate the email and check the domain
