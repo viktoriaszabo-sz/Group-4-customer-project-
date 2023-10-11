@@ -6,7 +6,7 @@ function displayParagraph(id) {
         fetch(`/get_content/${id}`)
             .then(response => response.json())
             .then(data => {
-                element.innerText += data.content;
+                element.innerText = data.content;
             })
             .catch(error => console.error('Error:', error));
     });
