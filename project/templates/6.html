@@ -11,6 +11,8 @@
     <script src="https://kit.fontawesome.com/5c1299d2f2.js" crossorigin="anonymous"></script>
     <!--Script to select a div to display-->
     <script src="{{ url_for('static', filename='functionAndLayout/displayDiv.js') }}"></script>
+    <!--Script to display the Paragraph from paragraph.xlsx-->
+    <script src="{{ url_for('static', filename='functionAndLayout/displayParagraph.js') }}"></script>
     <!--Script for the Chart-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
 </head>
@@ -43,11 +45,9 @@
             <br>
             <h1>Learn Well Project - Group 4</h1>
             <br>
-            <h2>Wellbeing: Psychological Flexibility</h2>
+            <h2><b>Wellbeing: Psychological Flexibility</b></h2>
             <br>
-            <h3><i>
-                    <center>Henkilökohtainen palautteesi | Your personal feedback</center>
-                </i></h3>
+            <h3><i><center>Henkilökohtainen palautteesi | Your personal feedback</center></i></h3>
         </div>
 
         <br>
@@ -83,6 +83,7 @@
                 </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
             </div>
         </center>
+
         <!--Finnish language block-->
         <div id="div_fi" class="category_block">
             <!--overview of the category -->
@@ -93,6 +94,7 @@
             </center>
             <div>
                 <p id="overview_6_fi" class="custom-text"></p>
+                <script>displayParagraph("overview_6_fi");</script>
             </div>
 
             <br>
@@ -113,7 +115,7 @@
             </h3>
             <div>
                 <p id="{{ category_message6 }}_fi" class="custom-text"></p>
-                </p>
+                <script>displayParagraph("{{ category_message6 }}_fi");</script>
             </div>
 
         </div>
@@ -128,6 +130,7 @@
             </center>
             <div>
                 <p id="overview_6_en" class="custom-text"></p>
+                <script>displayParagraph("overview_6_en");</script>                
             </div>
 
             <br>
@@ -148,7 +151,7 @@
             </h3>
             <div>
                 <p id="{{ category_message6 }}_en" class="custom-text"></p>
-                </p>
+                <script>displayParagraph("{{ category_message6 }}_en");</script>
             </div>
         </div>
         
@@ -168,8 +171,6 @@
             // Javascript for the chart
         </script>
     </div>
-    <!--Script to display the Paragraph from paragraph.xlsx-->
-    <script src="{{ url_for('static', filename='functionAndLayout/displayParagraph.js') }}"></script>
 </footer>
 
 </html>
