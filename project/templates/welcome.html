@@ -39,7 +39,7 @@
             <div draggable="false" class="learnWellLogo">
                 <img src="{{ url_for('static', filename='functionAndLayout/learnWellLogo.png') }}" alt="Learnwell Logo">
             </div>
-            <h1>Feedback Session (year)</h1>
+            <h1>Feedback Session (year) - Palauteistunto (vuosi)</h1>
         </div>
 
         <center>
@@ -64,6 +64,7 @@
         <!--Finnish language block-->
         <div id="div_fi" class="category_block">
             <div class="text">
+                <p>Terve {{user_name}}</p>
                 <p><br>Tervetuloa LearnWell-palauteistuntoon!<br>
                     <br>
                     Istunto järjestetään yhdessä 1. vuoden opiskelijoiden, opinto-ohjaajien ja tutkijoiden kanssa
@@ -75,12 +76,18 @@
                         Korkea arvo on tavoite itsetehokkuudessa, psykologisessa joustavuudessa ja itsemyötätuntoisuudessa. Muissa tekijöissä
                         mitä pienempi arvo, sitä parempi tulos.
                 </p>
+                <br>
+                <br>
+                <center>
+                <h2>YLEISKATSAUS OPISKELIJAN OPINKIIN LIITTYVÄN HYVINVOINTIIN</h2>
+                </center>
             </div>
         </div>
 
         <!--English language block-->
         <div id="div_en" class="category_block">
             <div class="text">
+                <p>Hello {{user_name}}</p>
                 <p><br>Welcome to the LearnWell feedback session!<br>
                     <br>
                     The session is organised together with the 1st year students, study counsellors, and researchers from
@@ -92,16 +99,18 @@
                     High value is the aim in self-efficacy, psychological flexibility and self-compassion. In other factors,
                     the lower the value, the better the result.
                 </p>
+                <br>
+                <br>
+                <center>
+                <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
+                </center>
             </div>
         </div>
 
         <div class="container">
-            <div class="header">
-                <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
-            </div>
             <select id="chartType">
-                <option value="chart1">Your statistics</option>
-                <option value="chart2">Your statistics compared to other respondents</option>
+                <option value="chart1">Your statistics - Sinun tilastosi</option>
+                <option value="chart2">Your statistics compared to other respondents - Tilastosi muihin vastaajiin verrattuna</option>
             </select>
             <div id="chartContainer">
                 <canvas id="myChart"></canvas>
