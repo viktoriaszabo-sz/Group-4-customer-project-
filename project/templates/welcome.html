@@ -45,89 +45,221 @@
         </div>
 
         <center>
-        <!--Select a Language block to display-->
-        <div>
-            <!--The selector to select a Category's Language block to display-->
-            <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+            <!--Select a Language block to display-->
+            <div>
+                <!--The selector to select a Category's Language block to display-->
                 <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                     <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
-                        <label for="selectDiv"><br>Kieli | Language</label>
-                        <select id="selectDiv" onchange="displaySelectedDiv()">
-                            <option value="" disabled selected>vaihda kieltä | switch the language</option>
-                            <option value="div_en">English</option>
-                            <option value="div_fi">Suomi</option>
-                        </select>
+                        <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                            <label for="selectDiv"><br>Kieli | Language</label>
+                            <select id="selectDiv" onchange="displaySelectedDiv()">
+                                <option value="" disabled selected>vaihda kieltä | switch the language</option>
+                                <option value="div_en">English</option>
+                                <option value="div_fi">Suomi</option>
+                            </select>
+                        </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                     </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
                 </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
-            </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
-        </div>
-    </center>
-    
-    <!--Finnish language block-->
-    <div id="div_fi" class="category_block">
-        <div class="text">
-            <p><br>Tervetuloa LearnWell-palauteistuntoon!<br>
-                <br>
-                Istunto järjestetään yhdessä 1. vuoden opiskelijoiden, opinto-ohjaajien ja tutkijoiden kanssa
-                     LearnWell-tiimi. Tavoitteena on keskustella yhdessä opiskeluun liittyvästä hyvinvoinnista sekä opiskelijoiden että
-                     opetus-/tutkinto-ohjelman näkökulmia.<br>
-                <br>
-                Faktoripisteet lasketaan sen viiden pisteen Likert-asteikon kohteiden keskiarvona (1 = täysin eri mieltä, 2 = eri mieltä, 3
-                     = välillä, 4 = samaa mieltä, 5 = täysin samaa mieltä)<br>
-                     Korkea arvo on tavoite itsetehokkuudessa, psykologisessa joustavuudessa ja itsemyötätuntoisuudessa. Muissa tekijöissä
-                     mitä pienempi arvo, sitä parempi tulos.
-            </p>
-        </div>
-
-        <div class="overview">
-            <h2>YLEISKATSAUS OPISKELIJAN OPINKIIN LIITTYVÄN HYVINVOINTIIN</h2>
-            <div class="statistics">
-                <div id="item-1">1</div>
-                <div id="item-2">2</div>
-                <div id="item-3">3</div>
-                <div id="item-4">4</div>
-                <div id="item-5">5</div>
-                <div id="item-6">6</div>
-                <div id="item-7">7</div>
-                <div id="item-8">8</div>
+            </div>
+        </center>
+        
+        <!--Finnish language block-->
+        <div id="div_fi" class="category_block">
+            <div class="text">
+                <p><br>Tervetuloa LearnWell-palauteistuntoon!<br>
+                    <br>
+                    Istunto järjestetään yhdessä 1. vuoden opiskelijoiden, opinto-ohjaajien ja tutkijoiden kanssa
+                        LearnWell-tiimi. Tavoitteena on keskustella yhdessä opiskeluun liittyvästä hyvinvoinnista sekä opiskelijoiden että
+                        opetus-/tutkinto-ohjelman näkökulmia.<br>
+                    <br>
+                    Faktoripisteet lasketaan sen viiden pisteen Likert-asteikon kohteiden keskiarvona (1 = täysin eri mieltä, 2 = eri mieltä, 3
+                        = välillä, 4 = samaa mieltä, 5 = täysin samaa mieltä)<br>
+                        Korkea arvo on tavoite itsetehokkuudessa, psykologisessa joustavuudessa ja itsemyötätuntoisuudessa. Muissa tekijöissä
+                        mitä pienempi arvo, sitä parempi tulos.
+                </p>
             </div>
         </div>
-    </div>
 
-    <!--English language block-->
-    <div id="div_en" class="category_block">
-        <div class="text">
-            <p><br>Welcome to the LearnWell feedback session!<br>
-                <br>
-                The session is organised together with the 1st year students, study counsellors, and researchers from
-                the LearnWell team. The aim is to discuss together study-related well-being both from the students and
-                the teaching/degree programme perspectives.<br>
-                <br>
-                Factor scores are computed as a mean value of its five-point Likert scale items (1 = totally disagree, 2 = disagree, 3
-                = between, 4 = agree, 5 = totally agree)<br>
-                High value is the aim in self-efficacy, psychological flexibility and self-compassion. In other factors,
-                the lower the value, the better the result.
-            </p>
-        </div>
-
-        <div class="overview">
-            <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
-            <div class="statistics">
-                <div id="item-1">1</div>
-                <div id="item-2">2</div>
-                <div id="item-3">3</div>
-                <div id="item-4">4</div>
-                <div id="item-5">5</div>
-                <div id="item-6">6</div>
-                <div id="item-7">7</div>
-                <div id="item-8">8</div>
+        <!--English language block-->
+        <div id="div_en" class="category_block">
+            <div class="text">
+                <p><br>Welcome to the LearnWell feedback session!<br>
+                    <br>
+                    The session is organised together with the 1st year students, study counsellors, and researchers from
+                    the LearnWell team. The aim is to discuss together study-related well-being both from the students and
+                    the teaching/degree programme perspectives.<br>
+                    <br>
+                    Factor scores are computed as a mean value of its five-point Likert scale items (1 = totally disagree, 2 = disagree, 3
+                    = between, 4 = agree, 5 = totally agree)<br>
+                    High value is the aim in self-efficacy, psychological flexibility and self-compassion. In other factors,
+                    the lower the value, the better the result.
+                </p>
             </div>
         </div>
-    </div>
+
+        <div class="container">
+            <div class="header">
+                <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
+            </div>
+            <select id="chartType">
+                <option value="chart1">Your statistics</option>
+                <option value="chart2">Your statistics compared to other respondents</option>
+            </select>
+            <div id="chartContainer">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
 
         <a href="{{ url_for('page1') }}" class="next-page-button">Next Page</a>
     </div>
 
 </body>
+
+<footer>
+        <script>   
+            var learningpercent = '{{learningpercent}}'
+            var supportpercent = '{{supportpercent}}'
+            var competencepercent = '{{competencepercent}}'
+            var fillerpercent = '{{fillerpercent}}'
+            var self_ef_percent = '{{self_ef_percent}}'
+            var psy_flex_percent = '{{psy_flex_percent}}'
+            var burnoutpercent = '{{burnoutpercent}}'
+            var selfrefpercent = '{{selfrefpercent}}'
+
+            var learning_avg_all = '{{learning_avg_all}}'
+            var support_avg_all = '{{support_avg_all}}'
+            var competence_avg_all = '{{competence_avg_all}}'
+            var filler_avg_all = '{{filler_avg_all}}'
+            var wb_self_efficiancy_avg_all = '{{wb_self_efficiancy_avg_all}}'
+            var wb_psychological_avg_all = '{{wb_psychological_avg_all}}'
+            var wb_burnout_avg_all = '{{wb_burnout_avg_all}}'
+            var wb_sc_avg_all = '{{wb_sc_avg_all}}'
+            const chartData = {
+                chart1: [
+                    { value: learningpercent, label: 'Learning approach' },
+                    { value: supportpercent, label: 'Learning environment' },
+                    { value: competencepercent, label: 'Competence development' },
+                    { value: fillerpercent, label: 'Objectives for the future' },
+                    { value: self_ef_percent, label: 'Wellbeing: sef-efficacy' },
+                    { value: psy_flex_percent, label: 'Wellbeing: psychological flexibility ' },
+                    { value: burnoutpercent, label: 'Wellbeing: level of burnout' },
+                    { value: selfrefpercent, label: 'Wellbeing: self-compassion' },
+                ],
+                chart2: [
+                    { value: learningpercent, label: 'Learning approach (you)' },
+                    { value: learning_avg_all, label: 'Learning approach (average of others)' },
+                    { value: supportpercent, label: 'Learning environment (you)' },
+                    { value: support_avg_all, label: 'Learning environment (average of others)' },
+                    { value: competencepercent, label: 'Competence development (you)' },
+                    { value: competence_avg_all, label: 'Competence development (average of others)' },
+                    { value: fillerpercent, label: 'Objectives for the future (you)' },
+                    { value: filler_avg_all, label: 'Objectives for the future (average of others)' },
+                    { value: self_ef_percent, label: 'Wellbeing: sef-efficacy (you)' },
+                    { value: wb_self_efficiancy_avg_all, label: 'Wellbeing: sef-efficacy (average of others)' },
+                    { value: psy_flex_percent, label: 'Wellbeing: psychological flexibility (you)' },
+                    { value: wb_psychological_avg_all, label: 'Wellbeing: psychological flexibility (average of others)' },
+                    { value: burnoutpercent, label: 'Wellbeing: level of burnout (you)' },
+                    { value: wb_burnout_avg_all, label: 'Wellbeing: level of burnout (average of others)' },
+                    { value: selfrefpercent, label: 'Wellbeing: self-compassion (you)' },
+                    { value: wb_sc_avg_all, label: 'Wellbeing: self-compassion (average of others)' },
+                ],
+            }
+
+            const chartTypeSelect = document.getElementById('chartType')
+            const chartContainer = document.getElementById('chartContainer')
+            const ctx = document.getElementById('myChart').getContext('2d')
+            let currentChartType = chartTypeSelect.value
+            let myChart // Variable to store the chart instance
+
+            const getColorScheme = (chartType) => {
+                if (chartType === 'chart1') {
+                    // Color scheme for 8 categories in chart1
+
+
+                    return [
+                        '#556EE6',
+                        '#E66868',
+                        '#556EE6',
+                        '#E66868',
+                        '#556EE6',
+                        '#E66868',
+                        '#556EE6',
+                        '#E66868',
+                    ]
+                } else if (chartType === 'chart2') {
+                    // Color scheme for 16 categories in chart2
+                    return [
+                        '#556EE6',
+                        '#778BEB',
+
+                        '#E66868',
+                        '#EB8686',
+
+                        '#556EE6',
+                        '#778BEB',
+
+                        '#E66868',
+                        '#EB8686',
+
+                        '#556EE6',
+                        '#778BEB',
+
+                        '#E66868',
+                        '#EB8686',
+
+                        '#556EE6',
+                        '#778BEB',
+
+                        '#E66868',
+                        '#EB8686',
+                    ]
+                }
+            }
+
+            const updateChart = () => {
+                const data = chartData[currentChartType]
+                const labels = data.map(item => item.label)
+                const backgroundColor = getColorScheme(currentChartType)
+
+                if (myChart) {
+                    myChart.data.labels = labels
+                    myChart.data.datasets[0].data = data.map(item => item.value)
+                    myChart.data.datasets[0].backgroundColor = backgroundColor
+                    myChart.update()
+                } else {
+                    myChart = new Chart(ctx, {
+                        type: 'bar', // Use "bar" for horizontal bar chart
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                data: data.map(item => item.value),
+                                backgroundColor: backgroundColor,
+                                // borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1,
+                                label: 'Average scale of 1 (Bad) - 5 (Good)', // Add the dataset label here
+                            }],
+                        },
+                        options: {
+                            maintainAspectRatio: false,
+                            indexAxis: 'y', // Set to "y" for horizontal bar chart
+                            scales: {
+                                x: {
+                                    beginAtZero: true,
+                                },
+                            },
+                        },
+                    })
+                }
+            }
+
+            // Initial chart rendering
+            updateChart()
+            // Add event listener to switch chart types
+            chartTypeSelect.addEventListener('change', (event) => {
+                currentChartType = event.target.value
+                updateChart()
+            })
+        </script>
+</footer>
 
 </html>

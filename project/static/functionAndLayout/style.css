@@ -234,6 +234,38 @@ a.active,a:hover{
 } */
 
 
+#myChart {
+  background-color: white;
+  display: block;
+  height: 500.5px;
+  width: 450.1px;
+  padding-top: 30px;
+}
+
+#chartType {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  appearance: none;
+  border: 0;
+  outline: 0;
+  width: 28em;
+  text-align: center;
+  /* Personalize */
+
+  padding: 8px;
+  background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
+  
+    color: rgb(21, 21, 21);
+  border-radius: 0.25em;
+  cursor: pointer;
+  --arrow-bg: rgba(87, 87, 87, 0.3);
+  --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+  --select-bg: rgba(190, 190, 190, 0.505);
+}
+
 /* For mobile phones: */
 @media (max-width: 858px){
 
