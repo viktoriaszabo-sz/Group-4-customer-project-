@@ -154,6 +154,8 @@ def welcome():
     
     user_data = df[df['Email'] == user_email]
     rows = len(df)
+    #0 retrieve the user Name for greeting
+    user_name = user_data['Name'].values[0]
     #1
     sum_of_learning = user_data['Sum of learning'].values[0]
     learning_percent = 5 * (sum_of_learning / 60)
@@ -200,7 +202,7 @@ def welcome():
                            supportpercent = support_percent, competencepercent = competence_percent, \
                             fillerpercent = filler_percent, self_ef_percent = self_ef_percent, psy_flex_percent = psy_flex_percent, \
                                 burnoutpercent = burnoutpercent, selfrefpercent = selfrefpercent, lp_sum_avg = lp_sum_avg, \
-                                    learning_avg = learning_avg)
+                                    learning_avg = learning_avg, user_name = user_name)
 
 
 # Category 1
