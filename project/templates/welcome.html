@@ -39,7 +39,7 @@
             <div draggable="false" class="learnWellLogo">
                 <img src="{{ url_for('static', filename='functionAndLayout/learnWellLogo.png') }}" alt="Learnwell Logo">
             </div>
-            <h1>Feedback Session (year)</h1>
+            <h1>Feedback Session (year)- Palauteistunto (vuosi)</h1>
         </div>
 
         <center>
@@ -64,7 +64,7 @@
         <!--Finnish language block-->
         <div id="div_fi" class="category_block">
             <div class="text">
-                <p><br>Tervetuloa LearnWell-palauteistuntoon!<br>
+                <p><br>Tervetuloa LearnWell-palauteistuntoon, {{user_name}}!<br>
                     <br>
                     Istunto järjestetään yhdessä 1. vuoden opiskelijoiden, opinto-ohjaajien ja tutkijoiden kanssa
                         LearnWell-tiimi. Tavoitteena on keskustella yhdessä opiskeluun liittyvästä hyvinvoinnista sekä opiskelijoiden että
@@ -75,13 +75,14 @@
                         Korkea arvo on tavoite itsetehokkuudessa, psykologisessa joustavuudessa ja itsemyötätuntoisuudessa. Muissa tekijöissä
                         mitä pienempi arvo, sitä parempi tulos.
                 </p>
+                <h2><br>YLEISKATSAUS OPISKELIJAN OPINKIIN LIITTYVÄN HYVINVOINTIIN</h2>
             </div>
         </div>
 
         <!--English language block-->
         <div id="div_en" class="category_block">
             <div class="text">
-                <p><br>Welcome to the LearnWell feedback session!<br>
+                <p><br>Welcome to the LearnWell feedback session, {{user_name}}!<br>
                     <br>
                     The session is organised together with the 1st year students, study counsellors, and researchers from
                     the LearnWell team. The aim is to discuss together study-related well-being both from the students and
@@ -92,12 +93,12 @@
                     High value is the aim in self-efficacy, psychological flexibility and self-compassion. In other factors,
                     the lower the value, the better the result.
                 </p>
+                <h2><br>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
             </div>
         </div>
 
         <div class="container">
             <div class="header">
-                <h2>OVERVIEW OF STUDENT’S STUDY-RELATED WELLBEING</h2>
             </div>
             <select id="chartType">
                 <option value="chart1">Your statistics</option>
