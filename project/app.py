@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'your_secret_key'
-file_path = "C:/Users/Jamiv/Desktop/HAMK/2023-2024/1 Moduuli/Design Factory Project/TestingFeedback/project/testdata.xlsx"
+file_path = "C:/Users/vikiv/OneDrive - Hämeen ammattikorkeakoulu/learnwell_dataset.xlsx"
 engine = "openpyxl"
 df = pd.read_excel(file_path, engine=engine, sheet_name='Form1')
 
@@ -248,8 +248,6 @@ def page1():
                 # user name
                 user_name=user_name,
                 # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 1
                 # chart_1 = chart_1,
                 # the output of the category
@@ -302,8 +300,6 @@ def page2():
                 # user name
                 user_name=user_name,
                 # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 2
                 # chart_2 = chart_2,
                 # the output of the category
@@ -357,8 +353,6 @@ def page3():
                 # user name
                 user_name=user_name,
                 # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 3
                 # chart_3 = chart_3,
                 # the output of the category
@@ -412,8 +406,6 @@ def page4():
                 # user name
                 user_name=user_name,
                 # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 4
                 # chart_4 = chart_4,
                 # the output of the category
@@ -467,8 +459,6 @@ def page5():
                 # user name
                 user_name=user_name,
                 # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 5
                 # chart_5 = chart_5,
                 # the output of the category
@@ -522,8 +512,6 @@ def page6():
                 # user name
                 user_name=user_name,
                 # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 6
                 # chart_6 = chart_6,
                 # the output of the category
@@ -576,8 +564,6 @@ def page7():
                 # user name
                 user_name=user_name,
                 # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # sum of burn out for page 7
                 sum_of_burnout = sum_of_burnout,
                 # the output of the category
@@ -631,13 +617,25 @@ def page8():
                 # user name
                 user_name=user_name,
                 # path to the personalizedResponse which stores feedback paragraphs
-                personalizedResponse_url=personalizedResponse_url,
-                overviewResponse_url = overviewResponse_url,
                 # Chart variable for page 8
                 # chart_ = # chart_,
                 # the output of the category
                 category_message8 = category_message8
                 )
+
+# Load the Excel file into a DataFrame
+text_file_path = './project/paragraph.xlsx'
+paragraph = pd.read_excel(text_file_path)
+
+@app.route('/get_content/<id>')
+def get_content(id):
+    content_row = paragraph[paragraph['ID'] == id]
+    if content_row.empty:
+        return jsonify({'content': ''})
+
+    content = content_row['Content'].values[0]
+    return jsonify({'content': content})
+
 
 # app running
 if __name__ == '__main__': 
