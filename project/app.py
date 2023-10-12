@@ -154,6 +154,8 @@ def welcome():
     
     user_data = df[df['Email'] == user_email]
     rows = len(df)
+    #0 retrieve the user Name for greeting
+    user_name = user_data['Name'].values[0]
     #1
     #0 retrieve the user Name for greeting
     user_name = user_data['Name'].values[0]
