@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='functionAndLayout/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://kit.fontawesome.com/5c1299d2f2.js" crossorigin="anonymous"></script>
+    <!--Script to select a div to display-->
+    <script src="{{ url_for('static', filename='functionAndLayout/displayDiv.js') }}"></script>
 </head>
 
 <body>
@@ -25,7 +27,7 @@
                 <li><a href="{{ url_for ('page4') }}">4. Objectives for the future</a></li>
                 <li><a href="{{ url_for ('page5') }}">5. Wellbeing: self-efficacy</a></li>
                 <li><a href="{{ url_for ('page6') }}">6. Wellbeing: psychological flexibility</a></li>
-                <li><a href="{{ url_for ('page7') }}">7. Wellbeing: level of burnout</a></li>
+                <li><a href="{{ url_for ('page7') }}">7. Wellbeing: risk of burnout</a></li>
                 <li><a href="{{ url_for ('page8') }}">8. Wellbeing: self-compassion</a></li>
             </ul>
     </nav>
@@ -37,6 +39,59 @@
             </div>
             <h1>Feedback Session (year)</h1>
         </div>
+
+        <center>
+        <!--Select a Language block to display-->
+        <div>
+            <!--The selector to select a Category's Language block to display-->
+            <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                    <div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                        <label for="selectDiv"><br>Kieli | Language</label>
+                        <select id="selectDiv" onchange="displaySelectedDiv()">
+                            <option value="" disabled selected>vaihda kieltä | switch the language</option>
+                            <option value="div_en">English</option>
+                            <option value="div_fi">Suomi</option>
+                        </select>
+                    </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+                </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+            </div> <!--IMPORTANT ! NOT redundance ! keep the div structure-->
+        </div>
+    </center>
+    
+    <!--Finnish language block-->
+    <div id="div_fi" class="category_block">
+        <div class="text">
+            <p><br>Tervetuloa LearnWell-palauteistuntoon!<br>
+                <br>
+                Istunto järjestetään yhdessä 1. vuoden opiskelijoiden, opinto-ohjaajien ja tutkijoiden kanssa
+                     LearnWell-tiimi. Tavoitteena on keskustella yhdessä opiskeluun liittyvästä hyvinvoinnista sekä opiskelijoiden että
+                     opetus-/tutkinto-ohjelman näkökulmia.<br>
+                <br>
+                Faktoripisteet lasketaan sen viiden pisteen Likert-asteikon kohteiden keskiarvona (1 = täysin eri mieltä, 2 = eri mieltä, 3
+                     = välillä, 4 = samaa mieltä, 5 = täysin samaa mieltä)<br>
+                     Korkea arvo on tavoite itsetehokkuudessa, psykologisessa joustavuudessa ja itsemyötätuntoisuudessa. Muissa tekijöissä
+                     mitä pienempi arvo, sitä parempi tulos.
+            </p>
+        </div>
+
+        <div class="overview">
+            <h2>YLEISKATSAUS OPISKELIJAN OPINKIIN LIITTYVÄN HYVINVOINTIIN</h2>
+            <div class="statistics">
+                <div id="item-1">1</div>
+                <div id="item-2">2</div>
+                <div id="item-3">3</div>
+                <div id="item-4">4</div>
+                <div id="item-5">5</div>
+                <div id="item-6">6</div>
+                <div id="item-7">7</div>
+                <div id="item-8">8</div>
+            </div>
+        </div>
+    </div>
+
+    <!--English language block-->
+    <div id="div_en" class="category_block">
         <div class="text">
             <p><br>Welcome to the LearnWell feedback session!<br>
                 <br>
@@ -64,6 +119,8 @@
                 <div id="item-8">8</div>
             </div>
         </div>
+    </div>
+
         <a href="{{ url_for('page1') }}" class="next-page-button">Next Page</a>
     </div>
 
