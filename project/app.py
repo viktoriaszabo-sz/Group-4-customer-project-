@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'your_secret_key'
-file_path = "./project/learnwell_dataset.xlsx"
+file_path = "C:/Users/vikiv/OneDrive - Hämeen ammattikorkeakoulu/learnwell_dataset.xlsx"
 engine = "openpyxl"
 df = pd.read_excel(file_path, engine=engine, sheet_name='Form1')
 
@@ -251,7 +251,7 @@ def page1():
                 # Chart variable for page 1
                 # chart_1 = chart_1,
                 # the output of the category
-                category_message1 = category_message1
+                category_message1 = category_message1, sum_of_learning = sum_of_learning
                 )
 
 # Category 2
@@ -302,7 +302,7 @@ def page2():
                 # Chart variable for page 2
                 # chart_2 = chart_2,
                 # the output of the category
-                category_message2 = category_message2,
+                category_message2 = category_message2, sum_of_support = sum_of_support
                 )
 
 # Category 3
@@ -354,7 +354,7 @@ def page3():
                 # Chart variable for page 3
                 # chart_3 = chart_3,
                 # the output of the category
-                category_message3 = category_message3
+                category_message3 = category_message3, sum_of_competence = sum_of_competence
                 )
 
 # Category 4
@@ -400,13 +400,13 @@ def page4():
     else: 
         emailNotFound = "User email not found."
 
-    return render_template('4.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
+    return render_template('4.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_filler = sum_of_filler,
                 # user name
                 user_name=user_name,
                 # Chart variable for page 4
                 # chart_4 = chart_4,
                 # the output of the category
-                category_message4 = category_message4
+                category_message4 = category_message4,
                 )
 
 # Category 5
@@ -452,7 +452,7 @@ def page5():
     else: 
         emailNotFound = "User email not found."
 
-    return render_template('5.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
+    return render_template('5.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_se = sum_of_se, 
                 # user name
                 user_name=user_name,
                 # Chart variable for page 5
@@ -504,7 +504,7 @@ def page6():
     else: 
         emailNotFound = "User email not found."
 
-    return render_template('6.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
+    return render_template('6.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_psych = sum_of_psych, 
                 # user name
                 user_name=user_name,
                 # Chart variable for page 6
@@ -607,7 +607,7 @@ def page8():
     else: 
         emailNotFound = "User email not found."
 
-    return render_template('8.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
+    return render_template('8.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_sr = sum_of_sr, 
                 # user name
                 user_name=user_name,
                 # Chart variable for page 8
