@@ -39,7 +39,7 @@
             <div draggable="false" class="learnWellLogo">
                 <img src="{{ url_for('static', filename='functionAndLayout/learnWellLogo.png') }}" alt="Learnwell Logo">
             </div>
-            <h1>Feedback Session (year) - Palauteistunto (vuosi)</h1>
+            <h1>Feedback Session (year) - Palauteosio (vuosi)</h1>
         </div>
 
         <center>
@@ -64,8 +64,7 @@
         <!--Finnish language block-->
         <div id="div_fi" class="category_block">
             <div class="text">
-                <p>Terve {{user_name}}</p>
-                <p><br>Tervetuloa LearnWell-palauteistuntoon!<br>
+                <p><br>Tervetuloa LearnWell-palauteistuntoon, {{user_name}}!<br>
                     <br>
                     Istunto järjestetään yhdessä 1. vuoden opiskelijoiden, opinto-ohjaajien ja tutkijoiden kanssa
                         LearnWell-tiimi. Tavoitteena on keskustella yhdessä opiskeluun liittyvästä hyvinvoinnista sekä opiskelijoiden että
@@ -87,8 +86,7 @@
         <!--English language block-->
         <div id="div_en" class="category_block">
             <div class="text">
-                <p>Hello {{user_name}}</p>
-                <p><br>Welcome to the LearnWell feedback session!<br>
+                <p><br>Welcome to the LearnWell feedback session, {{user_name}}!<br>
                     <br>
                     The session is organised together with the 1st year students, study counsellors, and researchers from
                     the LearnWell team. The aim is to discuss together study-related well-being both from the students and
@@ -108,6 +106,8 @@
         </div>
 
         <div class="container">
+            <div class="header">
+            </div>
             <select id="chartType">
                 <option value="chart1">Your statistics - Sinun tilastosi</option>
                 <option value="chart2">Your statistics compared to other respondents - Tilastosi muihin vastaajiin verrattuna</option>
@@ -117,7 +117,7 @@
             </div>
         </div>
 
-        <a href="{{ url_for('page1') }}" class="next-page-button">Next Page</a>
+        <a href="{{ url_for('page1') }}" class="next-page-button">Next Page <br><i>Seuraava</i></a>
     </div>
 
 </body>
