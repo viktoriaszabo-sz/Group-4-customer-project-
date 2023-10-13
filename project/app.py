@@ -10,7 +10,7 @@ engine = "openpyxl"
 df = pd.read_excel(file_path, engine=engine, sheet_name='Form1')
 
 # have to convert the numbers into ints bc they are strings originally for some reason 
-string_columns = ['ID', 'Start time', 'Completion time', 'Email', 'Name', 'Last modified time',	
+string_columns = ['ID', 'Start time', 'Completion time', 'PrivateKey', 'Name', 'Last modified time',	
                   'Year of birth','Gender', 'Do you have previous studies or degrees?',	
                   'In which school do you study at HAMK?',
                   'What is your degree programme in Bioeconomy?', 
@@ -117,8 +117,8 @@ wb_sc_avg_all
 
 
 # ----------------------------- initiate the variables value with empty strings------------------------------------------------------------------
-html_user_email=""
-user_email=""
+html_private_key=""
+private_key=""
 category_message1 = ""
 category_message2 = ""
 category_message3 = ""
@@ -135,30 +135,27 @@ def index():
 
 @app.route('/process_form', methods=['POST'])
 def process_form():
-    # Get the user's email address from the form
-    global user_email 
+    # Get the user's private key from the form
+    global private_key 
     global user_data
-    user_email = request.form.get('email')  #user email address after form validation in 0.html
-    session['user_email'] = user_email          # Store the email in the session
-    user_data = df[df['Email'] == user_email]  # Process the email address if needed
+    private_key = request.form.get('privateKey')  #user private key after form validation in 0.html
+    session['private_key'] = private_key          # Store the private key in the session
+    user_data = df[df['PrivateKey'] == private_key]  # Process the private key if needed
         
-    if user_data.empty:   # checks if the email address is in the dataset
-        print("Invalid email address. It seems like your data is not accessible from our database")
+    if user_data.empty:   # checks if the private key is in the dataset
+        print("Invalid private key. It seems like your data is not accessible from our database")
         return redirect('/')  # Redirect the user back to the form
     else: 
-        return redirect(url_for('welcome', user_email=user_email))  # Redirect the user to 'welcome'
+        return redirect(url_for('welcome', private_key=private_key))  # Redirect the user to 'welcome'
 
 # The welcome page
 @app.route('/welcome')
 def welcome():
     
-    user_data = df[df['Email'] == user_email]
+    user_data = df[df['PrivateKey'] == private_key]
     rows = len(df)
-    #0 retrieve the user Name for greeting
-    user_name = user_data['Name'].values[0]
+
     #1
-    #0 retrieve the user Name for greeting
-    user_name = user_data['Name'].values[0]
     sum_of_learning = user_data['Sum of learning'].values[0]
     learning_percent = 5 * (sum_of_learning / 60)
     #all average
@@ -204,29 +201,27 @@ def welcome():
                            supportpercent = support_percent, competencepercent = competence_percent, \
                             fillerpercent = filler_percent, self_ef_percent = self_ef_percent, psy_flex_percent = psy_flex_percent, \
                                 burnoutpercent = burnoutpercent, selfrefpercent = selfrefpercent, lp_sum_avg = lp_sum_avg, \
-                                    learning_avg = learning_avg, user_name = user_name)
+                                    learning_avg = learning_avg)
 
 
 # Category 1
 @app.route('/page1')
 def page1():
 # 0 STARTING GLOBAL SETTINGS
-    # Get the user's email address from the URL query parameter
-    user_email = session.get('user_email')
+    # Get the user's private key from the URL query parameter
+    private_key = session.get('private_key')
     # prepare the path to overviewResponse
     overviewResponse_url = f'/static/1.overviewResponse/'
     # prepare the path to personalizedResponse
     personalizedResponse_url = f'/static/2.personalizedResponse/'
-    # check for existence of user email
-    if user_email:
+    # check for existence of user private key
+    if private_key:
         # no global variable needed
-        # email not found message
-        emailNotFound = None
+        # private key not found message
+        keyNotFound = None
         # user data to retrieve the row (1st row found)
-        user_data = df[df['Email'] == user_email]
-        # retrieve the user Name for greeting
-        user_name = user_data['Name'].values[0]
-        # check for existence of user data
+        user_data = df[df['PrivateKey'] == private_key]
+            # check for existence of user data
         if not user_data.empty:
         # data not found message
             dataNotFound = None
@@ -245,13 +240,11 @@ def page1():
         # closing of "if not user_data.empty"
         else:
             dataNotFound = "User data not found."
-    # closing of "if user_email"     
+    # closing of "if private_key"     
     else: 
-        emailNotFound = "User email not found."
+        keyNotFound = "Private key not found."
 
-    return render_template('1.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
-                # user name
-                user_name=user_name,
+    return render_template('1.html', keyNotFound = keyNotFound, dataNotFound = dataNotFound,
                 # Chart variable for page 1
                 # chart_1 = chart_1,
                 # the output of the category
@@ -262,22 +255,20 @@ def page1():
 @app.route('/page2')
 def page2():
 # 0 STARTING GLOBAL SETTINGS
-    # Get the user's email address from the URL query parameter
-    user_email = session.get('user_email')
+    # Get the user's private key from the URL query parameter
+    private_key = session.get('private_key')
     # prepare the path to overviewResponse
     overviewResponse_url = f'/static/1.overviewResponse/'
     # prepare the path to personalizedResponse
     personalizedResponse_url = f'/static/2.personalizedResponse/'
-    # check for existence of user email
-    if user_email:
+    # check for existence of user private key
+    if private_key:
         # no global variable needed
-        # email not found message
-        emailNotFound = None
+        # private key not found message
+        keyNotFound = None
         # user data to retrieve the row (1st row found)
-        user_data = df[df['Email'] == user_email]
-        # retrieve the user Name for greeting
-        user_name = user_data['Name'].values[0]
-        # check for existence of user data
+        user_data = df[df['PrivateKey'] == private_key]
+            # check for existence of user data
         if not user_data.empty:
         # data not found message
             dataNotFound = None
@@ -296,13 +287,11 @@ def page2():
         # closing of "if not user_data.empty"
         else:
             dataNotFound = "User data not found."
-    # closing of "if user_email"     
+    # closing of "if private_key"     
     else: 
-        emailNotFound = "User email not found."
+        keyNotFound = "Private key not found."
 
-    return render_template('2.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
-                # user name
-                user_name=user_name,
+    return render_template('2.html', keyNotFound = keyNotFound, dataNotFound = dataNotFound,
                 # Chart variable for page 2
                 # chart_2 = chart_2,
                 # the output of the category
@@ -314,22 +303,20 @@ def page2():
 @app.route('/page3')
 def page3():
 # 0 STARTING GLOBAL SETTINGS
-    # Get the user's email address from the URL query parameter
-    user_email = session.get('user_email')
+    # Get the user's private key from the URL query parameter
+    private_key = session.get('private_key')
     # prepare the path to overviewResponse
     overviewResponse_url = f'/static/1.overviewResponse/'
     # prepare the path to personalizedResponse
     personalizedResponse_url = f'/static/2.personalizedResponse/'
-    # check for existence of user email
-    if user_email:
+    # check for existence of user private key
+    if private_key:
         # no global variable needed
-        # email not found message
-        emailNotFound = None
+        # private key not found message
+        keyNotFound = None
         # user data to retrieve the row (1st row found)
-        user_data = df[df['Email'] == user_email]
-        # retrieve the user Name for greeting
-        user_name = user_data['Name'].values[0]
-        # check for existence of user data
+        user_data = df[df['PrivateKey'] == private_key]
+            # check for existence of user data
         if not user_data.empty:
         # data not found message
             dataNotFound = None
@@ -348,13 +335,11 @@ def page3():
         # closing of "if not user_data.empty"
         else:
             dataNotFound = "User data not found."
-    # closing of "if user_email"     
+    # closing of "if private_key"     
     else: 
-        emailNotFound = "User email not found."
+        keyNotFound = "Private key not found."
 
-    return render_template('3.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
-                # user name
-                user_name=user_name,
+    return render_template('3.html', keyNotFound = keyNotFound, dataNotFound = dataNotFound,
                 # Chart variable for page 3
                 # chart_3 = chart_3,
                 # the output of the category
@@ -366,22 +351,20 @@ def page3():
 @app.route('/page4')
 def page4():
 # 0 STARTING GLOBAL SETTINGS
-    # Get the user's email address from the URL query parameter
-    user_email = session.get('user_email')
+    # Get the user's private key from the URL query parameter
+    private_key = session.get('private_key')
     # prepare the path to overviewResponse
     overviewResponse_url = f'/static/1.overviewResponse/'
     # prepare the path to personalizedResponse
     personalizedResponse_url = f'/static/2.personalizedResponse/'
-    # check for existence of user email
-    if user_email:
+    # check for existence of user private key
+    if private_key:
         # no global variable needed
-        # email not found message
-        emailNotFound = None
+        # private key not found message
+        keyNotFound = None
         # user data to retrieve the row (1st row found)
-        user_data = df[df['Email'] == user_email]
-        # retrieve the user Name for greeting
-        user_name = user_data['Name'].values[0]
-        # check for existence of user data
+        user_data = df[df['PrivateKey'] == private_key]
+            # check for existence of user data
         if not user_data.empty:
         # data not found message
             dataNotFound = None
@@ -400,13 +383,11 @@ def page4():
         # closing of "if not user_data.empty"
         else:
             dataNotFound = "User data not found."
-    # closing of "if user_email"     
+    # closing of "if private_key"     
     else: 
-        emailNotFound = "User email not found."
+        keyNotFound = "Private key not found."
 
-    return render_template('4.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_filler = sum_of_filler,
-                # user name
-                user_name=user_name,
+    return render_template('4.html', keyNotFound = keyNotFound, dataNotFound = dataNotFound, sum_of_filler = sum_of_filler,
                 # Chart variable for page 4
                 # chart_4 = chart_4,
                 # the output of the category
@@ -418,22 +399,20 @@ def page4():
 @app.route('/page5')
 def page5():
 # 0 STARTING GLOBAL SETTINGS
-    # Get the user's email address from the URL query parameter
-    user_email = session.get('user_email')
+    # Get the user's private key from the URL query parameter
+    private_key = session.get('private_key')
     # prepare the path to overviewResponse
     overviewResponse_url = f'/static/1.overviewResponse/'
     # prepare the path to personalizedResponse
     personalizedResponse_url = f'/static/2.personalizedResponse/'
-    # check for existence of user email
-    if user_email:
+    # check for existence of user private key
+    if private_key:
         # no global variable needed
-        # email not found message
-        emailNotFound = None
+        # private key not found message
+        keyNotFound = None
         # user data to retrieve the row (1st row found)
-        user_data = df[df['Email'] == user_email]
-        # retrieve the user Name for greeting
-        user_name = user_data['Name'].values[0]
-        # check for existence of user data
+        user_data = df[df['PrivateKey'] == private_key]
+            # check for existence of user data
         if not user_data.empty:
         # data not found message
             dataNotFound = None
@@ -452,13 +431,11 @@ def page5():
         # closing of "if not user_data.empty"
         else:
             dataNotFound = "User data not found."
-    # closing of "if user_email"     
+    # closing of "if private_key"     
     else: 
-        emailNotFound = "User email not found."
+        keyNotFound = "Private key not found."
 
-    return render_template('5.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_se = sum_of_se, 
-                # user name
-                user_name=user_name,
+    return render_template('5.html', keyNotFound = keyNotFound, dataNotFound = dataNotFound, sum_of_se = sum_of_se, 
                 # Chart variable for page 5
                 # chart_5 = chart_5,
                 # the output of the category
@@ -470,22 +447,20 @@ def page5():
 @app.route('/page6')
 def page6():
 # 0 STARTING GLOBAL SETTINGS
-    # Get the user's email address from the URL query parameter
-    user_email = session.get('user_email')
+    # Get the user's private key from the URL query parameter
+    private_key = session.get('private_key')
     # prepare the path to overviewResponse
     overviewResponse_url = f'/static/1.overviewResponse/'
     # prepare the path to personalizedResponse
     personalizedResponse_url = f'/static/2.personalizedResponse/'
-    # check for existence of user email
-    if user_email:
+    # check for existence of user private key
+    if private_key:
         # no global variable needed
-        # email not found message
-        emailNotFound = None
+        # private key not found message
+        keyNotFound = None
         # user data to retrieve the row (1st row found)
-        user_data = df[df['Email'] == user_email]
-        # retrieve the user Name for greeting
-        user_name = user_data['Name'].values[0]
-        # check for existence of user data
+        user_data = df[df['PrivateKey'] == private_key]
+            # check for existence of user data
         if not user_data.empty:
         # data not found message
             dataNotFound = None
@@ -504,13 +479,11 @@ def page6():
         # closing of "if not user_data.empty"
         else:
             dataNotFound = "User data not found."
-    # closing of "if user_email"     
+    # closing of "if private_key"     
     else: 
-        emailNotFound = "User email not found."
+        keyNotFound = "Private key not found."
 
-    return render_template('6.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_psych = sum_of_psych, 
-                # user name
-                user_name=user_name,
+    return render_template('6.html', keyNotFound = keyNotFound, dataNotFound = dataNotFound, sum_of_psych = sum_of_psych, 
                 # Chart variable for page 6
                 # chart_6 = chart_6,
                 # the output of the category
@@ -521,22 +494,20 @@ def page6():
 @app.route('/page7')
 def page7():
 # 0 STARTING GLOBAL SETTINGS
-    # Get the user's email address from the URL query parameter
-    user_email = session.get('user_email')
+    # Get the user's private key from the URL query parameter
+    private_key = session.get('private_key')
     # prepare the path to overviewResponse
     overviewResponse_url = f'/static/1.overviewResponse/'
     # prepare the path to personalizedResponse
     personalizedResponse_url = f'/static/2.personalizedResponse/'
-    # check for existence of user email
-    if user_email:
+    # check for existence of user private key
+    if private_key:
         # no global variable needed
-        # email not found message
-        emailNotFound = None
+        # private key not found message
+        keyNotFound = None
         # user data to retrieve the row (1st row found)
-        user_data = df[df['Email'] == user_email]
-        # retrieve the user Name for greeting
-        user_name = user_data['Name'].values[0]
-        # check for existence of user data
+        user_data = df[df['PrivateKey'] == private_key]
+            # check for existence of user data
         if not user_data.empty:
         # data not found message
             dataNotFound = None
@@ -555,13 +526,12 @@ def page7():
         # closing of "if not user_data.empty"
         else:
             dataNotFound = "User data not found."
-    # closing of "if user_email"     
+    # closing of "if private_key"     
     else: 
-        emailNotFound = "User email not found."
+        keyNotFound = "Private key not found."
 
-    return render_template('7.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound,
-                # user name
-                user_name=user_name,
+    return render_template('7.html', keyNotFound = keyNotFound, dataNotFound = dataNotFound,
+
                 # chart variable: sum of burn out for page 7
                 sum_of_burnout = sum_of_burnout,
                 # the output of the category
@@ -572,23 +542,21 @@ def page7():
 @app.route('/page8')
 def page8():
 # 0 STARTING GLOBAL SETTINGS
-    # Get the user's email address from the URL query parameter
-    user_email = session.get('user_email')
+    # Get the user's private key from the URL query parameter
+    private_key = session.get('private_key')
     # prepare the path to overviewResponse
     overviewResponse_url = f'/static/1.overviewResponse/'
     # prepare the path to personalizedResponse
     personalizedResponse_url = f'/static/2.personalizedResponse/'
-    # check for existence of user email
-    if user_email:
+    # check for existence of user private key
+    if private_key:
         # no global variable needed
-        # email not found message
-        emailNotFound = None
+        # private key not found message
+        keyNotFound = None
         # user data to retrieve the row (1st row found)
-        user_data = df[df['Email'] == user_email]
+        user_data = df[df['PrivateKey'] == private_key]
 
-        # retrieve the user Name for greeting
-        user_name = user_data['Name'].values[0]
-        # check for existence of user data
+            # check for existence of user data
         if not user_data.empty:
         # data not found message
             dataNotFound = None
@@ -607,13 +575,11 @@ def page8():
         # closing of "if not user_data.empty"
         else:
             dataNotFound = "User data not found."
-    # closing of "if user_email"     
+    # closing of "if private_key"     
     else: 
-        emailNotFound = "User email not found."
+        keyNotFound = "Private key not found."
 
-    return render_template('8.html', emailNotFound = emailNotFound, dataNotFound = dataNotFound, sum_of_sr = sum_of_sr, 
-                # user name
-                user_name=user_name,
+    return render_template('8.html', keyNotFound = keyNotFound, dataNotFound = dataNotFound, sum_of_sr = sum_of_sr, 
                 # Chart variable for page 8
                 # chart_ = # chart_,
                 # the output of the category

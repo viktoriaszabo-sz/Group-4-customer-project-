@@ -20,7 +20,7 @@
             const seconds = ('0' + currentDate.getSeconds()).slice(-2);
             const randomString = generateRandomString(8);
 
-            return `${year}${month}${day}${hours}${minutes}${seconds}${randomString}@hamk.fi`;
+            return `${year}${month}${day}${hours}${minutes}${seconds}${randomString}`;
         }
 
         // Function to generate and display the random string

@@ -22,40 +22,14 @@
                 <h3 id=sub-title>Welcome to Learn Well Project, Group 4!</h3>
                 <br><br>
                 <p>Hakeaksesi henkilökohtaisen palautteesi, syötä sähköpostiosoitteesi</p><br>
-                <p>Enter your email address to retrieve your personalized feedback</p><br>
+                <p>Enter your private key address to retrieve your personalized feedback</p><br>
                 <center>
-                    <form id="emailForm" method="post" action="/process_form">
-                        <input style="width: 20vw;height: 40px; font-size: 18px;" type="text" id="email" name="email" placeholder="E-mail" required><br>
+                    <form id="privateKeyForm" method="post" action="/process_form">
+                        <input style="width: 20vw;height: 40px; font-size: 18px;" type="text" id="privateKey" name="privateKey" placeholder="Private key" required><br>
                         <span id="domainError" style="color: red;"></span>
                         <input type="submit" value="Get feedback" name="submit" class="next-page-button">
                     </form>
                 </center>
-                <script>  // Function to validate the email and check the domain
-                    function validateEmail() {
-                        const emailInput = document.getElementById("email");
-                        const domainError = document.getElementById("domainError");
-                        const allowedDomain = "hamk.fi";
-                        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                        const emailDomain = emailInput.value.split('@')[1];
-
-                        if (!emailInput.value.match(emailPattern)) {
-                            domainError.textContent = "Invalid email format. Make sure you use your student email.";
-                            return false;
-                        }
-                        else if (!emailDomain.includes(allowedDomain)) {
-                            domainError.textContent = "Invalid domain name. Make sure your email contains 'hamk.fi'";
-                            return false;
-                        }
-                        domainError.textContent = "";
-                        return true;
-                    }
-                    // Attach the validation function to the form's submit event
-                    document.getElementById("emailForm").addEventListener("submit", function (event) {
-                        if (!validateEmail()) {
-                            event.preventDefault(); // Prevent form submission if validation fails
-                        }
-                    });
-                </script>
             </div>
         </div>
     </div>

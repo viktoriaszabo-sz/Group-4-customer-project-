@@ -54,15 +54,8 @@
         <!--welcome messaage-->
         <center>
             <div id="welcoming_div">
-                <p id="welcoming_p"></p>
-                <!--IMPORTANT this script must come after the above p element with id="welcoming"-->
-                <script id="welcoming_script">
-                    // Retrieve the user_name passed from Python
-                    var user_name = "{{ user_name }}";
-                    // Display the user_name in the element with id="welcoming" above
-                    var userNameDisplay = document.getElementById('welcoming_p');
-                    userNameDisplay.innerText = "Tervetuloa | Welcome " + user_name + ".\nTässä on henkilökohtainen palaute antamasi kyselyn perusteella. \nHere's a personalized feedback based on the survey you gave.";
-                </script>
+                <p>Tässä on henkilökohtainen palaute antamasi kyselyn perusteella.</p>
+                <p>Here's a personalized feedback based on the survey you gave.</p>
             </div>
             <!--end of welcome message-->
             <br>
