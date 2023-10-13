@@ -28,18 +28,6 @@
             const randomString = generateFormattedRandomString();
             const randomStringElement = document.getElementById('randomString');
             randomStringElement.innerText = `${randomString}`;
-            // Copy the random string to clipboard
-            copyToClipboard(randomString);
-        }
-
-        // Function to copy text to clipboard
-        function copyToClipboard(text) {
-            const el = document.createElement('textarea');
-            el.value = text;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
         }
 
         // Call the generateAndDisplayRandomString() function when the window has finished loading
